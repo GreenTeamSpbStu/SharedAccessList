@@ -13,11 +13,6 @@
 
 /* ---------- GENERAL ---------- */
 
-<<<<<<< HEAD
-
-a {
-    color: #004A98;
-=======
 body {
     background-color: #ffeefb;
     color: #2c3338;
@@ -27,7 +22,6 @@ body {
 }
 
 a {
->>>>>>> origin/master
     text-decoration: none;
 }
 
@@ -48,8 +42,6 @@ p {
     line-height: 1.5em;
 }
 
-<<<<<<< HEAD
-=======
 h2{   font-size: 40px;   margin-bottom: 0.5em; }
 
 h3{   font-size: 30px;   margin-bottom: 0.5em; }
@@ -61,27 +53,15 @@ button{
     margin-bottom: 0px;
 }
 
->>>>>>> origin/master
 form input, button {
     height: 50px;
     outline:none;
 }
-/*  #004098 */
-/* */
 
-<<<<<<< HEAD
-form input[type="text"], input[type="password"] {
-    background-color: #ffffff;
-    border-radius: 0px 3px 3px 0px;
-    -moz-border-radius: 0px 3px 3px 0px;
-    -webkit-border-radius: 0px 3px 3px 0px;
-    color: #606468;
-=======
 form input{
     background-color: #ffd4b3;
     border-radius:          3px;
     /*color: #eee;*/
->>>>>>> origin/master
     margin-bottom: 1em;
     padding: 0 16px;
     width: 200px;
@@ -95,13 +75,8 @@ form input[type=submit],button {
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
-<<<<<<< HEAD
-    background-color: #3474B5;
-    color: #eee;
-=======
     background-color: #21b0d0;
     /*color: #2c3338;*/
->>>>>>> origin/master
     font-weight: bold;
     margin-bottom: 2em;
     text-transform: uppercase;
@@ -109,25 +84,17 @@ form input[type=submit],button {
     width: 232px;
 }
 
-<<<<<<< HEAD
-form input[type="submit"]:hover, button:hover {
-    background-color: #004A98;
-}
-
-button{
-    border: none;
-    /*margin-bottom: 0px;*/
-=======
 form input[type=submit]:hover, button:hover {
     background-color: #008aae;
->>>>>>> origin/master
 }
 
 
 /*Login form*/
+#login {
+    margin: 150px auto 0px;
+    width: 282px;
+}
 
-<<<<<<< HEAD
-=======
 #login form input[type=password], #login form input[type=text]{
     border-radius: 0px 3px 3px 0px;
     /*color: #2c3338;*/
@@ -150,14 +117,15 @@ form input[type=submit]:hover, button:hover {
 #login input[type=submit] {
     width: 282px;
 }
->>>>>>> origin/master
 
-/*.hiden-list{*/
-    /*width: 232px;*/
+#login p {
+    text-align: center;
+}
+
+/*#login p span {*/
+    /*padding-left: 5px;*/
 /*}*/
 
-<<<<<<< HEAD
-=======
 #login img {
     margin: 0px 5px;
     height: 32px;
@@ -214,4 +182,3 @@ form input[type=submit]:hover, button:hover {
     height: auto;
     /*background-color: #3a4146;*/
 }
->>>>>>> origin/master
