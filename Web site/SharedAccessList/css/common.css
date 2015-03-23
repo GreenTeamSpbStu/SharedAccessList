@@ -13,14 +13,43 @@
 
 /* ---------- GENERAL ---------- */
 
+body {
+    background-color: rgba(255, 213, 111, 0.4);
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 16px;
+    padding: 0;
+}
+
+.container {
+    margin: 0px auto;
+    padding: 0px;
+    width: 800px;
+    min-height: 1500px;
+    background-color: #888888;
+}
 
 a {
     color: #004A98;
-    text-decoration: none;
+    text-decoration: underline;
+
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+}
+
+h3 {
+    font-size: 30px;
+    margin: 5px;
+}
+
+h2 {
+    font-size: 40px;
+    margin: 5px;
+}
+
+p {
+    line-height: 1.5em;
 }
 
 input {
@@ -29,22 +58,20 @@ input {
     font-size: 14px;
     line-height: 1.5em;
     padding: 0;
-    -webkit-appearance: none;
-}
-
-p {
-    line-height: 1.5em;
 }
 
 form input, button {
     height: 50px;
     outline:none;
 }
-/*  #004098 */
-/* */
 
-form input[type="text"], input[type="password"] {
-    background-color: #ffffff;
+button{
+    border: none;
+    /*margin-bottom: 0px;*/
+}
+
+.form input[type="text"], input[type="password"] {
+    background-color: #fff;
     border-radius: 0px 3px 3px 0px;
     -moz-border-radius: 0px 3px 3px 0px;
     -webkit-border-radius: 0px 3px 3px 0px;
@@ -54,37 +81,19 @@ form input[type="text"], input[type="password"] {
     width: 200px;
 }
 
-form input:focus {
-    color:#fff;
-}
-
-form input[type="submit"],button {
+.form input[type="submit"],button {
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     background-color: #3474B5;
     color: #eee;
     font-weight: bold;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     text-transform: uppercase;
     cursor:pointer;
-    width: 232px;
+    width: 100%;
 }
 
-form input[type="submit"]:hover, button:hover {
-    background-color: #004A98;
+.form input[type="submit"]:hover, button:hover {
+    background-color: #3D9CFF;
 }
-
-button{
-    border: none;
-    /*margin-bottom: 0px;*/
-}
-
-
-/*Login form*/
-
-
-/*.hiden-list{*/
-    /*width: 232px;*/
-/*}*/
-
