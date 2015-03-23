@@ -7,41 +7,37 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
-    <!--<p>You are home, nigga</p>-->
+    <!--<p>Welcome home, nigga</p>-->
 
     <div id="left-column">
 
-        <div class="hide-group">
-
-            <button class="hide-title">Notifications</button>
-
-            <div class="hiden-list">
-                <h4> You've invited in group 19</h4> <br>
-                <h4> You`ve thrown from group 21 HAHA </h4> <br>
-            </div>
+        <div class="hide-title">
+            <span class="fontawesome-group"></span>
+            Group 1
+        </div>
+        <div class="hiden-info">
+            Text...blah blah<br>
+            more text<br>
+            line 3
         </div>
 
-        <div class="hide-group">
 
-            <button class="hide-title">Groups</button>
-
-            <div class="hiden-list">
-                <h4> Group 1 <br></h4>
-                <h4> Group 2 <br></h4>
-                <h4> Group 3 <br></h4>
-                <h4> Group 4 <br></h4>
-                <h4> Group 5 <br></h4>
-                <h4> Group 6 <br></h4>
-                <h4> Group 7 <br></h4>
-            </div>
+        <div class="hide-title">
+            <span class="fontawesome-group"></span>
+            Group 2
         </div>
+        <div class="hiden-info">
+            Info 2
+        </div>
+
+
     </div>
 
 <script>
     $(function()
     {
-        $('.hide-group .hiden-list').hide();
-        $a = $('.hide-group .hide-title');
+        $('.hiden-info').hide();
+        $a = $('.hide-title');
         $a.on('click', function(event)
         {
             event.preventDefault();
