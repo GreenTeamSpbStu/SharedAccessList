@@ -3,43 +3,35 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="css/home.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="css/common.css" media="screen" type="text/css" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
     <div id="left-column">
 
-        <div class="hide-group">
 
-            <button class="hide-title">Notifications</button>
+            <button class = "group"> Group 1 </button>
+            <div class = "group-hidden-info">
+                <p> Info about group 1 </p>
+            </div> <br/>
 
-            <div class="hiden-list">
-                <h4> You've invited in group 19</h4> <br>
-                <h4> You`ve thrown from group 21 HAHA </h4> <br>
+            <button class = "group"> Group 2 </button>
+            <div class = "group-hidden-info">
+                <p> Info about group 2 </p>
             </div>
-        </div>
 
-        <div class="hide-group">
 
-            <button class="hide-title">Groups</button>
 
-            <div class="hiden-list">
-                <h4> Group 1 <br></h4>
-                <h4> Group 2 <br></h4>
-                <h4> Group 3 <br></h4>
-                <h4> Group 4 <br></h4>
-                <h4> Group 5 <br></h4>
-                <h4> Group 6 <br></h4>
-                <h4> Group 7 <br></h4>
-            </div>
-        </div>
+
+
     </div>
 
 <script>
     $(function()
     {
-        $('.hide-group .hiden-list').hide();
-        $a = $('.hide-group .hide-title');
+        $('#left-column .group-hidden-info').hide();
+        $a = $('#left-column .group');
         $a.on('click', function(event)
         {
             event.preventDefault();
