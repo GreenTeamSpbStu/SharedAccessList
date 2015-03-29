@@ -1,0 +1,105 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import "font-awesome.css";
+
+@import url("http://meyerweb.com/eric/tools/css/reset/reset.css");
+
+/* ---------- FONTAWESOME ---------- */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+/* ---------- COLORS ----------- */
+@baseColor:  #007DFF;
+@baseColor1: #004A98;
+@baseColor2: #3474B5;
+@baseColor3: #3D9CFF;
+@baseColor4: #6FB5FF;
+
+@darkGray: #606468;
+
+/* ---------- GENERAL ---------- */
+
+body {
+  background-color: #000;//rgba(255, 213, 111, 0.4);
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 16px;
+}
+
+a {
+  color: @baseColor1;
+  text-decoration: underline;
+  :hover {
+    text-decoration: none;
+  }
+}
+
+.basicHeader {
+  margin: 5px;
+}
+
+h4:extend(.basicHeader) {
+  font-size: 20px;
+}
+
+h3:extend(.basicHeader) {
+  font-size: 30px;
+}
+
+h2:extend(.basicHeader) {
+  font-size: 40px;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+.container {
+  margin: 0px auto;
+  padding: 0px;
+  width: 800px;
+  min-height: 100%;
+  background-color: #888888;
+}
+
+.button {
+  background-color: @baseColor2;
+  color: #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor:pointer;
+  :hover {
+    background-color: @baseColor3;
+  }
+}
+
+.input {
+  border: none;
+  border-radius: 3px;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 14px;
+  [type="text"], [type="password"] {
+    background-color: #ffffff;
+    color: @darkGray;
+    padding: 0 16px;
+  }
+}
+
+.form input:extend(.input) {
+  width: 232px;
+  margin-bottom: 1em;
+  [type="text"], [type="password"] {
+    border-radius: 0px 3px 3px 0px;
+  }
+}
+
+.form input[type="submit"]:extend(.button){
+  width: 100%;
+}
+
+.classicForm2 {
+  border-radius: 3px;
+  margin-bottom: 1em;
+  padding: 0px 16px;
+}
