@@ -44,7 +44,6 @@ p {
   border-radius: 3px;
   font-family: 'Open Sans', Arial, sans-serif;
   font-size: 14px;
-  outline: none;
 }
 .input[type="text"],
 .input[type="password"] {
@@ -106,6 +105,9 @@ body {
   line-height: 50px;
   font-size: 25px;
 }
+#left-column #notifications {
+  cursor: pointer;
+}
 #left-column .group {
   width: 300px;
   height: 50px;
@@ -116,6 +118,7 @@ body {
   border: solid;
   border-width: 1px;
   outline: none;
+  cursor: pointer;
 }
 #left-column .group:hover {
   background-color: #f9bbb0;
