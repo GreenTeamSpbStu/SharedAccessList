@@ -2,35 +2,20 @@
 /* CSS Document */
 
 @import "font-awesome.css";
-
 @import url("http://meyerweb.com/eric/tools/css/reset/reset.css");
+@import "colorScheme";
 
 /* ---------- FONTAWESOME ---------- */
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
 }
 
-/* ---------- COLORS ----------- */
-@baseColor:  #007DFF;
-@baseColor1: #004A98;
-@baseColor2: #3474B5;
-@baseColor3: #3D9CFF;
-@baseColor4: #6FB5FF;
-
-@darkGray: #606468;
-
 /* ---------- GENERAL ---------- */
-
-body {
-  background-color: #000;//rgba(255, 213, 111, 0.4);
-  font-family: 'Open Sans', Arial, sans-serif;
-  font-size: 16px;
-}
 
 a {
   color: @baseColor1;
   text-decoration: underline;
-  :hover {
+  &:hover {
     text-decoration: none;
   }
 }
@@ -63,43 +48,27 @@ p {
   background-color: #888888;
 }
 
+.input {
+  border: none;
+  border-radius: 3px;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 14px;
+  outline: none;
+  &[type="text"], &[type="password"] {
+    background-color: #ffffff;
+    color: @darkGray;
+  }
+}
+
 .button {
   background-color: @baseColor2;
   color: #eee;
   font-weight: bold;
   text-transform: uppercase;
   cursor:pointer;
-  :hover {
+  &:hover {
     background-color: @baseColor3;
   }
 }
 
-.input {
-  border: none;
-  border-radius: 3px;
-  font-family: 'Open Sans', Arial, sans-serif;
-  font-size: 14px;
-  [type="text"], [type="password"] {
-    background-color: #ffffff;
-    color: @darkGray;
-    padding: 0 16px;
-  }
-}
-
-.form input:extend(.input) {
-  width: 232px;
-  margin-bottom: 1em;
-  [type="text"], [type="password"] {
-    border-radius: 0px 3px 3px 0px;
-  }
-}
-
-.form input[type="submit"]:extend(.button){
-  width: 100%;
-}
-
-.classicForm2 {
-  border-radius: 3px;
-  margin-bottom: 1em;
-  padding: 0px 16px;
-}
+//---------- END COMMON

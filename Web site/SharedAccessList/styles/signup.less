@@ -1,8 +1,13 @@
-#signup {
-  width: 330px;
+@import "common";
+@import "signing";
+
+@width: 400px;
+
+.form {
+  width: @width;
   margin: 100px auto;
   background-color: #fff;
-  padding: 25px;
+  padding: 15px 15px 10px;
   background-color: rgba(111, 181, 255, 0.40);
   border-width: 1px;
   border-color: @baseColor4;
@@ -10,13 +15,39 @@
   border-radius: 8px;
 }
 
-#signup form {
-  width: 232px;
-  margin: 10px auto;
-}
-
-#signup hr {
+.form hr {
   background-color: @baseColor2;
   border: 0;
   height: 1px;
+  margin: 10px 0;
+}
+
+
+
+@margin: 25px;
+
+.form input:extend(.input all){
+  width: 220px;
+  padding: 2px 5px;
+  float: right;
+  margin-right: @margin;
+  &[type="submit"]:extend(.button all) {
+    width: @width - @margin*2;
+    margin-left: 15px;
+    height: 35px;
+  }
+  &[type="text"], &[type="password"]{
+    height: 30px;
+    margin-left: 15px;
+  }
+}
+
+.form p{
+  display: inline-block;
+  margin: 7px 0px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0;
+  text-align: right;
+  width: 100%;
 }
