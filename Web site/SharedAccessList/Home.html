@@ -3,21 +3,82 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="styles/home.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="styles/common.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="styles/home.css" media="screen" type="text/css" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
-    <div id="left-column">
-            <button class = "group"> Group 1 </button>
-            <div class = "group-hidden-info">
-                <p> Info about group 1 </p>
-            </div> <br/>
 
-            <button class = "group"> Group 2 </button>
-            <div class = "group-hidden-info">
-                <p> Info about group 2 Info about group 2 Info about group 2 Info about group 2 Info about group 2 Info about group 2 Info about group 2 Info about group 2 Info about group 2 </p>
+    <div class="container">
+
+        <div id="left-column">
+
+            <button id="notifications">
+                <span class="fontawesome-bullhorn"></span><h4> Notifications </h4>
+            </button>
+
+
+
+
+            <button class = "group">
+                <span class="fontawesome-beer"></span> <h4> Beer lovers </h4>
+            </button>
+            <p class = "group-hidden-info">
+                Info: "Клуб любителей большого пуза" <br>
+                <a href="#"> To the group page</a> <br>
+                <a href="#"> Quick order...</a> <br>
+                Credits: 132 rub <br>
+                <!--<span style="color: #00a600"> 132 rub </span> <br>-->
+            </p>
+
+            <button class = "group">
+                <span class="fontawesome-sign-blank"></span><h4>Group 2</h4>
+            </button>
+            <p class = "group-hidden-info">
+                Info: ""<br>
+                <a href="#"> To the group page</a> <br>
+                <a href="#"> Quick order...</a> <br>
+                Credits:  0 rub <br>
+            </p>
+
+            <button class = "group">
+                <span class="fontawesome-sign-blank"></span><h4>OneLineGroupName</h4>
+            </button>
+            <p class = "group-hidden-info">
+                Info: ""<br>
+                <a href="#"> To the group page</a> <br>
+                <a href="#"> Quick order...</a> <br>
+                Credits: -6 rub <br>
+                </p>
+
+        </div>
+
+        <div id="middle-column">
+
+            <div id="profile" class="container">
+                <h3> Profile </h3>
+                <span id="photo" class="fontawesome-user"></span> <br>
+                Your login: &nbsp; "rus1949rush" <br>
+                Your e-mail: "rus1949rush@rambler.ru" <br>
+                Your name: &nbsp; "Иннокентий Витальевич" <br>
+
+                <br>
+                <a href="#">Edit</a>
+
             </div>
+            <br>
+            <div id="groups-feed" class="container">
+                <h3> Feed </h3>
+                    <p class="record"> <span class="fontawesome-beer">
+                    </span>"Геннадий Петрович" joined us! </p>
+
+                    <p class="record"> <span class="fontawesome-beer">
+                    </span>"Виктор Иванович" bought "Сибирская корона Классическое", "Жигулёвское"! </p>
+            </div>
+
+        </div>
+
+
     </div>
 
 <script>
