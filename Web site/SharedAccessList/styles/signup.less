@@ -1,0 +1,70 @@
+@import "common";
+
+@width: 340px;
+
+body {
+  background-color: rgba(255, 213, 111, 0.4);
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 16px;
+  padding: 0px;
+}
+
+.form {
+  width: @width;
+  margin: 130px auto;
+  padding: 15px 15px 10px;
+  background-color: rgba(111, 181, 255, 0.40);
+  border-width: 1px;
+  border-color: @baseColor4;
+  border-style: solid;
+  border-radius: 8px;
+}
+
+.form hr {
+  background-color: @baseColor2;
+  border: 0;
+  height: 1px;
+  margin: 15px 5px 10px;
+}
+
+
+.header {
+//  color: @baseColor1;
+  width: 30%;
+  float: left;
+  font-size: 20px;
+  height: 40px;
+}
+.signwith {
+  float: right;
+  width: 60%;
+  height: 40px;
+}
+
+@margin: 25px;
+
+.form input:extend(.input all){
+  width: 170px;
+  padding: 2px 5px;
+  float: right;
+  margin-right: @margin;
+  &[type="submit"]:extend(.button all) {
+    width: @width - @margin*2;
+    margin-left: 15px;
+    height: 35px;
+  }
+  &[type="text"], &[type="password"]{
+    height: 30px;
+    margin-left: 15px;
+  }
+}
+
+.form p{
+  display: inline-block;
+  margin: 7px 0px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0;
+  text-align: right;
+  width: 100%;
+}

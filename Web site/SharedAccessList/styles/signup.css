@@ -1,0 +1,125 @@
+@charset "utf-8";
+@import "font-awesome.css";
+@import url("http://meyerweb.com/eric/tools/css/reset/reset.css");
+/* CSS Document */
+/* ---------- FONTAWESOME ---------- */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+/* ---------- GENERAL ---------- */
+a {
+  color: #004a98;
+  text-decoration: underline;
+}
+a:hover {
+  text-decoration: none;
+}
+.basicHeader,
+h4,
+h3,
+h2 {
+  margin: 5px;
+}
+h4 {
+  font-size: 20px;
+}
+h3 {
+  font-size: 30px;
+}
+h2 {
+  font-size: 40px;
+}
+p {
+  line-height: 1.5em;
+}
+.container {
+  margin: 0px auto;
+  padding: 0px;
+  width: 800px;
+  min-height: 100%;
+  background-color: #888888;
+}
+.input,
+.form input {
+  border: none;
+  border-radius: 3px;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 14px;
+}
+.input[type="text"],
+.input[type="password"],
+.form input[type="text"],
+.form input[type="password"] {
+  background-color: #ffffff;
+  color: #606468;
+}
+.button,
+.form input[type="submit"] {
+  background-color: #3474b5;
+  color: #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.button:hover,
+.form input[type="submit"]:hover {
+  background-color: #3d9cff;
+}
+body {
+  background-color: rgba(255, 213, 111, 0.4);
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 16px;
+  padding: 0px;
+}
+.form {
+  width: 340px;
+  margin: 130px auto;
+  padding: 15px 15px 10px;
+  background-color: rgba(111, 181, 255, 0.4);
+  border-width: 1px;
+  border-color: #6fb5ff;
+  border-style: solid;
+  border-radius: 8px;
+}
+.form hr {
+  background-color: #3474b5;
+  border: 0;
+  height: 1px;
+  margin: 15px 5px 10px;
+}
+.header {
+  width: 30%;
+  float: left;
+  font-size: 20px;
+  height: 40px;
+}
+.signwith {
+  float: right;
+  width: 60%;
+  height: 40px;
+}
+.form input {
+  width: 170px;
+  padding: 2px 5px;
+  float: right;
+  margin-right: 25px;
+}
+.form input[type="submit"] {
+  width: 290px;
+  margin-left: 15px;
+  height: 35px;
+}
+.form input[type="text"],
+.form input[type="password"] {
+  height: 30px;
+  margin-left: 15px;
+}
+.form p {
+  display: inline-block;
+  margin: 7px 0px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0;
+  text-align: right;
+  width: 100%;
+}
