@@ -1,0 +1,88 @@
+@charset "utf-8"; 
+
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+@import url(http://meyerweb.com/eric/tools/css/reset/reset.css);
+
+
+
+[class*="fontawesome-"]:before {
+    font-family: 'FontAwesome', sans-serif;
+}
+
+
+.body_part{
+	margin:40px;
+}
+
+.edit_prof{
+width: 500px;
+height: 200px;
+padding: 10px;
+margin: 10px ;
+}
+
+.head_part{
+	font-size: 18pt; /* Размер шрифта в пунктах */
+	font-family: Georgia, Times, serif; /* Семейство шрифтов */
+	font-weight: normal; /* Нормальное начертание текста  */
+	text-align: justify; /* Выравнивание по ширине */
+	border-bottom: 1px solid #f9bbb0; /* Параметры линии снизу */
+	padding-bottom: 10px; /* Отступ от линии снизу до текста  */
+	margin: 10px 30px 20px 5px;
+}
+
+.form input[type="text"], input[type="password"] {
+    background-color: #fff;
+    border-radius: 0px 3px 3px 0px;
+    -moz-border-radius: 0px 3px 3px 0px;
+    -webkit-border-radius: 0px 3px 3px 0px;
+    color: #606468;
+    padding: 0 16px;
+    width: 150px;
+	margin: 10px;
+}
+
+#button_change {
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background-color: #3474b5;
+    font-weight: bold;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+    cursor:pointer;
+    width: 150px;
+	height:30px;
+	margin: 5px;
+}
+
+#middle-column {
+  margin-top: 50px;
+  display: inline-block;
+  width: auto;
+}
+#middle-column .container {
+  background-color: #f9e6e9;
+  height: 700px;
+  min-height: 200px;
+  width: 500px;
+  margin: 0px 10px 5px;
+  float: left;
+  display: inline-block;
+  border-radius: 3px;
+  border: solid;
+  border-width: 1px;
+}
+
+h4{
+  font-size: 20px;
+}
+p {
+	font-size: 16px;
+	font-family: Georgia, Times, serif; /* Семейство шрифтов */
+	font-weight: normal; /* Нормальное начертание текста  */
+	text-align: justify; /* Выравнивание по ширине */
+}
+
+

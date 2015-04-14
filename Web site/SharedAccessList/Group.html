@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="styles/common.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="styles/Group.css" media="screen" type="text/css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+	<div id = "headline">
+		<hr>
+			<h2><img src="images/main_example.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Friendly Wallet</h2>
+			
+		<hr>
+	</div>	
+    <div class="container">
+
+        <div id="left-column">
+
+			<button class="notifications">
+                <span class="fontawesome-user"></span><h4> My Profile </h4>
+            </button>
+		
+            <button class="notifications">
+                <span class="fontawesome-bullhorn"></span><h4> Notifications </h4>
+            </button>
+
+            <button class = "group">
+                <span class="fontawesome-beer"></span> <h4> All Groups </h4>
+            </button>
+            <p class = "group-hidden-info">
+				Представьте, что здесь список всех ваших групп!
+			</p>
+			<br>
+			<br>
+			<br>
+
+            <button class = "notifications">
+                <span class="fontawesome-beer"></span> <h4> Участники </h4>
+            </button>
+			
+			<button class = "notifications">
+                <span class="fontawesome-beer"></span> <h4> Поиск </h4>
+            </button>
+           
+		   <button class = "group">
+                <span class="fontawesome-beer"></span> <h4> Перевести деньги </h4>
+            </button>
+			<p class = "group-hidden-info">
+				Поле в котором вводим ссуму перевода
+			</p>
+			
+			<button class = "notifications">
+                <span class="fontawesome-beer"></span> <h4> Финансовое состояние </h4>
+            </button>
+			
+			<button class = "notifications">
+                <span class="fontawesome-beer"></span> <h4> Выйти </h4>
+            </button>
+			
+			
+			<br>
+			<br>
+			<br>
+
+            <button class = "notifications">
+                <span class="fontawesome-beer"></span> <h4> Пригласить </h4>
+            </button>
+			
+			<button class = "notifications">
+                <span class="fontawesome-beer"></span> <h4> Закрыть период </h4>
+            </button>
+           
+		   <button class = "notifications">
+                <span class="fontawesome-beer"></span> <h4> Удалить группу </h4>
+            </button>
+			
+        </div>
+
+        <div id="middle-column">
+
+            <div id="profile" class="container">
+                <h3> Beer lovers </h3>
+                <span id="photo" class="fontawesome-beer"></span>              
+				<p id = "maill">Контакт:</p>beerLovers@gmail.com<br>
+				<p id = "maill">Дата создания:</p>3 января 2012
+                <p id = "maill">Описание:</p> &nbsp; Партия любителей пива — политическая партия альтернативистского типа в Российской Федерации, 
+				зарегистрированная Минюстом РФ 9 августа 1994 года.	Партия была создана 13 декабря 1993 года в ходе совместного употребления пива по случаю их поражения на выборах. <br>
+
+            </div>
+            <br>
+            <div id="groups-feed" class="container">
+                <h3> Feed </h3>
+                    <p class="record"> <span class="fontawesome-beer">
+                    </span>"Геннадий Петрович" joined us! </p>
+
+                    <p class="record"> <span class="fontawesome-beer">
+                    </span>"Виктор Иванович" bought "Сибирская корона Классическое", "Жигулёвское"! </p>
+					
+					<p class="record"> <span class="fontawesome-beer">
+                    </span>"Геннадий Петрович" joined us! </p>
+
+                    <p class="record"> <span class="fontawesome-beer">
+                    </span>"Виктор Иванович" bought "Сибирская корона Классическое", "Жигулёвское"! </p>
+					
+					<p class="record"> <span class="fontawesome-beer">
+                    </span>"Геннадий Петрович" joined us! </p>
+
+                    <p class="record"> <span class="fontawesome-beer">
+                    </span>"Виктор Иванович" bought "Сибирская корона Классическое", "Жигулёвское"! </p>
+					
+					<p class="record"> <span class="fontawesome-beer">
+                    </span>"Геннадий Петрович" joined us! </p>
+
+                    <p class="record"> <span class="fontawesome-beer">
+                    </span>"Виктор Иванович" bought "Сибирская корона Классическое", "Жигулёвское"! </p>
+					
+					<p class="record"> <span class="fontawesome-beer">
+                    </span>"Геннадий Петрович" joined us! </p>
+
+                    <p class="record"> <span class="fontawesome-beer">
+                    </span>"Виктор Иванович" bought "Сибирская корона Классическое", "Жигулёвское"! </p>
+					
+					<button class = "more-info">
+						<p>Предыдущие новости</p>
+					</button>
+            </div>
+
+        </div>
+
+
+    </div>
+
+<script>
+    $(function()
+    {
+        $('#left-column .group-hidden-info').hide();
+        $a = $('#left-column .group');
+        $a.on('click', function(event)
+        {
+            event.preventDefault();
+            $a.not(this).next().slideUp(500);
+            $(this).next().slideToggle(500);
+        });
+    });
+</script>
+
+</body>
+</html>

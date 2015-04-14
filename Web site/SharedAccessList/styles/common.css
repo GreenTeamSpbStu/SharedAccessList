@@ -60,3 +60,17 @@ p {
 .button:hover {
   background-color: #3d9cff;
 }
+
+hr {
+    border: none; /* Убираем границу */
+    background-color: #3474b5; /* Цвет линии */
+    color: #3474b5; /* Цвет линии для IE6-7 */
+    height: 2px; /* Толщина линии */
+}
+
+#headline{
+	margin: 0px auto;
+	padding: 0px;
+	width: 1100px;
+	background-color: #3474b5;
+}
