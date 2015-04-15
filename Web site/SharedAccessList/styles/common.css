@@ -1,6 +1,6 @@
 @charset "utf-8";
-@import "font-awesome.css";
-@import url("http://meyerweb.com/eric/tools/css/reset/reset.css");
+@import "auxiliary/font-awesome.css";
+@import "auxiliary/reset.css";
 /* CSS Document */
 /* ---------- FONTAWESOME ---------- */
 [class*="fontawesome-"]:before {
@@ -59,18 +59,4 @@ p {
 }
 .button:hover {
   background-color: #3d9cff;
-}
-
-hr {
-    border: none; /* Убираем границу */
-    background-color: #3474b5; /* Цвет линии */
-    color: #3474b5; /* Цвет линии для IE6-7 */
-    height: 2px; /* Толщина линии */
-}
-
-#headline{
-	margin: 0px auto;
-	padding: 0px;
-	width: 1100px;
-	background-color: #3474b5;
 }
