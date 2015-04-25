@@ -1,6 +1,6 @@
 @charset "utf-8";
-@import "font-awesome.css";
-@import url("http://meyerweb.com/eric/tools/css/reset/reset.css");
+@import "auxiliary/font-awesome.css";
+@import "auxiliary/reset.css";
 /* CSS Document */
 /* ---------- FONTAWESOME ---------- */
 [class*="fontawesome-"]:before {
