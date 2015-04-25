@@ -10,7 +10,7 @@ public class main {
     private static final int threadSizePool = 4;
 
     public static void main(String[] args) throws IOException{
-        SSLContext sslContext = NetworkUtils.createSSLContext("keystore.jks", "123456", "123456");
+        SSLContext sslContext = NetworkUtils.createSSLContext("keystore.jks", "GreenTeam2015", "GreenTeam2015");
         Server s = new Server(sslContext, 4);
         s.start();
     }

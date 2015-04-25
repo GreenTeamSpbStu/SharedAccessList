@@ -14,12 +14,12 @@ public class Person {
     protected Date personLastTimeOnline;
     protected String personEmail;
 
-    public Person(String personName, String personLogin, String personPassword, Date personRegistrationDate, Date personLastTimeOnline, String personEmail) {
+    public Person(String personName, String personLogin, String personPassword, String personEmail) {
         this.personName = personName;
         this.personLogin = personLogin;
         this.personPassword = personPassword;
-        this.personRegistrationDate = personRegistrationDate;
-        this.personLastTimeOnline = personLastTimeOnline;
+        this.personRegistrationDate = new Date();
+        this.personLastTimeOnline = this.personRegistrationDate;
         this.personEmail = personEmail;
     }
 
@@ -28,7 +28,7 @@ public class Person {
         this.personLogin = "";
         this.personPassword = "";
         this.personRegistrationDate = new Date();
-        this.personLastTimeOnline = new Date();
+        this.personLastTimeOnline = this.personRegistrationDate;
         this.personEmail = "";
     }
 
