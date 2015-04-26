@@ -36,41 +36,8 @@ public class Server {
                 new AuthorizeApi(), 
                 "/auth.api");
         addMethod(authorizationApi);
-//        HttpApiMehodImpl getMessages = new HttpApiMehodImpl(
-//                new GetMessageApi(),
-//                "/messages.get");
-//        
-//        HttpApiMehodImpl getUser = new HttpApiMehodImpl(
-//                new GetUserApi(),
-//                "/user.get");
-//        
-//        HttpApiMehodImpl sendMessage = new HttpApiMehodImpl(
-//                new SendMessageApi(),
-//                "/messages.send");
-//        
-//        HttpApiMehodImpl vkApi = new HttpApiMehodImpl(
-//                new VKApi(NetworkUtils.getServerURL()+"/vk/oauth"),
-//                "/vk/oauth");
-//        
-//        HttpApiMehodImpl getCheckinsApi = new HttpApiMehodImpl(
-//                new GetCheckinsApi(),
-//                "/checkins.get");
-//        
-//        HttpApiMehodImpl checkinApi = new HttpApiMehodImpl(
-//                new CheckinApi(),
-//                "/checkin");
-//        
-//        HttpApiMehodImpl getPlacesApi = new HttpApiMehodImpl(
-//                new GetPlaceApi(),
-//                "/places.get");
-//        
-//        addMethod(getMessages);
-//        addMethod(getUser);
-//        addMethod(sendMessage);
-//        addMethod(vkApi);
-//        addMethod(getCheckinsApi);
-//        addMethod(checkinApi);
-//        addMethod(getPlacesApi);
+        
+        
     }
     
     private void addMethod(HttpApiMethod method){

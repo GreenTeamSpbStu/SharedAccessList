@@ -43,10 +43,6 @@ public final class NetworkUtils {
     
     /**
      * Creates ssl conext based on keystore file
-     * @param keyStoreName
-     * @param openPassword
-     * @param usePassword
-     * @return 
      */
     public static SSLContext createSSLContext(String keyStoreName, String openPassword, String usePassword){
         try {

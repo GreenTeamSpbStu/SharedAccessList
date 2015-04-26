@@ -19,7 +19,7 @@ public class AuthorizeApi implements ApiMethod {
             AuthSession result = SessionDAO.authorize(params.get("mail"), params.get("passwd"));
             return new ApiAnswer(HttpCode.OK, result.asJSON().toJSONString());
         } catch (IllegalArgumentException | IllegalAccessException e){
-            return new ApiAnswer(HttpCode.OK, JSONHelper.toJSON(e));
+            return new ApiAnswer(HttpCode.ERROR, JSONHelper.toJSON(e));
         } 
     }
     

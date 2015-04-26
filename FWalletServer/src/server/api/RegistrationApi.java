@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package server.api;
 
 import java.util.Map;
@@ -31,10 +26,9 @@ public class RegistrationApi implements ApiMethod {
             return new ApiAnswer(HttpCode.OK, "");
         } catch (ConstraintViolationException ex){
             IllegalArgumentException e = new IllegalArgumentException("There is user with same email!"); 
-            return new ApiAnswer(HttpCode.OK, JSONHelper.toJSON(e));
-        }
-        catch (Exception e){
-            return new ApiAnswer(HttpCode.OK, JSONHelper.toJSON(e));
+            return new ApiAnswer(HttpCode.ERROR, JSONHelper.toJSON(e));
+        } catch (Exception e){
+            return new ApiAnswer(HttpCode.ERROR, JSONHelper.toJSON(e));
         } 
     }
     
