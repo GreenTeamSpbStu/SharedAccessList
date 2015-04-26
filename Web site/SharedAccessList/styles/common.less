@@ -164,9 +164,8 @@ span:extend(.container) {
   font-size: @height / 2;
 }
 
-.input {
-  border: none;
-  border-radius: 3px;
+.input:extend(.container){
+
   font-family: 'Open Sans', Arial, sans-serif;
   font-size: 14px;
   &[type="text"], &[type="password"] {
@@ -185,5 +184,3 @@ span:extend(.container) {
     background-color: @baseColor3;
   }
 }
-
-//---------- END COMMON

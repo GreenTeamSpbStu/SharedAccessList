@@ -36,6 +36,7 @@ p {
 .bordered-container,
 .page-container,
 span,
+.input,
 .left-column .left-column-container,
 .left-column .left-column-container:hover,
 .middle-column .middle-column-container,
@@ -159,8 +160,6 @@ span {
   font-size: 17.5px;
 }
 .input {
-  border: none;
-  border-radius: 3px;
   font-family: 'Open Sans', Arial, sans-serif;
   font-size: 14px;
 }
