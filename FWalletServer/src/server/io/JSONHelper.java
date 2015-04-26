@@ -16,7 +16,7 @@ public class JSONHelper {
     
     public static String toJSON(Exception e){
         JSONObject json = new JSONObject();
-        json.put("exception", e.getClass().getName());
+        json.put("exception", e.getClass().getSimpleName());
         json.put("message", e.getMessage());
         return json.toJSONString();
     }

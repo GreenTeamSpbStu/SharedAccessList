@@ -6,15 +6,10 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import server.core.ApiMethod;
-import server.core.HttpCode;
-import server.io.JSONHelper;
 
 /* simple test
 https://oauth.vk.com/authorize?client_id=4601196&scope=offline&redirect_uri=https://studentspbstu.tk/vk/oauth&v=5.25&response_type=code

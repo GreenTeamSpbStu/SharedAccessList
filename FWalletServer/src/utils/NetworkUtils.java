@@ -2,10 +2,12 @@ package utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.URLConnection;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
@@ -100,5 +102,19 @@ public final class NetworkUtils {
         return "https://fwallet.tk";
     }  
     
+    public static String toHexMd5(String input){
+        byte [] hash;
+        try {
+            hash = MessageDigest.getInstance("MD5").digest(input.getBytes());
+        } catch (NoSuchAlgorithmException ex) {
+            throw new RuntimeException("There is no such hash algoritm");
+        }       
+        BigInteger bigInt = new BigInteger(1, hash);
+        String md5Hex = bigInt.toString(16);
+        while( md5Hex.length() < 32 ){
+            md5Hex = "0" + md5Hex;
+        }
+        return md5Hex;
+    }
     
 }
