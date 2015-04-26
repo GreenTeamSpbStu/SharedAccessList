@@ -37,18 +37,22 @@ p {
 .page-container,
 span,
 .input,
+.button,
 .left-column .left-column-container,
-.left-column .left-column-container:hover,
 .middle-column .middle-column-container,
-.middle-column .feeds .feeds-record,
+.middle-column .feeds-record,
 .photo,
+.popup .popup-content,
 .left-column .block,
 .left-column .block:hover,
 .left-column .block-hidden,
-.middle-column .feeds,
+.left-column .notifications-container,
+.left-column .notification,
 .photo80px,
 .left-column .notifications,
-.left-column .notifications-container {
+.left-column .notifications:hover,
+.left-column .notifications:hover,
+.left-column .notifications:hover:hover {
   min-height: 100%;
   height: auto;
   border: none;
@@ -57,17 +61,20 @@ span,
 }
 .bordered-container,
 .left-column .left-column-container,
-.left-column .left-column-container:hover,
 .middle-column .middle-column-container,
-.middle-column .feeds .feeds-record,
+.middle-column .feeds-record,
 .photo,
+.popup .popup-content,
 .left-column .block,
 .left-column .block:hover,
 .left-column .block-hidden,
-.middle-column .feeds,
+.left-column .notifications-container,
+.left-column .notification,
 .photo80px,
 .left-column .notifications,
-.left-column .notifications-container {
+.left-column .notifications:hover,
+.left-column .notifications:hover,
+.left-column .notifications:hover:hover {
   border: solid;
   border-width: 1px;
 }
@@ -90,27 +97,30 @@ span,
 .left-column .block,
 .left-column .block:hover,
 .left-column .block-hidden,
+.left-column .notifications-container,
+.left-column .notification,
 .left-column .notifications,
-.left-column .notifications-container {
-  height: 35px;
+.left-column .notifications:hover,
+.left-column .notifications:hover,
+.left-column .notifications:hover:hover {
   text-align: center;
-  line-height: 25px;
+  height: 35px;
   background-color: #3d9cff;
-}
-.left-column .left-column-container:hover {
-  background-color: #f99ca4;
+  cursor: pointer;
+  line-height: 25px;
 }
 .left-column .block,
-.left-column .notifications {
-  cursor: pointer;
+.left-column .notifications,
+.left-column .notifications:hover {
+  transition: background 0.6s ease;
 }
-.left-column .block:hover {
-  background-color: #6fb5ff;
+.left-column .block:hover,
+.left-column .notifications:hover,
+.left-column .notifications:hover:hover {
+  background-color: #b8e7ff;
 }
-.left-column .block-hidden,
-.left-column .notifications-container {
+.left-column .block-hidden {
   height: auto;
-  padding-left: 2px;
   background-color: #f5f5f5;
   text-align: left;
 }
@@ -118,15 +128,22 @@ span,
   background-color: #f95252;
 }
 .left-column .notifications-container {
+  border: none;
+  height: auto;
   max-height: 150px;
   overflow: auto;
+  text-align: left;
+}
+.left-column .notification {
+  height: auto;
+  background-color: #f5f5f5;
+  padding: 2px;
 }
 .middle-column {
   display: inline-block;
   width: 600px;
 }
-.middle-column .middle-column-container,
-.middle-column .feeds {
+.middle-column .middle-column-container {
   padding: 5px;
   background-color: #f5f5f5;
   max-width: 573px;
@@ -134,11 +151,7 @@ span,
   float: right;
   display: inline-block;
 }
-.middle-column .feeds {
-  margin-top: 5px;
-  height: auto;
-}
-.middle-column .feeds .feeds-record {
+.middle-column .feeds-record {
   padding: 2px;
 }
 .photo,
@@ -174,7 +187,24 @@ span {
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
+  transition: background 0.6s ease;
 }
 .button:hover {
   background-color: #3d9cff;
+}
+.popup {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(245, 245, 245, 0.5);
+  overflow: hidden;
+  position: fixed;
+  top: 0px;
+}
+.popup .popup-content {
+  margin: 40px auto 0px auto;
+  width: 300px;
+  height: 200px;
+  padding: 5px;
+  background: #f5f5f5;
+  overflow: auto;
 }

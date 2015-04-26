@@ -6,122 +6,111 @@
     <link rel="stylesheet" href="styles/common.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="styles/group.css" media="screen" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+
+
+
+
+
 </head>
 <body>
 	<div class="page-container">
-
         <div class="left-column">
 
-            <div class="notifications">
-                <span class="fontawesome-bullhorn"></span>
-                <h4> Notifications </h4>
-            </div>
-            <div class="notifications-container">
-                Notification 1<br>
-                Notification 2<br>
-                Notification 3<br>
-                Notification 4<br>
-                Notification 5<br>
-                Notification 6<br>
-                Notification 7<br>
-                Notification 8<br>
-                Notification 9<br>
-                Notification 10<br>
-                Notification 11<br>
-
+            <div class="block" onclick="SwitchToBlock($('#home'))">
+                <h4>Home</h4>
             </div>
 
-            <div class = "block">
-                <span class="fontawesome-reorder"></span>
-                <h4> All Groups </h4>
-            </div>
-            <div class = "block-hidden">
-				Представьте, что здесь список всех ваших групп!
-			</div>
-
-			<br>
-			<br>
-			<br>
-
-            <div class = "left-column-container">
-                 <h4> Участники </h4>
-            </div>
-			
-			<div class = "left-column-container">
-                 <h4> Поиск </h4>
-            </div>
-           
-            <div class = "block">
-                 <h4> Перевести деньги </h4>
-            </div>
-            <div class = "block-hidden">
-                Поле в котором вводим ссуму перевода
+            <div class="block" onclick="SwitchToBlock($('#orders'))">
+                <h4>Orders</h4>
             </div>
 
-            <div class = "left-column-container">
-                 <h4> Финансовое состояние </h4>
+            <div class="block" onclick="SwitchToBlock($('#members'))">
+                <h4>Members</h4>
             </div>
 
-            <div class = "left-column-container">
-                 <h4> Выйти </h4>
+            <div class="block" onclick="SwitchToBlock($('#history'))">
+                <h4>Operations history</h4>
             </div>
 
             <br>
-            <br>
-            <br>
 
-            <div class = "left-column-container">
-                 <h4> Пригласить </h4>
+            <div class="block">
+                <h4>Leave this group</h4>
             </div>
 
-            <div class = "left-column-container">
-                 <h4> Удалить группу </h4>
-            </div>
 
             <script>
-                $(function()
-                {
-                    $('.block-hidden, .notifications-container').hide();
-                    $a = $('.block, .notifications');
-                    $a.on('click', function(event)
-                    {
-                        event.preventDefault();
-                        $a.not(this).next().slideUp(500);
-                        $(this).next().slideToggle(500);
-                    });
+                $(function(){
+                    SwitchToBlock($('#home'));
                 });
+
+                function SwitchToBlock(id)
+                {
+                    $('.middle-column').not(id).hide();
+                    id.show(400);
+                };
             </script>
+
+            <!--<script>-->
+                <!--$(function()-->
+                <!--{-->
+                    <!--$('.block-hidden, .notifications-container').hide();-->
+                    <!--$a = $('.block, .notifications');-->
+                    <!--$a.on('click', function(event)-->
+                    <!--{-->
+                        <!--event.preventDefault();-->
+                        <!--$a.not(this).next().slideUp(500);-->
+                        <!--$(this).next().slideToggle(500);-->
+                    <!--});-->
+                <!--});-->
+            <!--</script>-->
 			
         </div>
 
-        <div class="middle-column">
-
-            <div class="middle-column-container">
+        <div class="middle-column" id="home">
+            <div class="middle-column-container" >
                 <h3> Beer lovers </h3>
                 <img src="images/beer.png" class="photo80px" style="float: left">
 				<p>Контакт:</p>beerLovers@gmail.com<br>
 				<p>Дата создания:</p>3 января 2012
                 <p>Описание:</p> &nbsp; Партия любителей пива — политическая партия альтернативистского типа в Российской Федерации,
 				зарегистрированная Минюстом РФ 9 августа 1994 года.	Партия была создана 13 декабря 1993 года в ходе совместного употребления пива по случаю их поражения на выборах. <br>
-
             </div>
             <br>
-            <div class="feeds">
+            <div class="middle-column-container">
                 <h3> Feed </h3>
-                    <div class="feeds-record">
-                        "Геннадий Петрович" joined us!
-                    </div>
+                <div class="feeds-record">
+                    "Геннадий Петрович" joined us!
+                </div>
 
-                    <div class="feeds-record">
-                        "Виктор Иванович" bought "Сибирская корона Классическое", "Жигулёвское"!
-                    </div>
+                <div class="feeds-record">
+                    "Виктор Иванович" bought "Сибирская корона Классическое", "Жигулёвское"!
+                </div>
 
             </div>
+        </div>
 
+        <div class="middle-column" id="orders">
+            <div class="middle-column-container">
+                <p>Orders</p>
+            </div>
+        </div>
+
+        <div class="middle-column" id="members">
+            <div class="middle-column-container">
+                <p>Members</p>
+            </div>
+        </div>
+
+        <div class="middle-column" id="history">
+            <div class="middle-column-container">
+                <p>History</p>
+            </div>
         </div>
 
 
     </div>
+
 
 
 </body>

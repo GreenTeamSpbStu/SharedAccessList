@@ -4,19 +4,71 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="styles/signup.css" media="screen" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 </head>
 <body>
     <div class="form">
         <h4>Sign up</h4>
         <hr>
-        <form action="javascript:void(0);" method="get">
-            <p>Login: <input type="text" required></p>
-            <p>Password: <input type="password" required></p>
-            <p>Password: <input type="password" required></p>
-            <p>E-mail: <input type="text" required></p>
-            <p>Name: <input type="text" required></p>
+        <form onsubmit="return Process();" method="post" action="login.html">
+            <p id="email"> E-mail:       <input type="text" required name="email"> <span class="fontawesome-ban-circle" ></span></p>
+            <p id="password1"> Password: <input type="password" required name="password1"> <span class="fontawesome-ban-circle" ></span></p>
+            <p id="password2"> Password: <input type="password" required name="password2"> <span class="fontawesome-ban-circle" ></span></p>
+            <p id="name"> Name:          <input type="text" required name="name"> <span class="fontawesome-ban-circle" ></span></p>
             <p><input type="submit" value="SIGN UP"></p>
         </form>
+        <script>
+
+            $(function()
+            {
+                $('.fontawesome-ban-circle').hide();
+            });
+
+
+
+            function Process(){
+                var pas1 =  document.getElementsByName("password1")[0].value;
+                var pas2 =  document.getElementsByName("password2")[0].value;
+
+                var email = document.getElementsByName("email")[0].value;
+                var name =  document.getElementsByName("name")[0].value;
+
+                var reMail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+                var reName = /[А-Яа-яA-Za-z][А-Яа-яA-Za-z _]+/i;
+
+                $('.fontawesome-ban-circle').hide();
+
+//                if (pas1 != pas2 || pas1.length < 5) {$('#password2 span').show();  console.log("Invalid Second pass"); return false;}
+//                if (!reMail.test(email)) {$('#email span').show();      console.log("Invalid email"); return false;}
+//                if (!reName.test(name) || name.length < 3) {$('#name span').show();       console.log("Invalid name"); return false;}
+
+                var response = Register(email, name, pas1);
+                console.log(response);
+                if (response.status != 200)
+                {
+                    console.log("Register failed: " + response.responseText);
+                    var json = JSON.parse(response.responseText);
+                    if (json.message )
+                    return false;
+                }
+
+                return true;
+            }
+
+            function Register(email, name, pass)
+            {
+                var url = "http://localhost:25565/reg.api?mail="+email+"&name="+name+"&passwd="+pass;
+                xmlHttp = new XMLHttpRequest();
+                xmlHttp.open( "GET", url, false );
+                xmlHttp.send( null );
+                return xmlHttp;
+            }
+
+
+        </script>
+
     </div>
+
+
 </body>
 </html>

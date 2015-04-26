@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="styles/common.css" media="screen" type="text/css" />
     <link rel="stylesheet" href="styles/home.css" media="screen" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/common-scripts.js"></script>
+
 </head>
 <body>
 
@@ -20,17 +22,22 @@
                 <h4> Notifications </h4>
             </div>
             <div class="notifications-container">
-                Notification 1<br>
-                Notification 2<br>
-                Notification 3<br>
-                Notification 4<br>
-                Notification 5<br>
-                Notification 6<br>
-                Notification 7<br>
-                Notification 8<br>
-                Notification 9<br>
-                Notification 10<br>
-                Notification 11<br>
+                <div class="notification" style="text-align: center">
+                    <p>20.04.2015 16:59 Invitation</p>
+                    <p><a>Beer♥Lovers</a></p>
+                    <button class="button">Accept</button>&nbsp;<button class="button">Deny</button>
+                </div>
+                <div class="notification" style="text-align: center">
+                    <p>20.04.2015 16:59 Invitation</p>
+                    <p><a>Beer♥Lovers</a></p>
+                    <button class="button">Accept</button>&nbsp;<button class="button">Deny</button>
+                </div>
+                <div class="notification" style="text-align: center">
+                    <p>20.04.2015 16:59 Invitation</p>
+                    <p><a>Beer♥Lovers</a></p>
+                    <button class="button">Accept</button>&nbsp;<button class="button">Deny</button>
+                </div>
+
 
             </div>
 
@@ -80,6 +87,7 @@
                     });
                 });
             </script>
+
         </div>
 
         <div class="middle-column">
@@ -90,13 +98,15 @@
                 Your login: &nbsp; "rus1949rush" <br>
                 Your e-mail: "rus1949rush@rambler.ru" <br>
                 Your name: &nbsp; "Иннокентий Витальевич" <br>
+                <script>
+                    alert(getCookie("token"));
+                </script>
 
                 <br>
                 <a href="#" style="float: right">Edit</a>
-
             </div>
-            <!--<br>-->
-            <div class="feeds">
+
+            <div class="middle-column-container">
                 <h3> Feed </h3>
                     <p class="feeds-record">
                         "Геннадий Петрович" joined us!

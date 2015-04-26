@@ -81,40 +81,48 @@ p {
   display: inline-block;
 
   .left-column-container:extend(.bordered-container) {
-    //    max-width: @leftColumnWidth;
-    height: @height;
     text-align: center;
+    height: @height;
+    background-color: @baseColor3;
+    cursor: pointer;
     line-height: @lineHeight;
 
-    background-color: @baseColor3;
-    //    border-color: @baseColor4;
-    &:hover {
-      background-color: #f99ca4;
-    }
   }
 
-  .block:extend(.left-column .left-column-container) {
-    cursor: pointer;
-
+  .block:extend(.left-column .left-column-container all) {
+    transition: background 0.6s ease;
     &:hover {
-      background-color: @baseColor4;
+      background-color: @baseColor5;
     }
   }
 
   .block-hidden:extend(.left-column .left-column-container) {
     height: auto;
-    padding-left: 2px;
     background-color: @background;
     text-align: left;
   }
 
-  .notifications:extend(.left-column .block){
+  .notifications:extend(.left-column .block all){
     background-color: #f95252;
+    &:hover{
+//      background-color: #f973ad !important;
+    }
+
   }
 
-  .notifications-container:extend(.left-column .block-hidden){
+  .notifications-container:extend(.left-column .left-column-container){
+    border: none;
+    height: auto;
     max-height: 150px;
     overflow: auto;
+    text-align: left;
+
+  }
+
+  .notification:extend(.left-column .left-column-container){
+    height: auto;
+    background-color: @background;
+    padding: 2px;
   }
 }
 
@@ -133,13 +141,11 @@ p {
 
   }
 
-  .feeds:extend(.middle-column .middle-column-container) {
-    margin-top: 5px;
-    height: auto;
-
-    .feeds-record:extend(.bordered-container) {
-      padding: 2px;
-    }
+//  .feeds:extend(.middle-column .middle-column-container) {
+//
+//  }
+  .feeds-record:extend(.bordered-container) {
+    padding: 2px;
   }
 }
 
@@ -174,13 +180,33 @@ span:extend(.container) {
   }
 }
 
-.button {
+.button:extend(.container){
   background-color: @baseColor2;
   color: #eee;
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
+  transition: background 0.6s ease;
   &:hover {
     background-color: @baseColor3;
+  }
+}
+
+.popup
+{
+  width: 100%;
+  min-height: 100%;
+  background-color: @background-popup;
+  overflow: hidden;
+  position: fixed;
+  top: 0px;
+  .popup-content:extend(.bordered-container)
+  {
+    margin: 40px auto 0px auto;
+    width: 300px;
+    height: 200px;
+    padding: 5px;
+    background: @background;
+    overflow: auto;
   }
 }
