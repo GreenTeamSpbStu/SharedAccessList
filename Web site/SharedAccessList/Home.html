@@ -11,19 +11,34 @@
 
     <div class="page-container">
 
-        <div id="left-column">
+        <div class="left-column">
 
-            <div id="notifications">
-                <span class="fontawesome-bullhorn"></span><h4> Notifications </h4>
+            <!--сворачивается элемент, следующий за '.notifications' и '.block'-->
+
+            <div class="notifications">
+                <span class="fontawesome-bullhorn"></span>
+                <h4> Notifications </h4>
+            </div>
+            <div class="notifications-container">
+                Notification 1<br>
+                Notification 2<br>
+                Notification 3<br>
+                Notification 4<br>
+                Notification 5<br>
+                Notification 6<br>
+                Notification 7<br>
+                Notification 8<br>
+                Notification 9<br>
+                Notification 10<br>
+                Notification 11<br>
+
             </div>
 
-
-
-
-            <div class = "group">
-                <span class="fontawesome-beer"></span> <h4> Beer lovers </h4>
+            <div class = "block">
+                <span class="fontawesome-group"></span>
+                <h4> Beer lovers </h4>
             </div>
-            <div class = "group-hidden-info">
+            <div class = "block-hidden">
                 Info: "Клуб любителей большого пуза" <br>
                 <a href="#"> To the group page</a> <br>
                 <a href="#"> Quick order...</a> <br>
@@ -31,49 +46,65 @@
                 <!--<span style="color: #00a600"> 132 rub </span> <br>-->
             </div>
 
-            <div class = "group">
-                <span class="fontawesome-sign-blank"></span><h4>Group 2</h4>
+            <div class = "block">
+                <span class="fontawesome-group"></span><h4>Group 2</h4>
             </div>
-            <div class = "group-hidden-info">
+            <div class = "block-hidden">
                 Info: ""<br>
                 <a href="#"> To the group page</a> <br>
                 <a href="#"> Quick order...</a> <br>
                 Credits:  0 rub <br>
             </div>
 
-            <div class = "group">
-                <span class="fontawesome-sign-blank"></span><h4>OneLineGroupName</h4>
+            <div class = "block">
+                <span class="fontawesome-group"></span>
+                <h4>OneLineGroupName</h4>
             </div>
-            <div class = "group-hidden-info">
+            <div class = "block-hidden">
                 Info: ""<br>
                 <a href="#"> To the group page</a> <br>
                 <a href="#"> Quick order...</a> <br>
                 Credits: -6 rub <br>
             </div>
 
+            <script>
+                $(function()
+                {
+                    $('.block-hidden, .notifications-container').hide();
+                    $a = $('.block, .notifications');
+                    $a.on('click', function(event)
+                    {
+                        event.preventDefault();
+                        $a.not(this).next().slideUp(500);
+                        $(this).next().slideToggle(500);
+                    });
+                });
+            </script>
         </div>
 
-        <div id="middle-column">
+        <div class="middle-column">
 
             <div id="profile" class="middle-column-container">
                 <h3> Profile </h3>
-                <img src="https://ru.gravatar.com/userimage/76506130/d964c862e0053705d141717c103fa704.jpg?size=200" id="photo"> <br>
+                <img src="https://ru.gravatar.com/userimage/76506130/d964c862e0053705d141717c103fa704.jpg?size=200" class="photo80px" style="float: left"> <br>
                 Your login: &nbsp; "rus1949rush" <br>
                 Your e-mail: "rus1949rush@rambler.ru" <br>
                 Your name: &nbsp; "Иннокентий Витальевич" <br>
 
                 <br>
-                <a href="#">Edit</a>
+                <a href="#" style="float: right">Edit</a>
 
             </div>
-            <br>
-            <div id="groups-feed" class="middle-column-container">
+            <!--<br>-->
+            <div class="feeds">
                 <h3> Feed </h3>
-                    <p class="record"> <span class="fontawesome-beer">
-                    </span>"Геннадий Петрович" joined us! </p>
+                    <p class="feeds-record">
+                        "Геннадий Петрович" joined us!
+                    </p>
 
-                    <p class="record"> <span class="fontawesome-beer">
-                    </span>"Виктор Иванович" bought "Сибирская корона Классическое", "Жигулёвское"! </p>
+                    <p class="feeds-record">
+                        "Виктор Иванович" bought "Сибирская корона Классическое", "Жигулевское"!
+                    </p>
             </div>
 
         </div>
@@ -81,19 +112,7 @@
 
     </div>
 
-<script>
-    $(function()
-    {
-        $('#left-column .group-hidden-info').hide();
-        $a = $('#left-column .group');
-        $a.on('click', function(event)
-        {
-            event.preventDefault();
-            $a.not(this).next().slideUp(500);
-            $(this).next().slideToggle(500);
-        });
-    });
-</script>
+
 
 </body>
 </html>

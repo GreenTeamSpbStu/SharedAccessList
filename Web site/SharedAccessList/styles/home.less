@@ -1,166 +1,17 @@
 @import "common";
 
-@leftColumnWidth: 300px;
-@containerWidth: 900px;
-@middleColumnWidth: @containerWidth - @leftColumnWidth;
-@height: 35px;
 
-body
-{
+body {
   background-color: @background;
 }
 
-.container
-{
+
+#profile:extend(.middle-column .middle-column-container){
   height: auto;
-  border: none;
-
-  border-radius: 3px;
-  outline: none;
+  min-height: 130px;
 }
 
-#left-column {
-
-
-  @lineHeight: 25px;
-
-
-  float: left;
-  height: auto;
-  width: @leftColumnWidth;
-
-//  margin: 10px;
-  display: inline-block;
-
-  .left-column-container:extend(.container)
-  {
-//    max-width: @leftColumnWidth;
-    height: @height;
-    line-height: @lineHeight;
-    text-align: center;
-    background-color: @baseColor4;
-    cursor: pointer;
-    border: solid;
-    border-width: 1px;
-//    border-color: @baseColor4;
-    &:hover
-    {
-      background-color: #f99ca4;
-    }
-  }
-
-  span
-  {
-    display: block;
-    float: left;
-    height: @height;
-    width: @height;
-    line-height: @height;
-    font-size: @height / 2;
-  }
-
-  #notifications:extend(#left-column .left-column-container)
-  {
-    background-color: #f95252;
-
-    #notification
-    {
-
-    }
-
-  }
-
-
-  .group:extend(#left-column .left-column-container)
-  {
-    &:hover
-    {
-      background-color: #f9bbb0;
-    }
-
-
-  }
-
-  .group-hidden-info:extend(#left-column .group)
-  {
-    height: auto;
-    padding-left: 2px;
-    background-color: @background;
-    text-align: left;
-  }
 
 
 
-}
-
-#middle-column{
-//  margin: 10px;
-  display: inline-block;
-  width: 600px;
-
-  .middle-column-container:extend(.container)
-  {
-    background-color: @background;
-    border: solid;
-    border-width: 1px;
-    max-width: 598px - 25px;
-    width: 598px - 25px;
-    float: right;
-    display: inline-block;
-
-  }
-
-
-  #profile:extend(#middle-column .container)
-  {
-//    background-color: #d9e1f5;
-    height: auto;
-    min-height: 130px;
-    padding: 5px;
-
-    #photo:extend(.container)
-    {
-      @size: 80px;
-
-      border: solid;
-      border-width: 1px;
-
-      display: block;
-      float: left;
-      height: @size;
-      width: @size;
-      line-height: @size;
-      font-size: @size / 2;
-      text-align: center;
-//      background-color: #ffffff;
-    }
-
-    a
-    {
-      margin: 0px 5px 5px;
-      float: right;
-    }
-
-  }
-
-  #groups-feed:extend(#middle-column .container)
-  {
-//    background-color: #f5bfb6;
-    margin-top: 5px;
-    height: auto;
-    padding: 5px;
-    .record:extend(.container)
-    {
-      border: solid;
-      border-width: 1px;
-      padding: 2px;
-    }
-
-    .fontawesome-arrow-down
-    {
-      float: none;
-
-    }
-  }
-}
 

@@ -1,9 +1,14 @@
 @charset "utf-8";
 /* CSS Document */
-
 @import "auxiliary/font-awesome.css";
 @import "auxiliary/reset.css";
 @import "colorScheme";
+
+
+@leftColumnWidth: 300px;
+@containerWidth: 900px;
+@middleColumnWidth: @containerWidth - @leftColumnWidth;
+@height: 35px;
 
 /* ---------- FONTAWESOME ---------- */
 [class*="fontawesome-"]:before {
@@ -41,16 +46,21 @@ p {
 }
 
 .container {
-//  margin: 10px auto;
-  padding: 0px;
-//  width: 800px;
+  //  padding: 0px;
   min-height: 100%;
-//  background-color: @darkGray;
+  height: auto;
+  border: none;
 
+  border-radius: 3px;
+  outline: none;
 }
 
-.page-container:extend(.container)
-{
+.bordered-container:extend(.container) {
+  border: solid;
+  border-width: 1px;
+}
+
+.page-container:extend(.container) {
 
   width: 900px;
   height: auto;
@@ -61,6 +71,98 @@ p {
   background-size: 100% 100%;
 }
 
+.left-column {
+  @lineHeight: 25px;
+  float: left;
+  height: auto;
+  width: @leftColumnWidth;
+
+  //  margin: 10px;
+  display: inline-block;
+
+  .left-column-container:extend(.bordered-container) {
+    //    max-width: @leftColumnWidth;
+    height: @height;
+    text-align: center;
+    line-height: @lineHeight;
+
+    background-color: @baseColor3;
+    //    border-color: @baseColor4;
+    &:hover {
+      background-color: #f99ca4;
+    }
+  }
+
+  .block:extend(.left-column .left-column-container) {
+    cursor: pointer;
+
+    &:hover {
+      background-color: @baseColor4;
+    }
+  }
+
+  .block-hidden:extend(.left-column .left-column-container) {
+    height: auto;
+    padding-left: 2px;
+    background-color: @background;
+    text-align: left;
+  }
+
+  .notifications:extend(.left-column .block){
+    background-color: #f95252;
+  }
+
+  .notifications-container:extend(.left-column .block-hidden){
+    max-height: 150px;
+    overflow: auto;
+  }
+}
+
+.middle-column {
+  //  margin: 10px;
+  display: inline-block;
+  width: 600px;
+
+  .middle-column-container:extend(.bordered-container) {
+    padding: 5px;
+    background-color: @background;
+    max-width: 598px - 25px;
+    width: 598px - 25px;
+    float: right;
+    display: inline-block;
+
+  }
+
+  .feeds:extend(.middle-column .middle-column-container) {
+    margin-top: 5px;
+    height: auto;
+
+    .feeds-record:extend(.bordered-container) {
+      padding: 2px;
+    }
+  }
+}
+
+.photo:extend(.bordered-container) {
+  display: block;
+  margin: 5px;
+  background-color: #ffffff;
+}
+
+.photo80px:extend(.photo){
+  @size: 80px;
+  height: @size;
+  width: @size;
+}
+
+span:extend(.container) {
+  display: block;
+  float: left;
+  height: @height;
+  width: @height;
+  line-height: @height;
+  font-size: @height / 2;
+}
 
 .input {
   border: none;
@@ -78,7 +180,7 @@ p {
   color: #eee;
   font-weight: bold;
   text-transform: uppercase;
-  cursor:pointer;
+  cursor: pointer;
   &:hover {
     background-color: @baseColor3;
   }

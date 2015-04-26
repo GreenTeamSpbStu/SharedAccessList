@@ -33,9 +33,42 @@ p {
   line-height: 1.5em;
 }
 .container,
-.page-container {
-  padding: 0px;
+.bordered-container,
+.page-container,
+span,
+.left-column .left-column-container,
+.left-column .left-column-container:hover,
+.middle-column .middle-column-container,
+.middle-column .feeds .feeds-record,
+.photo,
+.left-column .block,
+.left-column .block:hover,
+.left-column .block-hidden,
+.middle-column .feeds,
+.photo80px,
+.left-column .notifications,
+.left-column .notifications-container {
   min-height: 100%;
+  height: auto;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+}
+.bordered-container,
+.left-column .left-column-container,
+.left-column .left-column-container:hover,
+.middle-column .middle-column-container,
+.middle-column .feeds .feeds-record,
+.photo,
+.left-column .block,
+.left-column .block:hover,
+.left-column .block-hidden,
+.middle-column .feeds,
+.photo80px,
+.left-column .notifications,
+.left-column .notifications-container {
+  border: solid;
+  border-width: 1px;
 }
 .page-container {
   width: 900px;
@@ -45,6 +78,85 @@ p {
   padding: 10px;
   background: radial-gradient(#4d4d4d, #161616);
   background-size: 100% 100%;
+}
+.left-column {
+  float: left;
+  height: auto;
+  width: 300px;
+  display: inline-block;
+}
+.left-column .left-column-container,
+.left-column .block,
+.left-column .block:hover,
+.left-column .block-hidden,
+.left-column .notifications,
+.left-column .notifications-container {
+  height: 35px;
+  text-align: center;
+  line-height: 25px;
+  background-color: #3d9cff;
+}
+.left-column .left-column-container:hover {
+  background-color: #f99ca4;
+}
+.left-column .block,
+.left-column .notifications {
+  cursor: pointer;
+}
+.left-column .block:hover {
+  background-color: #6fb5ff;
+}
+.left-column .block-hidden,
+.left-column .notifications-container {
+  height: auto;
+  padding-left: 2px;
+  background-color: #f5f5f5;
+  text-align: left;
+}
+.left-column .notifications {
+  background-color: #f95252;
+}
+.left-column .notifications-container {
+  max-height: 150px;
+  overflow: auto;
+}
+.middle-column {
+  display: inline-block;
+  width: 600px;
+}
+.middle-column .middle-column-container,
+.middle-column .feeds {
+  padding: 5px;
+  background-color: #f5f5f5;
+  max-width: 573px;
+  width: 573px;
+  float: right;
+  display: inline-block;
+}
+.middle-column .feeds {
+  margin-top: 5px;
+  height: auto;
+}
+.middle-column .feeds .feeds-record {
+  padding: 2px;
+}
+.photo,
+.photo80px {
+  display: block;
+  margin: 5px;
+  background-color: #ffffff;
+}
+.photo80px {
+  height: 80px;
+  width: 80px;
+}
+span {
+  display: block;
+  float: left;
+  height: 35px;
+  width: 35px;
+  line-height: 35px;
+  font-size: 17.5px;
 }
 .input {
   border: none;
