@@ -33,8 +33,11 @@ public class HttpApiMehodImpl implements HttpApiMethod {
             Map<String,String> query = NetworkUtils.parseURIQuery(t.getRequestURI().getQuery());
             try (OutputStream out = t.getResponseBody()) {
                 ApiMethod.ApiAnswer answer = apiMethod.execute(query);
-                t.sendResponseHeaders(answer.httpCode.code, answer.body.getBytes().length);
-                out.write(answer.body.getBytes());
+                byte [] bytes = answer.body.getBytes("UTF-8");
+                t.sendResponseHeaders(answer.httpCode.code, bytes.length);
+                out.write(bytes);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     };

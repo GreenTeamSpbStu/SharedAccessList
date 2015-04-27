@@ -6,13 +6,9 @@
             <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/api/VKApi.java</file>
             <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/core/HttpCode.java</file>
             <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/api/AuthorizeApi.java</file>
-            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/utils/NetworkUtils.java</file>
-            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/core/Server.java</file>
             <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/core/ApiMethod.java</file>
             <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/entity/AuthSession.java</file>
             <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/core/HttpApiMehodImpl.java</file>
-            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/core/HttpApiMethod.java</file>
-            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/entity/User.java</file>
             <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/api/RegistrationApi.java</file>
             <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/main.java</file>
         </group>
