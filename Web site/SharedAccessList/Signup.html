@@ -57,7 +57,7 @@
 
             function Register(email, name, pass)
             {
-                var url = "http://localhost:25565/reg.api?mail="+email+"&name="+name+"&passwd="+pass;
+                var url = getDomain() + "/reg.api?mail="+email+"&name="+name+"&passwd="+pass;
                 xmlHttp = new XMLHttpRequest();
                 xmlHttp.open( "GET", url, false );
                 xmlHttp.send( null );

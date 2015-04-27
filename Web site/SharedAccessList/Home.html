@@ -7,7 +7,95 @@
     <link rel="stylesheet" href="styles/home.css" media="screen" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="js/common-scripts.js"></script>
+    <script>
+        function requestAllData()
+        {
+            $.ajax({
+                type: 'get',
+                url: getDomain() + '/user.api?token=' +  getCookie('token') + '&profile',
+                response: 'text',
+                async: true,
+                tryCount : 0,
+                retryLimit : 3,
+                timeout: 2000,
+                retryAfter:5000,
+                success : function(res){updateAllInfo(JSON.parse(res));},
+                error: function(res){ console.log(res); $ajax(this); }
 
+            });
+        }
+
+        function updateAllInfo(json)
+        {
+            if (json.profile != null)
+            {
+                document.getElementById("id-person-profile").innerHTML = createProfile(json.profile);
+            }
+
+
+            if (json.notifications != null)
+            {
+                var notifications_label = document.getElementById("id-notifications");
+                notifications_label.innerHTML = '<div class="notifications">'+
+                        '<span class="fontawesome-bullhorn"></span>' +
+                        '<h4> Notifications </h4></div>'+
+                        '<div class="notifications-container" id="id-notifications-container"></div>';
+
+                var notifications_container = document.getElementById("id-notifications-container");
+                notifications_container.innerHTML += createNotifications(json.notifications);
+            }
+
+            var groups = document.getElementById("id-groups");
+            groups.innerHTML = '<div class="left-column-container"><h4>Join Group</h4></div>'
+            if (json.groups != null)
+            {
+                innerHTML.innerHTML +=
+                        '<div class="left-column-container"><h4>Join Group</h4></div>' +
+                        createGroups(json.groups);
+            }
+
+        }
+
+
+        function createNotifications(json){
+            var res = '';
+
+            for (var i = 0; i < json.length; i++) {
+                res += createNotification(json[i]);
+            }
+        }
+        function createNotification(json){return '<div class="notification"><p>'+
+                json.data+' '+json.type + '</p>'+json.content+'</div>';}
+
+        function createGroups(json){
+            var res = '';
+
+            for (var i = 0; i < json.length; i++) {
+                res += createGroup(json[i]);
+            }
+        }
+        function createGroup(json){
+            return '<div class = "block"><span class="fontawesome-group"></span>'+
+                    '<h4>' + json.name + '</h4></div>' +
+                    '<div class = "block-hidden"> Info: ' + json.info + '<br>'+
+                    '<a href="' + json.link +'"> To the group page</a> <br>'+
+                    '<a href="#"> Quick order</a> <br>'+
+                    'Credits: ' + json.balance + ' rub <br></div>';
+        }
+
+
+
+        function createProfile(json)
+        {
+            return '<img src="' + json.avatar +
+                    '" class="photo80px" style="float: left" ' +
+                    'onerror="if (this.src != \'images/default_avatar.jpg\')' +
+                    'this.src = \'images/default_avatar.jpg\';"> <br>' +
+                    'Your e-mail: ' + json.mail + '<br>'+
+                    'Your name: ' + json.name + '<br>';
+        }
+
+    </script>
 </head>
 <body>
 
@@ -17,62 +105,11 @@
 
             <!--сворачивается элемент, следующий за '.notifications' и '.block'-->
 
-            <div class="notifications">
-                <span class="fontawesome-bullhorn"></span>
-                <h4> Notifications </h4>
-            </div>
-            <div class="notifications-container">
-                <div class="notification" style="text-align: center">
-                    <p>20.04.2015 16:59 Invitation</p>
-                    <p><a>Beer♥Lovers</a></p>
-                    <button class="button">Accept</button>&nbsp;<button class="button">Deny</button>
-                </div>
-                <div class="notification" style="text-align: center">
-                    <p>20.04.2015 16:59 Invitation</p>
-                    <p><a>Beer♥Lovers</a></p>
-                    <button class="button">Accept</button>&nbsp;<button class="button">Deny</button>
-                </div>
-                <div class="notification" style="text-align: center">
-                    <p>20.04.2015 16:59 Invitation</p>
-                    <p><a>Beer♥Lovers</a></p>
-                    <button class="button">Accept</button>&nbsp;<button class="button">Deny</button>
-                </div>
+            <div id="id-notifications"></div>
 
+            <div id="id-notifications-container" class="notifications-container" ></div>
 
-            </div>
-
-            <div class = "block">
-                <span class="fontawesome-group"></span>
-                <h4> Beer lovers </h4>
-            </div>
-            <div class = "block-hidden">
-                Info: "Клуб любителей большого пуза" <br>
-                <a href="#"> To the group page</a> <br>
-                <a href="#"> Quick order...</a> <br>
-                Credits: 132 rub <br>
-                <!--<span style="color: #00a600"> 132 rub </span> <br>-->
-            </div>
-
-            <div class = "block">
-                <span class="fontawesome-group"></span><h4>Group 2</h4>
-            </div>
-            <div class = "block-hidden">
-                Info: ""<br>
-                <a href="#"> To the group page</a> <br>
-                <a href="#"> Quick order...</a> <br>
-                Credits:  0 rub <br>
-            </div>
-
-            <div class = "block">
-                <span class="fontawesome-group"></span>
-                <h4>OneLineGroupName</h4>
-            </div>
-            <div class = "block-hidden">
-                Info: ""<br>
-                <a href="#"> To the group page</a> <br>
-                <a href="#"> Quick order...</a> <br>
-                Credits: -6 rub <br>
-            </div>
+            <div id="id-groups"></div>
 
             <script>
                 $(function()
@@ -85,7 +122,12 @@
                         $a.not(this).next().slideUp(500);
                         $(this).next().slideToggle(500);
                     });
+
+                    requestAllData();
+
+
                 });
+
             </script>
 
         </div>
@@ -94,27 +136,24 @@
 
             <div id="profile" class="middle-column-container">
                 <h3> Profile </h3>
-                <img src="https://ru.gravatar.com/userimage/76506130/d964c862e0053705d141717c103fa704.jpg?size=200" class="photo80px" style="float: left"> <br>
-                Your login: &nbsp; "rus1949rush" <br>
-                Your e-mail: "rus1949rush@rambler.ru" <br>
-                Your name: &nbsp; "Иннокентий Витальевич" <br>
-                <script>
-                    alert(getCookie("token"));
-                </script>
-
+                <div id="id-person-profile">
+                    <img src="" class="photo80px" style="float: left"> <br>
+                    Your e-mail:<br>
+                    Your name:<br>
+                </div>
                 <br>
                 <a href="#" style="float: right">Edit</a>
             </div>
 
             <div class="middle-column-container">
                 <h3> Feed </h3>
-                    <p class="feeds-record">
-                        "Геннадий Петрович" joined us!
-                    </p>
+                    <!--<p class="feeds-record">-->
+                        <!--"Геннадий Петрович" joined us!-->
+                    <!--</p>-->
 
-                    <p class="feeds-record">
-                        "Виктор Иванович" bought "Сибирская корона Классическое", "Жигулевское"!
-                    </p>
+                    <!--<p class="feeds-record">-->
+                        <!--"Виктор Иванович" bought "Сибирская корона Классическое", "Жигулевское"!-->
+                    <!--</p>-->
             </div>
 
         </div>

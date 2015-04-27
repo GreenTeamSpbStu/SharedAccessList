@@ -28,6 +28,8 @@
 
            <script>
 
+               $(function(){deleteAllCookies(); console.log(document.cookie);})
+
                function Process()
                {
                    var email =  document.getElementById("email").value;
@@ -39,13 +41,14 @@
 
                    var json = JSON.parse(response.responseText);
 
-                   setCookie(token, json.token);
+                   setCookie('token', json.token);
+                   console.log(document.cookie);
                    return true;
                }
 
                function Login(email, pass)
                {
-                   var url = "http://localhost:25565/auth.api?mail="+email+"&passwd="+pass;
+                   var url = getDomain() + "/auth.api?mail="+email+"&passwd="+pass;
                    xmlHttp = new XMLHttpRequest();
                    xmlHttp.open( "GET", url, false );
                    xmlHttp.send( null );

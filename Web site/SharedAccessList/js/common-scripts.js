@@ -1,3 +1,9 @@
+function getDomain()
+{
+    return 'http://94.188.80.116:25565';
+}
+
+
 function getCookie(name) {
     var matches = document.cookie.match(new RegExp(
             "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
@@ -32,4 +38,15 @@ function setCookie(name, value, options) {
     }
 
     document.cookie = updatedCookie;
+}
+
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        setCookie(name, "", {expires: -1});
+    }
 }
