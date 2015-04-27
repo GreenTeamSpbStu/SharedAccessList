@@ -23,9 +23,9 @@ public class SessionDAO {
                     .setUserid(user.getId())
                     .setToken(createToken(mail, passwd));
             session.saveOrUpdate(auth);
-            session.getTransaction().commit();
             return auth;
         } finally {
+            session.getTransaction().commit();
             session.close();
         }
     }

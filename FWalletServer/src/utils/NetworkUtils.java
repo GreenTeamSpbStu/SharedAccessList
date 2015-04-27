@@ -35,7 +35,7 @@ public final class NetworkUtils {
         for (String parameter : parameters) {
             String[] pair = parameter.split("=");
             String name = pair[0];
-            String value =  (pair.length>0) ? pair[1] : "";
+            String value =  (pair.length>1) ? pair[1] : "";
             result.put(name, value);
         }
         return result;
@@ -111,6 +111,11 @@ public final class NetworkUtils {
             md5Hex = "0" + md5Hex;
         }
         return md5Hex;
+    }
+    
+    public static String getGravatarURL(String mail){
+        if (mail==null) return null;
+        return "http://www.gravatar.com/avatar/"+toHexMd5(mail)+"?size=200";
     }
     
 }

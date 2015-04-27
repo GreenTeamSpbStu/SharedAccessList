@@ -10,8 +10,6 @@ import server.io.JSONAble;
 @Entity
 @Table(name="SESSIONS")
 public class AuthSession implements JSONAble{
-    
-    
     @Column(name="TOKEN")
     private String token;
     

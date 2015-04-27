@@ -1,17 +1,21 @@
 package server.entity;
 
+import com.sun.org.apache.xpath.internal.operations.Neg;
 import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.json.simple.JSONObject;
+import server.io.JSONAble;
 import utils.NetworkUtils;
 
 @Entity
 @Table(name="USERS")
-public class User {
+public class User implements JSONAble{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID")
@@ -69,6 +73,21 @@ public class User {
 
     public Timestamp getLastEnter() {
         return lastEnter;
+    }
+    
+    public String getAvatar(){
+        return NetworkUtils.getGravatarURL(mail);
+    }
+
+    
+    
+    @Override
+    public JSONObject asJSON() {
+        JSONObject json = new JSONObject();
+        json.put("name", getName());
+        json.put("mail", getMail());
+        json.put("avatar", getAvatar());
+        return json;
     }
     
     
