@@ -1,21 +1,20 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/hibernate.cfg.xml</file>
+            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/api/VKApi.java</file>
+            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/core/HttpCode.java</file>
+            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/api/AuthorizeApi.java</file>
+            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/utils/NetworkUtils.java</file>
+            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/core/Server.java</file>
+            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/core/ApiMethod.java</file>
+            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/entity/AuthSession.java</file>
+            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/core/HttpApiMehodImpl.java</file>
+            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/core/HttpApiMethod.java</file>
+            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/entity/User.java</file>
+            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/api/RegistrationApi.java</file>
+            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/server/main.java</file>
         </group>
     </open-files>
 </project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/src/fwallet/SharedAccessList/FWalletServer/src/hibernate.cfg.xml</file>
-        </group>
-    </open-files>
-</project-private>
->>>>>>> 76fa21b06c66e5f581ef494948f63a90009e5aa0
