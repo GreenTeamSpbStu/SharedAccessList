@@ -2,7 +2,7 @@ package server.core;
 
 public enum HttpCode {
     
-    OK(200,"Succes!"),
+    OK(200,"Success!"),
     ERROR(500, "Internal server error!");
     
     public final int code;

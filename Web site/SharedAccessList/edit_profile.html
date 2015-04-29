@@ -9,95 +9,43 @@
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 </head>
 <body>
-	<div id = "headline">
-		<hr>
-			<h4><img src="images/main_example.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Friendly Wallet</h4>
-			
-		<hr>
-	</div>	
-    <div class="container">
+    <div class="page-container">
 
         <div id="left-column">
-
-			<button id="notifications">
-                <span class="fontawesome-user"></span><h4> My Profile </h4>
-            </button>
-			
-            <button id="notifications">
-                <span class="fontawesome-bullhorn"></span><h4> Notifications </h4>
-            </button>
-
-
-
-
-            <button class = "group">
-                <span class="fontawesome-beer"></span> <h4> Beer lovers </h4>
-            </button>
-            <p class = "group-hidden-info">
-                Info: "Клуб любителей большого пуза" <br>
-                <a href="#"> To the group page</a> <br>
-                <a href="#"> Quick order...</a> <br>
-                Credits: 132 rub <br>
-                <!--<span style="color: #00a600"> 132 rub </span> <br>-->
-            </p>
-
-            <button class = "group">
-                <span class="fontawesome-sign-blank"></span><h4>Group 2</h4>
-            </button>
-            <p class = "group-hidden-info">
-                Info: ""<br>
-                <a href="#"> To the group page</a> <br>
-                <a href="#"> Quick order...</a> <br>
-                Credits:  0 rub <br>
-            </p>
-
-            <button class = "group">
-                <span class="fontawesome-sign-blank"></span><h4>OneLineGroupName</h4>
-            </button>
-            <p class = "group-hidden-info">
-                Info: ""<br>
-                <a href="#"> To the group page</a> <br>
-                <a href="#"> Quick order...</a> <br>
-                Credits: -6 rub <br>
-                </p>
-
         </div>
 
         <div id="middle-column">
 			<div class = "container">
-				<div class = "edit_prof" >
-						<div class = "head_part">Ваше имя</div>
-						<div class = "body_part">
-							<div class="form">
-								<p>Текущее имя: Иннокентий Витальевич</p>
-								<form action="javascript:void(0);" method="get">
-									<p>Новое имя:&nbsp;&nbsp;&nbsp;<input type="text" required></p>
-									<p><input  id = "button_change" type="submit" value="Изменить"></p>
-								</form>
-							</div>
-						</div>
-						<div class = "head_part">Адрес вашей электронной почты</div>
-						<div class = "body_part">
-							<div class="form">
-								<p>Текущий адрес: rus1949rush@rambler.ru</p>
-								<form action="javascript:void(0);" method="get">
-									<p>Новый адрес:&nbsp;&nbsp;&nbsp;<input type="text" required></p>
-									<p><input  id = "button_change" type="submit" value="Изменить"></p>
-								</form>
-							</div>
-						</div>
-						<div class = "head_part">Изменить пароль</div>
-						<div class = "body_part">
-							<div class="form">
-								<form action="javascript:void(0);" method="get">
-									<p>Текущий пароль:&nbsp;&nbsp;<input type="password" required></p>
-									<p>Новый пароль:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" required></p>
-									<p>Повторите пароль:<input type="password" required></p>
-									<p><input  id = "button_change" type="submit" value="Изменить"></p>
-								</form>
-							</div>
-						</div>
-				</div>
+				<div class = "part">
+					<div class = "head_part">Your name</div>
+					<div class="form">
+						<div class = "data_text">Current name: Viktor Belousov</div>
+						<form action="javascript:void(0);" method="get">
+							New name:<input type="text" required>
+						<input  id = "button_change" type="submit" value="Change">
+					</div>
+				</div>	
+				<div class = "part">
+					<div class = "head_part">Your email address</div>
+					<div class="form">
+						<div class = "data_text">Current adress: belousov@gmail.com </div> 
+						<form action="javascript:void(0);" method="get">
+							New adress:<input type="text" required>
+							<input  id = "button_change" type="submit" value="Change">
+						</form>
+					</div>
+				</div>	
+				<div class = "part">	
+					<div class = "head_part">Change password</div>
+					<div class="form">
+						<form action="javascript:void(0);" method="get">
+							Current password:<input type="password" required><br>
+							New password:<input type="password" required><br>
+							Repeat new password:<input type="password" required>
+							<input  id = "button_change" type="submit" value="Change">
+						</form>
+					</div>
+				</div>	
 			</div>
         </div>
 

@@ -2,6 +2,7 @@ package utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigInteger;
 import java.net.URLConnection;
 import java.security.KeyManagementException;
@@ -47,7 +48,7 @@ public final class NetworkUtils {
     public static SSLContext createSSLContext(String keyStoreName, String openPassword, String usePassword){
         try {
             KeyStore keyStore = KeyStore.getInstance("JKS");
-            keyStore.load(new FileInputStream(keyStoreName), openPassword.toCharArray());
+            keyStore.load(InputStream.class.getResourceAsStream(keyStoreName), openPassword.toCharArray());
             
             KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance("SunX509");
             keyManagerFactory.init(keyStore, usePassword.toCharArray());
