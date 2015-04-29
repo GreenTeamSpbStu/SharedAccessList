@@ -12,7 +12,8 @@
 
 
 .body_part{
-	margin:40px;
+	margin: 10px 40px;
+	float:left;
 }
 
 .edit_prof{
@@ -25,36 +26,51 @@ margin: 10px ;
 .head_part{
 	font-size: 18pt; /* Размер шрифта в пунктах */
 	font-family: Georgia, Times, serif; /* Семейство шрифтов */
-	font-weight: normal; /* Нормальное начертание текста  */
+	font-weight: bold; /* Нормальное начертание текста  */
 	text-align: justify; /* Выравнивание по ширине */
-	border-bottom: 1px solid #f9bbb0; /* Параметры линии снизу */
+	border-bottom: 1px solid #000000; /* Параметры линии снизу */
 	padding-bottom: 10px; /* Отступ от линии снизу до текста  */
-	margin: 10px 30px 20px 5px;
 }
 
 .form input[type="text"], input[type="password"] {
     background-color: #fff;
-    border-radius: 0px 3px 3px 0px;
-    -moz-border-radius: 0px 3px 3px 0px;
-    -webkit-border-radius: 0px 3px 3px 0px;
     color: #606468;
     padding: 0 16px;
     width: 150px;
+	height:20px;
 	margin: 10px;
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+	float:right;
 }
 
-#button_change {
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    background-color: #3474b5;
+.page-container {
+  width: 900px;
+  height: auto;
+  min-height: 900px;
+  margin: 10px auto;
+  padding: 10px;
+  background: radial-gradient(#4d4d4d, #161616);
+  background-size: 100% 100%;
+}
+
+#button_change{
+    border-radius: 13px;
+    -moz-border-radius: 13px;
+    -webkit-border-radius: 13px;
+    background-color: #3d9cff;
     font-weight: bold;
     margin-bottom: 1em;
-    text-transform: uppercase;
     cursor:pointer;
-    width: 150px;
+    width: 130px;
 	height:30px;
-	margin: 5px;
+	margin: 15px 150px;
+	float: right
+}
+
+.part {
+	float:left;
 }
 
 #middle-column {
@@ -63,11 +79,11 @@ margin: 10px ;
   width: auto;
 }
 #middle-column .container {
-  background-color: #f9e6e9;
-  height: 700px;
+  background-color: #f5f5f5;
+  height: 850px;
   min-height: 200px;
   width: 500px;
-  margin: 0px 10px 5px;
+  margin: 0px 10px 5px 350px;
   float: left;
   display: inline-block;
   border-radius: 3px;
@@ -78,11 +94,25 @@ margin: 10px ;
 h4{
   font-size: 20px;
 }
-p {
-	font-size: 16px;
-	font-family: Georgia, Times, serif; /* Семейство шрифтов */
-	font-weight: normal; /* Нормальное начертание текста  */
+.data_text{
 	text-align: justify; /* Выравнивание по ширине */
+	font-size: 18px;
+	margin: 15px;
+}
+
+.bold_text {
+	font-weight: bold;
+}
+
+.form {
+  width: 390px;
+  margin: 10px auto;
+  padding: 15px 15px 30px;
+  background-color: rgba(111, 181, 255, 0.4);
+  border-width: 1px;
+  border-color: #6fb5ff;
+  border-style: solid;
+  border-radius: 8px;
 }
 
 
