@@ -3,42 +3,69 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="styles/common.css" media="screen" type="text/css" />
-    <link rel="stylesheet" href="styles/home.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="styles/common.css" media="screen" type="text/css"/>
+    <link rel="stylesheet" href="styles/home.css" media="screen" type="text/css"/>
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="js/common-scripts.js"></script>
     <script>
-        function requestAllData()
-        {
+
+        function createCORSRequest(method, url) {
+            var xhr = new XMLHttpRequest();
+            if ("withCredentials" in xhr) {
+
+                // Check if the XMLHttpRequest object has a "withCredentials" property.
+                // "withCredentials" only exists on XMLHTTPRequest2 objects.
+                xhr.open(method, url, true);
+
+            } else if (typeof XDomainRequest != "undefined") {
+
+                // Otherwise, check if XDomainRequest.
+                // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+                xhr = new XDomainRequest();
+                xhr.open(method, url);
+
+            } else {
+
+                // Otherwise, CORS is not supported by the browser.
+                xhr = null;
+
+            }
+            return xhr;
+        }
+
+        function requestAllData() {
             $.ajax({
                 type: 'get',
-                url: getDomain() + '/user.api?token=' +  getCookie('token') + '&profile',
+                url: getDomain() + '/user.api?token=' + getCookie('token') + '&profile',
                 response: 'text',
-                async: true,
-                tryCount : 0,
-                retryLimit : 3,
+                async: false,
+                tryCount: 0,
+                retryLimit: 3,
                 timeout: 2000,
-                retryAfter:5000,
-                success : function(res){updateAllInfo(JSON.parse(res));},
-                error: function(res){ console.log(res); $ajax(this); }
-
+                retryAfter: 5000,
+//                headers: {'Access-Control-Request-Headers':'x-requested-with'},
+                success: function (res) {
+                    updateAllInfo(JSON.parse(res));
+                },
+                error: function (res) {
+                    console.log(res);
+                    this.tryCount++;
+                    if (this.tryCount < this.retryLimit) $.ajax(this);
+                }
             });
         }
 
-        function updateAllInfo(json)
-        {
-            if (json.profile != null)
-            {
+        function updateAllInfo(json) {
+            if (json.profile != null) {
                 document.getElementById("id-person-profile").innerHTML = createProfile(json.profile);
             }
 
 
-            if (json.notifications != null)
-            {
+            if (json.notifications != null) {
                 var notifications_label = document.getElementById("id-notifications");
-                notifications_label.innerHTML = '<div class="notifications">'+
+                notifications_label.innerHTML = '<div class="notifications">' +
                         '<span class="fontawesome-bullhorn"></span>' +
-                        '<h4> Notifications </h4></div>'+
+                        '<h4> Notifications </h4></div>' +
                         '<div class="notifications-container" id="id-notifications-container"></div>';
 
                 var notifications_container = document.getElementById("id-notifications-container");
@@ -47,8 +74,7 @@
 
             var groups = document.getElementById("id-groups");
             groups.innerHTML = '<div class="left-column-container"><h4>Join Group</h4></div>'
-            if (json.groups != null)
-            {
+            if (json.groups != null) {
                 innerHTML.innerHTML +=
                         '<div class="left-column-container"><h4>Join Group</h4></div>' +
                         createGroups(json.groups);
@@ -57,41 +83,41 @@
         }
 
 
-        function createNotifications(json){
+        function createNotifications(json) {
             var res = '';
 
             for (var i = 0; i < json.length; i++) {
                 res += createNotification(json[i]);
             }
         }
-        function createNotification(json){return '<div class="notification"><p>'+
-                json.data+' '+json.type + '</p>'+json.content+'</div>';}
+        function createNotification(json) {
+            return '<div class="notification"><p>' +
+                    json.data + ' ' + json.type + '</p>' + json.content + '</div>';
+        }
 
-        function createGroups(json){
+        function createGroups(json) {
             var res = '';
 
             for (var i = 0; i < json.length; i++) {
                 res += createGroup(json[i]);
             }
         }
-        function createGroup(json){
-            return '<div class = "block"><span class="fontawesome-group"></span>'+
+        function createGroup(json) {
+            return '<div class = "block"><span class="fontawesome-group"></span>' +
                     '<h4>' + json.name + '</h4></div>' +
-                    '<div class = "block-hidden"> Info: ' + json.info + '<br>'+
-                    '<a href="' + json.link +'"> To the group page</a> <br>'+
-                    '<a href="#"> Quick order</a> <br>'+
+                    '<div class = "block-hidden"> Info: ' + json.info + '<br>' +
+                    '<a href="' + json.link + '"> To the group page</a> <br>' +
+                    '<a href="#"> Quick order</a> <br>' +
                     'Credits: ' + json.balance + ' rub <br></div>';
         }
 
 
-
-        function createProfile(json)
-        {
+        function createProfile(json) {
             return '<img src="' + json.avatar +
                     '" class="photo80px" style="float: left" ' +
                     'onerror="if (this.src != \'images/default_avatar.jpg\')' +
                     'this.src = \'images/default_avatar.jpg\';"> <br>' +
-                    'Your e-mail: ' + json.mail + '<br>'+
+                    'Your e-mail: ' + json.mail + '<br>' +
                     'Your name: ' + json.name + '<br>';
         }
 
@@ -99,68 +125,66 @@
 </head>
 <body>
 
-    <div class="page-container">
+<div class="page-container">
 
-        <div class="left-column">
+    <div class="left-column">
 
-            <!--сворачивается элемент, следующий за '.notifications' и '.block'-->
+        <!--сворачивается элемент, следующий за '.notifications' и '.block'-->
 
-            <div id="id-notifications"></div>
+        <div id="id-notifications"></div>
 
-            <div id="id-notifications-container" class="notifications-container" ></div>
+        <div id="id-notifications-container" class="notifications-container"></div>
 
-            <div id="id-groups"></div>
+        <div id="id-groups"></div>
 
-            <script>
-                $(function()
-                {
-                    $('.block-hidden, .notifications-container').hide();
-                    $a = $('.block, .notifications');
-                    $a.on('click', function(event)
-                    {
-                        event.preventDefault();
-                        $a.not(this).next().slideUp(500);
-                        $(this).next().slideToggle(500);
-                    });
-
-                    requestAllData();
-
-
+        <script>
+            $(function () {
+                $('.block-hidden, .notifications-container').hide();
+                $a = $('.block, .notifications');
+                $a.on('click', function (event) {
+                    event.preventDefault();
+                    $a.not(this).next().slideUp(500);
+                    $(this).next().slideToggle(500);
                 });
 
-            </script>
+                requestAllData();
 
-        </div>
 
-        <div class="middle-column">
+            });
 
-            <div id="profile" class="middle-column-container">
-                <h3> Profile </h3>
-                <div id="id-person-profile">
-                    <img src="" class="photo80px" style="float: left"> <br>
-                    Your e-mail:<br>
-                    Your name:<br>
-                </div>
-                <br>
-                <a href="#" style="float: right">Edit</a>
-            </div>
-
-            <div class="middle-column-container">
-                <h3> Feed </h3>
-                    <!--<p class="feeds-record">-->
-                        <!--"Геннадий Петрович" joined us!-->
-                    <!--</p>-->
-
-                    <!--<p class="feeds-record">-->
-                        <!--"Виктор Иванович" bought "Сибирская корона Классическое", "Жигулевское"!-->
-                    <!--</p>-->
-            </div>
-
-        </div>
-
+        </script>
 
     </div>
 
+    <div class="middle-column">
+
+        <div id="profile" class="middle-column-container">
+            <h3> Profile </h3>
+
+            <div id="id-person-profile">
+                <img src="" class="photo80px" style="float: left"> <br>
+                Your e-mail:<br>
+                Your name:<br>
+            </div>
+            <br>
+            <a href="#" style="float: right">Edit</a>
+        </div>
+
+        <div class="middle-column-container">
+            <h3> Feed </h3>
+            <!--<p class="feeds-record">-->
+            <!--"Геннадий Петрович" joined us!-->
+            <!--</p>-->
+
+            <!--<p class="feeds-record">-->
+            <!--"Виктор Иванович" bought "Сибирская корона Классическое", "Жигулевское"!-->
+            <!--</p>-->
+        </div>
+
+    </div>
+
+
+</div>
 
 
 </body>
