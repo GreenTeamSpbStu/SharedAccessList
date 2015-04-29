@@ -8,7 +8,8 @@ import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
 import javax.net.ssl.SSLContext;
 import server.api.AuthorizeApi;
-import server.api.GetUser;
+import server.api.CreateGroupApi;
+import server.api.GetUserApi;
 import server.api.RegistrationApi;
 
 public class Server {
@@ -39,11 +40,14 @@ public class Server {
         addMethod(authorizationApi);
         
         HttpApiMehodImpl userApi = new HttpApiMehodImpl(
-                new GetUser(), 
+                new GetUserApi(), 
                 "/user.api");
         addMethod(userApi);
         
-        
+        HttpApiMehodImpl createGroupApi = new HttpApiMehodImpl(
+                new CreateGroupApi(), 
+                "/createGroup.api");
+        addMethod(createGroupApi);
     }
     
     private void addMethod(HttpApiMethod method){

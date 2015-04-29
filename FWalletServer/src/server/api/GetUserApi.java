@@ -8,7 +8,7 @@ import server.io.JSONHelper;
 import server.logic.UserDAO;
 
 
-public class GetUser implements ApiMethod{
+public class GetUserApi implements ApiMethod{
 
     @Override
     public ApiAnswer execute(Map<String, String> params) {
