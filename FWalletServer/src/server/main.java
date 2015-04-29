@@ -1,7 +1,6 @@
 package server;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import javax.net.ssl.SSLContext;
 import server.core.Server;
 
