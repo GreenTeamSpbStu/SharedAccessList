@@ -10,15 +10,8 @@
     font-family: 'FontAwesome', sans-serif;
 }
 
-
-.body_part{
-	margin: 10px 40px;
-	float:left;
-}
-
 .edit_prof{
 width: 500px;
-height: 200px;
 padding: 10px;
 margin: 10px ;
 }
@@ -30,6 +23,7 @@ margin: 10px ;
 	text-align: justify; /* Выравнивание по ширине */
 	border-bottom: 1px solid #000000; /* Параметры линии снизу */
 	padding-bottom: 10px; /* Отступ от линии снизу до текста  */
+	margin: 10px 40px;
 }
 
 .form input[type="text"], input[type="password"] {
@@ -37,12 +31,11 @@ margin: 10px ;
     color: #606468;
     padding: 0 16px;
     width: 150px;
-	height:20px;
+	height:18px;
 	margin: 10px;
 	border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
-	float:right;
 }
 
 .page-container {
@@ -66,12 +59,8 @@ margin: 10px ;
     width: 130px;
 	height:30px;
 	margin: 15px 150px;
-	float: right
 }
 
-.part {
-	float:left;
-}
 
 #middle-column {
   margin-top: 50px;
@@ -95,9 +84,7 @@ h4{
   font-size: 20px;
 }
 .data_text{
-	text-align: justify; /* Выравнивание по ширине */
-	font-size: 18px;
-	margin: 15px;
+	text-align: center; /* Выравнивание по ширине */
 }
 
 .bold_text {
@@ -105,6 +92,8 @@ h4{
 }
 
 .form {
+  text-align: right; /* Выравнивание по ширине */
+	font-size: 20px;
   width: 390px;
   margin: 10px auto;
   padding: 15px 15px 30px;
