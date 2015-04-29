@@ -24,9 +24,6 @@
     background-color: #fff;
     color: #606468;
     padding: 0 16px;
-    width: 150px;
-	height:18px;
-	margin: 10px;
 	border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -42,20 +39,6 @@
   background-size: 100% 100%;
 }
 
-#button_change{
-    border-radius: 13px;
-    -moz-border-radius: 13px;
-    -webkit-border-radius: 13px;
-    background-color: #3d9cff;
-    font-weight: bold;
-    margin-bottom: 1em;
-    cursor:pointer;
-    width: 130px;
-	height:30px;
-	margin: 15px 150px;
-}
-
-
 #middle-column {
   margin-top: 50px;
   display: inline-block;
@@ -63,7 +46,7 @@
 }
 #middle-column .container {
   background-color: #f5f5f5;
-  height: 850px;
+  height: 700px;
   min-height: 200px;
   width: 500px;
   margin: 0px 10px 5px 350px;
@@ -77,19 +60,48 @@
 h4{
   font-size: 20px;
 }
-.data_text{
-	text-align: center; /* Выравнивание по ширине */
+
+#group_string {
+	margin: 10px 20px;
+	width: 300px;
+	height:18px;
 }
 
-.bold_text {
-	font-weight: bold;
+#group_area{
+	margin: 10px 20px;
+	     border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+#button_save{
+    border-radius: 13px;
+    -moz-border-radius: 13px;
+    -webkit-border-radius: 13px;
+    background-color: #3d9cff;
+    font-weight: bold;
+    margin-bottom: 1em;
+    cursor:pointer;
+    width: 130px;
+	height:30px;
+	margin: 15px 100px;
+	float: right;
+}
+
+.form input[type="text"], input[type="password"] {
+    background-color: #fff;
+    color: #606468;
+    padding: 0 16px;
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 
 .form {
   text-align: right; /* Выравнивание по ширине */
-	font-size: 20px;
+  font-size: 20px;
   width: 390px;
-  margin: 10px auto;
+  margin: 10px 50px;
   padding: 15px 15px 30px;
   background-color: rgba(111, 181, 255, 0.4);
   border-width: 1px;
@@ -97,5 +109,3 @@ h4{
   border-style: solid;
   border-radius: 8px;
 }
-
-

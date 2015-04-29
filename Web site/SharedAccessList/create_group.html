@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="styles/common.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="styles/home.css" media="screen" type="text/css" />
+	<link rel="stylesheet" href="styles/create_group.css" media="screen" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+    <div class="page-container">
+
+        <div id="left-column">
+        </div>
+
+        <div id="middle-column">
+			<div class = "container">
+				<div class = "part">
+					<div class = "head_part">Group name</div>
+					<div class="form">
+						<form action="javascript:void(0);" method="get">
+						<input type="text" id = "group_string" required>
+					</div>
+				</div>	
+				<div class = "part">
+					<div class = "head_part">Group admin</div>
+					<div class="form">
+						<form action="javascript:void(0);" method="get">
+						<input type="text" id = "group_string" required>
+					</div>
+				</div>	
+				<div class = "part">
+					<div class = "head_part">Group description</div>
+					<div class="form">
+						<form action="javascript:void(0);" method="get">
+						<p><textarea rows="10" cols="45" name="text" id = "group_area"></textarea></p>
+					</div>
+				</div>	
+				<input  id = "button_save" type="submit" value="Create group">
+			</div>
+		</div>
+	</div>
+</body>	
