@@ -1,6 +1,6 @@
 function getDomain()
 {
-    return 'https://fwallet.tk:25565';//http://151.80.164.83/
+    return 'https://api.fwallet.tk';//http://151.80.164.83/
 }
 
 
