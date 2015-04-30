@@ -9,30 +9,6 @@
     <script type="text/javascript" src="js/common-scripts.js"></script>
     <script>
 
-        function createCORSRequest(method, url) {
-            var xhr = new XMLHttpRequest();
-            if ("withCredentials" in xhr) {
-
-                // Check if the XMLHttpRequest object has a "withCredentials" property.
-                // "withCredentials" only exists on XMLHTTPRequest2 objects.
-                xhr.open(method, url, true);
-
-            } else if (typeof XDomainRequest != "undefined") {
-
-                // Otherwise, check if XDomainRequest.
-                // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
-                xhr = new XDomainRequest();
-                xhr.open(method, url);
-
-            } else {
-
-                // Otherwise, CORS is not supported by the browser.
-                xhr = null;
-
-            }
-            return xhr;
-        }
-
         function requestAllData() {
             $.ajax({
                 type: 'get',
@@ -53,9 +29,12 @@
                     if (this.tryCount < this.retryLimit) $.ajax(this);
                 }
             });
+
+            updateAllInfo(JSON.parse('{}')); // КОСТЫЛЬ!!! УБРАТЬ!!!!
         }
 
-        function updateAllInfo(json) {
+        function updateAllInfo(json)
+        {
             if (json.profile != null) {
                 document.getElementById("id-person-profile").innerHTML = createProfile(json.profile);
             }
@@ -75,10 +54,17 @@
             var groups = document.getElementById("id-groups");
             groups.innerHTML = '<div class="left-column-container"><h4>Join Group</h4></div>'
             if (json.groups != null) {
-                innerHTML.innerHTML +=
-                        '<div class="left-column-container"><h4>Join Group</h4></div>' +
+                groups.innerHTML +=
+
                         createGroups(json.groups);
             }
+            groups.innerHTML += '<div class = "block"><span class="fontawesome-group"></span>' +
+                    '<h4> Beer Lovers </h4></div>' +
+                    '<div class = "block-hidden"> Info: Клуб любителей пива <br>' +
+                    '<a href="group.html"> To the group page</a> <br>' +
+                    '<a href="#"> Quick order</a> <br>' +
+                    'Credits: 153 rub <br></div>';
+
 
         }
 
@@ -117,8 +103,8 @@
                     '" class="photo80px" style="float: left" ' +
                     'onerror="if (this.src != \'images/default_avatar.jpg\')' +
                     'this.src = \'images/default_avatar.jpg\';"> <br>' +
-                    'Your e-mail: ' + json.mail + '<br>' +
-                    'Your name: ' + json.name + '<br>';
+                    'E-mail: ' + json.mail + '<br>' +
+                    'Name: ' + json.name + '<br>';
         }
 
     </script>
@@ -139,6 +125,10 @@
 
         <script>
             $(function () {
+
+                requestAllData();
+
+
                 $('.block-hidden, .notifications-container').hide();
                 $a = $('.block, .notifications');
                 $a.on('click', function (event) {
@@ -146,8 +136,6 @@
                     $a.not(this).next().slideUp(500);
                     $(this).next().slideToggle(500);
                 });
-
-                requestAllData();
 
 
             });
@@ -167,18 +155,18 @@
                 Your name:<br>
             </div>
             <br>
-            <a href="#" style="float: right">Edit</a>
+            <a href="edit_profile.html" style="float: right">Edit</a>
         </div>
 
         <div class="middle-column-container">
             <h3> Feed </h3>
-            <!--<p class="feeds-record">-->
-            <!--"Геннадий Петрович" joined us!-->
-            <!--</p>-->
+            <p class="feeds-record">
+            "Геннадий Петрович" joined us!
+            </p>
 
-            <!--<p class="feeds-record">-->
-            <!--"Виктор Иванович" bought "Сибирская корона Классическое", "Жигулевское"!-->
-            <!--</p>-->
+            <p class="feeds-record">
+            "Виктор Иванович" bought "Сибирская корона Классическое", "Жигулевское"!
+            </p>
         </div>
 
     </div>
