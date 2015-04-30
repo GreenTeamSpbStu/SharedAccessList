@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="styles/common.css" media="screen" type="text/css"/>
+    <link rel="stylesheet" href="styles/home.css" media="screen" type="text/css"/>
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/common-scripts.js"></script>
+</head>
+<body>
+
+<div class="page-container">
+
+    <div class="left-column">
+
+        <!--сворачивается элемент, следующий за '.notifications' и '.block'-->
+
+        <div id="id-notifications"></div>
+
+        <div id="id-notifications-container" class="notifications-container"></div>
+
+        <div id="id-groups"></div>
+
+        <script>
+            $(function () {
+                $('.block-hidden, .notifications-container').hide();
+                $a = $('.block, .notifications');
+                $a.on('click', function (event) {
+                    event.preventDefault();
+                    $a.not(this).next().slideUp(500);
+                    $(this).next().slideToggle(500);
+                });
+
+                requestAllData();
+
+
+            });
+
+        </script>
+
+    </div>
+
+    <div class="middle-column">
+
+        <div id="profile" class="middle-column-container">
+            <h3> Profile </h3>
+
+            <div id="id-person-profile">
+                <img src="http://www.gravatar.com/avatar/25fdb13e7409bc2e91f9fd1112c1fd32?size=200" class="photo80px" style="float: left"> <br>
+                E-mail: test@rambler.ru<br>
+                Name: Дмитрий<br>
+                Last visit: 13:00 28.04.2015
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

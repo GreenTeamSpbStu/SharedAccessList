@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="styles/common.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="styles/group.css" media="screen" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+
+
+
+
+
+</head>
+<body>
+	<div class="page-container">
+        <div class="left-column">
+
+            <div class="block" onclick="SwitchToBlock($('#home'))">
+                <h4>Home</h4>
+            </div>
+
+            <div class="block" onclick="SwitchToBlock($('#members'))">
+                <h4>Members</h4>
+            </div>
+
+            <br>
+
+            <div class="block">
+                <h4>Join this group</h4>
+            </div>
+
+
+            <script>
+                $(function(){
+                    SwitchToBlock($('#home'));
+                });
+
+                function SwitchToBlock(id)
+                {
+                    $('.middle-column').not(id).hide();
+                    id.show(400);
+                };
+            </script>
+
+            <!--<script>-->
+                <!--$(function()-->
+                <!--{-->
+                    <!--$('.block-hidden, .notifications-container').hide();-->
+                    <!--$a = $('.block, .notifications');-->
+                    <!--$a.on('click', function(event)-->
+                    <!--{-->
+                        <!--event.preventDefault();-->
+                        <!--$a.not(this).next().slideUp(500);-->
+                        <!--$(this).next().slideToggle(500);-->
+                    <!--});-->
+                <!--});-->
+            <!--</script>-->
+			
+        </div>
+
+        <div class="middle-column" id="home">
+            <div class="middle-column-container" >
+                <h3> Beer lovers </h3>
+                <img src="images/beer.png" class="photo80px" style="float: left">
+				<p>Admin:</p> beerLovers@gmail.com<br>
+				<p>Created:</p> 3 jan 2012<br>
+                <p>Info:</p> &nbsp; Партия любителей пива — политическая партия альтернативистского типа в Российской Федерации,
+				зарегистрированная Минюстом РФ 9 августа 1994 года.	Партия была создана 13 декабря 1993 года в ходе совместного употребления пива по случаю их поражения на выборах. <br>
+            </div>
+            <br>
+            <div class="middle-column-container">
+                <h3> Feed </h3>
+                <div class="feeds-record">
+                    "Геннадий Петрович" joined us!
+                </div>
+
+                <div class="feeds-record">
+                    "Виктор Иванович" bought "Сибирская корона Классическое", "Жигулёвское"!
+                </div>
+
+            </div>
+        </div>
+
+        <div class="middle-column" id="orders">
+            <div class="middle-column-container">
+                <p>Orders</p>
+            </div>
+        </div>
+
+        <div class="middle-column" id="members">
+            <div class="middle-column-container">
+                <p>Members</p>
+            </div>
+        </div>
+
+        <div class="middle-column" id="history">
+            <div class="middle-column-container">
+                <p>History</p>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</body>
+</html>

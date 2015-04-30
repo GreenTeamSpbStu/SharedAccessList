@@ -10,7 +10,7 @@
     <div class="form">
         <h4>Sign up</h4>
         <hr>
-        <form onsubmit="return Process();" method="post" action="login.html">
+        <form onsubmit="Process(); return false" method="post">
             <p id="email"> E-mail:       <input type="text" required name="email"> <span class="fontawesome-ban-circle" ></span></p>
             <p id="password1"> Password: <input type="password" required name="password1"> <span class="fontawesome-ban-circle" ></span></p>
             <p id="password2"> Password: <input type="password" required name="password2"> <span class="fontawesome-ban-circle" ></span></p>
@@ -38,20 +38,29 @@
 
                 $('.fontawesome-ban-circle').hide();
 
-//                if (pas1 != pas2 || pas1.length < 5) {$('#password2 span').show();  console.log("Invalid Second pass"); return false;}
-//                if (!reMail.test(email)) {$('#email span').show();      console.log("Invalid email"); return false;}
-//                if (!reName.test(name) || name.length < 3) {$('#name span').show();       console.log("Invalid name"); return false;}
+                if (pas1 != pas2 || pas1.length < 5) {$('#password2 span').show();  console.log("Invalid Second pass"); return false;}
+                if (!reMail.test(email)) {$('#email span').show();      console.log("Invalid email"); return false;}
+                if (!reName.test(name) || name.length < 3) {$('#name span').show();       console.log("Invalid name"); return false;}
 
-                var response = Register(email, name, pas1);
-                console.log(response);
-                if (response.status != 200)
-                {
-                    console.log("Register failed: " + response.responseText);
-                    var json = JSON.parse(response.responseText);
-                    if (json.message )
-                    return false;
-                }
 
+                $.ajax({
+                    type: 'get',
+                    url: '/reg.api?mail='+email+'&name='+name+'&passwd='+pass,
+                    response: 'text',
+                    async: true,
+                    tryCount : 0,
+                    retryLimit : 3,
+                    timeout: 2000,
+                    retryAfter:5000,
+                    success : function(res)
+                    {
+                        window.location.href = "index.html";
+                    },
+                    error: function(res)
+                    {
+                        console.log(res); this.tryCount++;  if (this.tryCount < this.retryLimit) $.ajax(this);
+                    }
+                });
                 return true;
             }
 
