@@ -6,17 +6,62 @@
     <link rel="stylesheet" href="styles/login.css" media="screen" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="js/common-scripts.js"></script>
+
+    <script>
+//        $(function(){deleteAllCookies(); console.log(document.cookie);})
+//
+//        function Process()
+//        {
+//            var email =  document.getElementById("email").value;
+//            var pass =  document.getElementById("password").value;
+//
+//            $.ajax({
+//                type: 'get',
+//                url: domain+'/auth.api?mail='+email+'&passwd='+pass,
+//                response: 'text',
+//                async: true,
+//                tryCount : 0,
+//                retryLimit : 3,
+//                timeout: 2000,
+//                retryAfter:5000,
+//                success : function(res)
+//                {
+//                    json = JSON.parse(res);
+//                    if (json.token == null)
+//                    {
+//                        document.getElementById('error_message').innerHTML = 'Token is undefined!';
+//                        return;
+//                    }
+//
+//                    setCookie('token', json.token);
+//                    if (json.userId == null)
+//                    setCookie('userId', json.userId != null ? json.userId : 0);
+//
+//                    window.location.href = "profile.html";
+//                },
+//                error: function(res)
+//                {
+//                    console.log(res.responseText);
+//                    document.getElementById('error_message').innerHTML = JSON.parse(res.responseText).message;
+//                    if (this.tryCount++ < this.retryLimit) $.ajax(this);
+//                }
+//            });
+//        }
+    </script>
+
+
 </head>
 <body>
+    <div class="page-container">
         <div id="about">
             <h2>Friendly Wallet</h2>
-            <h3>Collaborative shoping! Share your money!</h3>
+            <h3>Collaborative shopping! Share your money!</h3>
         </div>
 
        <div id="login" class="form">
-           <form onsubmit="return Process();" method="post" action="home.html">
-                   <p><span class="fontawesome-user"></span><input type="text" placeholder="Username" required id="email"></p>
-                   <p><span class="fontawesome-lock"></span><input type="password" placeholder="Password" required id="password"></p>
+           <form action="index.html" method="get">
+                   <p><span class="fontawesome-user"></span><input name="email" type="text" placeholder="Username" required id="email"></p>
+                   <p><span class="fontawesome-lock"></span><input name="password" type="password" placeholder="Password" required id="password"></p>
                    <p><input type="submit" value="LOG IN"></p>
            </form>
 
@@ -25,37 +70,9 @@
                    <a href="#"><img src="images/vk.png"></a>
                    <a href="#"><img src="images/google.png"></a>
            </p>
-
-           <script>
-
-               $(function(){deleteAllCookies(); console.log(document.cookie);})
-
-               function Process()
-               {
-                   var email =  document.getElementById("email").value;
-                   var pass =  document.getElementById("password").value;
-
-                   var response = Login(email, pass);
-
-                   if (response.status != 200) {return false;}
-
-                   var json = JSON.parse(response.responseText);
-
-                   setCookie('token', json.token);
-                   console.log(document.cookie);
-                   return true;
-               }
-
-               function Login(email, pass)
-               {
-                   var url = getDomain() + "/auth.api?mail="+email+"&passwd="+pass;
-                   xmlHttp = new XMLHttpRequest();
-                   xmlHttp.open( "GET", url, false );
-                   xmlHttp.send( null );
-                   return xmlHttp;
-               }
-           </script>
-
+            <br>
+           <div id="error-message"></div>
        </div>
+    </div>
 </body>
 </html>

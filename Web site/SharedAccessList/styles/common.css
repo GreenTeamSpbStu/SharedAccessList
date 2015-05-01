@@ -14,12 +14,6 @@ a {
 a:hover {
   text-decoration: none;
 }
-.basicHeader,
-h4,
-h3,
-h2 {
-  margin: 5px;
-}
 h4 {
   font-size: 20px;
 }
@@ -28,9 +22,6 @@ h3 {
 }
 h2 {
   font-size: 40px;
-}
-p {
-  line-height: 1.5em;
 }
 .container,
 .bordered-container,
@@ -49,6 +40,7 @@ span,
 .left-column .notifications-container,
 .left-column .notification,
 .photo80px,
+.photo40px,
 .left-column .notifications,
 .left-column .notifications:hover,
 .left-column .notifications:hover,
@@ -71,6 +63,7 @@ span,
 .left-column .notifications-container,
 .left-column .notification,
 .photo80px,
+.photo40px,
 .left-column .notifications,
 .left-column .notifications:hover,
 .left-column .notifications:hover,
@@ -107,12 +100,14 @@ span,
   height: 35px;
   background-color: #3d9cff;
   cursor: pointer;
-  line-height: 25px;
+  line-height: 30px;
 }
 .left-column .block,
 .left-column .notifications,
 .left-column .notifications:hover {
   transition: background 0.6s ease;
+  line-height: 30px;
+  overflow: hidden;
 }
 .left-column .block:hover,
 .left-column .notifications:hover,
@@ -153,10 +148,11 @@ span,
   display: inline-block;
 }
 .middle-column .feeds-record {
-  padding: 2px;
+  padding: 4px;
 }
 .photo,
-.photo80px {
+.photo80px,
+.photo40px {
   display: block;
   margin: 5px;
   background-color: #ffffff;
@@ -164,6 +160,10 @@ span,
 .photo80px {
   height: 80px;
   width: 80px;
+}
+.photo40px {
+  height: 40px;
+  width: 40px;
 }
 span {
   display: block;
@@ -208,4 +208,7 @@ span {
   padding: 5px;
   background: #f5f5f5;
   overflow: auto;
+}
+#error-message {
+  color: red;
 }
