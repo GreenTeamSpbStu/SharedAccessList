@@ -27,8 +27,6 @@ public class RegistrationApi implements ApiMethod {
         } catch (ConstraintViolationException ex){
             IllegalArgumentException e = new IllegalArgumentException("There is user with same email!"); 
             return new ApiAnswer(HttpCode.ERROR, JSONHelper.toJSON(e));
-        } catch (Exception e){
-            return new ApiAnswer(HttpCode.ERROR, JSONHelper.toJSON(e));
         } 
     }
     
