@@ -10,14 +10,10 @@ import javax.persistence.Table;
 import org.json.simple.JSONObject;
 import server.io.JSONAble;
 
-/**
- *
- * @author magni
- */
-
 @Entity
 @Table(name="GROUPS")
 public class Group implements JSONAble{
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID")

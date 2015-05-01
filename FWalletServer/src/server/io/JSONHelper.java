@@ -6,15 +6,15 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class JSONHelper {
-    public static String toJSON(List<? extends JSONAble> source){
+    public static JSONArray toJSON(List<? extends JSONAble> source){
         JSONArray result = new JSONArray();
         for (JSONAble element : source) {
             result.add(element.asJSON());
         }
-        return result.toJSONString();
+        return result;
     }
     
-    public static String toJSON(Exception e){
+    public static String toJSON(Throwable e){
         JSONObject json = new JSONObject();
         json.put("exception", e.getClass().getSimpleName());
         json.put("message", e.getMessage());

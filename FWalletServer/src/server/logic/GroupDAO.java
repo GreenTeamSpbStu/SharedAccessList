@@ -25,16 +25,16 @@ public class GroupDAO {
         }
     }
     
-    public static List<User> getMembersOfGroup(Long groupId){
+    public static Group getGroup(long id) throws IllegalAccessException {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        
-        List<User> groupMembers = new ArrayList<>();
-        
         try {
+                Group group = (Group) session.createCriteria(Group.class)
+                    .add(Restrictions.eq("id", id))
+                    .uniqueResult();
+                if (group==null) throw new IllegalAccessException("There are no these group!");
+                return group;
         } finally {
             session.close();
         }
-        
-        return groupMembers;
     }
 }

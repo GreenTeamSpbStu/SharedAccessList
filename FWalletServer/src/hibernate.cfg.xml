@@ -12,5 +12,7 @@
     <property name="hibernate.connection.useUnicode">true</property>
     <mapping class="server.entity.User"/>
     <mapping class="server.entity.AuthSession"/>
+    <mapping class="server.entity.Group"/>
+    <mapping class="server.entity.Invitation"/>
   </session-factory>
 </hibernate-configuration>

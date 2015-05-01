@@ -7,7 +7,7 @@ import server.entity.AuthSession;
 import server.entity.User;
 import utils.NetworkUtils;
 
-public class SessionDAO {
+public class AuthSessionDAO {
     public static AuthSession authorize(String mail, String passwd) throws IllegalAccessException{
         Session session = HibernateUtil.getSessionFactory().openSession();
         passwd = NetworkUtils.toHexMd5(passwd);
@@ -30,7 +30,7 @@ public class SessionDAO {
         }
     }
     
-    private static String createToken(String name, String passwd){
+     private static String createToken(String name, String passwd){
         return NetworkUtils.toHexMd5(name+passwd+System.currentTimeMillis());
     }
 }

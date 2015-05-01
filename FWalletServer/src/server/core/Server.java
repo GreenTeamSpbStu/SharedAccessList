@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
 import javax.net.ssl.SSLContext;
 import server.api.AuthorizeApi;
 import server.api.CreateGroupApi;
+import server.api.GetGroupApi;
 import server.api.GetUserApi;
 import server.api.RegistrationApi;
 
@@ -24,34 +25,23 @@ public class Server {
         } else {
             server = HttpServer.create(new InetSocketAddress(port), 0);
         }
-        server.setExecutor(Executors.newFixedThreadPool(threads)); // creates a default executor
+        server.setExecutor(Executors.newFixedThreadPool(threads));
         initialize();      
     }
     
     private void initialize(){
-        HttpApiMehodImpl registrationApi = new HttpApiMehodImpl(
-                new RegistrationApi(), 
-                "/reg.api");
-        addMethod(registrationApi);
-        
-        HttpApiMehodImpl authorizationApi = new HttpApiMehodImpl(
-                new AuthorizeApi(), 
-                "/auth.api");
-        addMethod(authorizationApi);
-        
-        HttpApiMehodImpl userApi = new HttpApiMehodImpl(
-                new GetUserApi(), 
-                "/user.api");
-        addMethod(userApi);
-        
-        HttpApiMehodImpl createGroupApi = new HttpApiMehodImpl(
-                new CreateGroupApi(), 
-                "/createGroup.api");
-        addMethod(createGroupApi);
+        addMethod(new RegistrationApi(),"/reg");
+        addMethod(new AuthorizeApi(),"/auth");
+        addMethod(new GetUserApi(), "/user.get");
+        addMethod(new CreateGroupApi(),"/createGroup.api");
+        addMethod(new GetGroupApi(), "/group.get");
     }
     
-    private void addMethod(HttpApiMethod method){
-        server.createContext(method.getURI(), method.getHandler());
+    private void addMethod(ApiMethod apiMethod, String path){
+        HttpApiMehodImpl api = new HttpApiMehodImpl(
+                apiMethod, 
+                path);
+        server.createContext(api.getURI(), api.getHandler());
     }
     
     public void start(){
