@@ -2,19 +2,16 @@ package server.logic;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
-import server.HibernateUtil;
 import server.entity.AuthSession;
 import server.entity.User;
 import utils.NetworkUtils;
 
 public class AuthSessionDAO {
-    public static AuthSession authorize(String mail, String passwd) throws IllegalAccessException{
-        Session session = HibernateUtil.getSessionFactory().openSession();
+    public static AuthSession authorize(Session session, String mail, String passwd) throws IllegalAccessException{
         passwd = NetworkUtils.toHexMd5(passwd);
-        User user = null;
         try {
             session.beginTransaction();
-            user = (User) session.createCriteria(User.class)
+            User user = (User) session.createCriteria(User.class)
                     .add(Restrictions.eq("mail", mail))
                     .add(Restrictions.eq("passwd", passwd))
                     .uniqueResult();
@@ -26,11 +23,18 @@ public class AuthSessionDAO {
             return auth;
         } finally {
             session.getTransaction().commit();
-            session.close();
         }
     }
     
      private static String createToken(String name, String passwd){
         return NetworkUtils.toHexMd5(name+passwd+System.currentTimeMillis());
     }
+     
+    public static AuthSession getSessionByToken(Session session, String token) throws IllegalAccessException{
+            AuthSession auth = (AuthSession) session.createCriteria(AuthSession.class)
+                    .add(Restrictions.eq("token", token))
+                    .uniqueResult();
+            if (auth==null) throw new IllegalAccessException("Wrong token!");
+            return auth;
+    }  
 }

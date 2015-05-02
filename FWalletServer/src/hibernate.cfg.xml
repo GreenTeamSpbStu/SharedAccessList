@@ -14,5 +14,6 @@
     <mapping class="server.entity.AuthSession"/>
     <mapping class="server.entity.Group"/>
     <mapping class="server.entity.Invitation"/>
+    <mapping class="server.entity.Participant"/>
   </session-factory>
 </hibernate-configuration>

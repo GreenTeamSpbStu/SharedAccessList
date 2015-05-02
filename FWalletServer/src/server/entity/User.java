@@ -1,11 +1,15 @@
 package server.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.json.simple.JSONObject;
 import server.io.JSONAble;
@@ -33,6 +37,22 @@ public class User implements JSONAble{
     
     @Column(name="LASTENTER")
     private Timestamp lastEnter;
+    
+    @OneToMany
+    @JoinTable(name="PARTICIPANTS",joinColumns = @JoinColumn(name = "PARTICIPANTID"), inverseJoinColumns = @JoinColumn(name = "ID"))
+    private List<Participant> groups;
+    
+    @OneToMany
+    @JoinTable(name="INVITATIONS",joinColumns = @JoinColumn(name = "RECIPIENTID"), inverseJoinColumns = @JoinColumn(name = "ID"))
+    private List<Invitation> invitations;
+
+    public List<Invitation> getInvitations() {
+        return invitations;
+    }
+       
+    public List<Participant> getGroups(){
+        return groups;
+    }
     
     public User setName(String name) {
         this.name = name;

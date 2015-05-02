@@ -1,6 +1,7 @@
 package server.api;
 
 import java.util.Map;
+import org.hibernate.Session;
 import org.hibernate.exception.ConstraintViolationException;
 import server.core.ApiMethod;
 import server.core.HttpCode;
@@ -11,7 +12,7 @@ import server.logic.UserDAO;
 public class RegistrationApi implements ApiMethod {
 
     @Override
-    public ApiAnswer execute(Map<String, String> params) {
+    public ApiAnswer execute(Session session, Map<String, String> params) {
         try {
             if (   !(  params.containsKey("mail") 
                     && params.containsKey("name") 
@@ -22,7 +23,7 @@ public class RegistrationApi implements ApiMethod {
                     .setEmail(params.get("mail"))
                     .setName(params.get("name"))
                     .setPasswd(params.get("passwd"));
-            UserDAO.register(user);
+            UserDAO.register(session, user);
             return new ApiAnswer(HttpCode.OK, "");
         } catch (ConstraintViolationException ex){
             IllegalArgumentException e = new IllegalArgumentException("There is user with same email!"); 

@@ -5,6 +5,9 @@ import com.sun.net.httpserver.HttpHandler;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
+import org.hibernate.Session;
+import org.hibernate.exception.JDBCConnectionException;
+import server.HibernateUtil;
 import server.io.JSONHelper;
 import utils.NetworkUtils;
 
@@ -31,17 +34,22 @@ public class HttpApiMehodImpl implements HttpApiMethod {
     private final HttpHandler handler = new HttpHandler() {
         @Override
         public void handle(HttpExchange t) throws IOException {
-            Map<String,String> query = NetworkUtils.parseURIQuery(t.getRequestURI().getQuery());
-            ApiMethod.ApiAnswer answer;
-                    try {
-                        answer = apiMethod.execute(query);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        answer = new ApiMethod.ApiAnswer(
-                                HttpCode.ERROR, 
-                                JSONHelper.toJSON(new InternalError("Internal server error. Please check log."))
-                        );
-                    }
+
+            ApiMethod.ApiAnswer answer = new ApiMethod.ApiAnswer(
+                HttpCode.ERROR, 
+                JSONHelper.toJSON(new InternalError("Internal server error. Please check log."))
+            );
+            
+            try {
+                answer = prepareAnswer(t);
+            } catch (ExceptionInInitializerError e){
+                answer = new ApiMethod.ApiAnswer(
+                    HttpCode.ERROR, 
+                    JSONHelper.toJSON(new InternalError("Database is unavailible!"))
+                );
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
             
             try (OutputStream out = t.getResponseBody()) {
                 byte [] bytes = answer.body.getBytes("UTF-8");
@@ -51,4 +59,15 @@ public class HttpApiMehodImpl implements HttpApiMethod {
         }
     };
     
+    private ApiMethod.ApiAnswer prepareAnswer(HttpExchange t){
+        Map<String,String> query = NetworkUtils.parseURIQuery(t.getRequestURI().getQuery());
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            return apiMethod.execute(session, query);
+        } finally {
+            session.close();
+        }
+        
+    }
+
 }

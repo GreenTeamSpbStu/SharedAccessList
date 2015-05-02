@@ -1,13 +1,14 @@
 package server.core;
 
 import java.util.Map;
+import org.hibernate.Session;
 
 /**
  * Интерфейс обработки запроса.
  * @author llama
  */
 public interface ApiMethod {
-    ApiAnswer execute(Map<String,String> params);
+    ApiAnswer execute(Session session, Map<String,String> params);
     
     public static class ApiAnswer {
         public final HttpCode httpCode;

@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Map;
+import org.hibernate.Session;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -58,7 +59,7 @@ public class VKApi implements ApiMethod {
     }
 
     @Override
-    public ApiAnswer execute(Map<String, String> params) {
+    public ApiAnswer execute(Session session, Map<String, String> params) {
 //        try {
 //            if (params.containsKey("code")) {
 //                AuthInfo authInfo = getToken(params.get("code"));

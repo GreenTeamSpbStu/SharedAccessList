@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.json.simple.JSONObject;
 import server.io.JSONAble;
@@ -30,11 +32,15 @@ public class Invitation implements JSONAble{
     
     @Column(name="INVITATIONTIME")
     private Timestamp invitationTime;
+    
+    @OneToOne
+    @JoinColumn(name = "SENDERID", insertable = false, updatable = false)
+    private User sender;
 
-    public long getSenderId() {
-        return senderId;
+    public User getSender() {
+        return sender;
     }
-
+   
     public long getRecipientId() {
         return recipientId;
     }
@@ -65,7 +71,8 @@ public class Invitation implements JSONAble{
     @Override
     public JSONObject asJSON() {
         JSONObject json = new JSONObject();
-        json.put("senderId", getSenderId());
+        json.put("invitationId", id);
+        json.put("sender", getSender().asJSON());
         json.put("groupId", getGroupId());
         json.put("invitationTime", getInvitationTime());
         return json;

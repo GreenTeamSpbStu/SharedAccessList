@@ -2,6 +2,7 @@ package server.api;
 
 import java.sql.Timestamp;
 import java.util.Map;
+import org.hibernate.Session;
 import server.core.ApiMethod;
 import server.core.HttpCode;
 import server.entity.Group;
@@ -15,7 +16,7 @@ import server.logic.GroupDAO;
 public class CreateGroupApi implements ApiMethod{
 
     @Override
-    public ApiAnswer execute(Map<String, String> params) {
+    public ApiAnswer execute(Session session, Map<String, String> params) {
         try {
             if (!params.containsKey("token") || 
                     !params.containsKey("name") || 
@@ -29,7 +30,7 @@ public class CreateGroupApi implements ApiMethod{
                     .setOwnerId(Long.parseLong(params.get("ownerId")))
                     .setCreationDate(new Timestamp(System.currentTimeMillis()));
                     
-            GroupDAO.createGroup(g);
+            GroupDAO.createGroup(session, g);
             
             return new ApiAnswer(HttpCode.OK, "");
         }catch (NumberFormatException ex) {
