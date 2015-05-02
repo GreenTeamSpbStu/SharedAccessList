@@ -7,8 +7,33 @@
     <link rel="stylesheet" href="styles/group.css" media="screen" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 
+    <script>
+        $(function(){
+            SwitchToBlock($('#home'));
+        });
+
+        function SwitchToBlock(id)
+        {
+            $('.middle-column').not(id).hide();
+            id.show(400);
+        };
 
 
+    </script>
+
+    <!--<script>-->
+    <!--$(function()-->
+    <!--{-->
+    <!--$('.block-hidden, .notifications-container').hide();-->
+    <!--$a = $('.block, .notifications');-->
+    <!--$a.on('click', function(event)-->
+    <!--{-->
+    <!--event.preventDefault();-->
+    <!--$a.not(this).next().slideUp(500);-->
+    <!--$(this).next().slideToggle(500);-->
+    <!--});-->
+    <!--});-->
+    <!--</script>-->
 
 
 </head>
@@ -39,31 +64,7 @@
             </div>
 
 
-            <script>
-                $(function(){
-                    SwitchToBlock($('#home'));
-                });
 
-                function SwitchToBlock(id)
-                {
-                    $('.middle-column').not(id).hide();
-                    id.show(400);
-                };
-            </script>
-
-            <!--<script>-->
-                <!--$(function()-->
-                <!--{-->
-                    <!--$('.block-hidden, .notifications-container').hide();-->
-                    <!--$a = $('.block, .notifications');-->
-                    <!--$a.on('click', function(event)-->
-                    <!--{-->
-                        <!--event.preventDefault();-->
-                        <!--$a.not(this).next().slideUp(500);-->
-                        <!--$(this).next().slideToggle(500);-->
-                    <!--});-->
-                <!--});-->
-            <!--</script>-->
 			
         </div>
 

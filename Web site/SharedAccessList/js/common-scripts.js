@@ -1,8 +1,7 @@
-function getDomain()
-{
-    return 'https://api.fwallet.tk';//http://151.80.164.83/
-}
 
+var errorMessage = '';
+
+var domain = 'https://fwallet.tk:25565'; //'https://api.fwallet.tk';
 
 function getCookie(name) {
     var matches = document.cookie.match(new RegExp(

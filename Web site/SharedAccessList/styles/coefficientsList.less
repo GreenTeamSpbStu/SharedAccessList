@@ -1,0 +1,51 @@
+@import "common";
+
+.page-container
+{
+  height: 600px;
+  overflow-y: auto;
+}
+
+.page-container .middle-column
+{
+  .coeff-record:extend(.middle-column .middle-column-container)
+  {
+    float: right;
+    line-height: 45px;
+
+    @size: 20px;
+
+    img:extend(.photo40px){
+      float: left;
+    }
+
+
+
+    .value:extend(.container)
+    {
+      float: right;
+//      display: inline-block;
+//      height: @height;
+//      width: @height * 2;
+
+      button:extend(.button)
+      {
+        //      float: right;
+        height: @size;
+//        width: @height;
+        //      line-height: 20px;
+      }
+
+      input
+      {
+        width: @size * 2;
+      }
+    }
+
+
+
+
+
+  }
+
+}

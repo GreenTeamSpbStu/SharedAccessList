@@ -6,6 +6,26 @@ body {
   font-size: 16px;
   padding: 0px;
 }
+
+.page-container
+{
+  @height: 50px;
+  @width: 600px;
+  text-align: center;
+  height: @height;
+  width: @width;
+
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  //  margin-top: ;
+  margin-top: -@height / 2;
+  margin-left: -@width / 2;
+  background: none;
+}
+
+
+
 .form img {
   margin: 0px 5px;
   height: 25px;
@@ -34,24 +54,28 @@ body {
 }
 
 #about {
-  text-align: center;
-  margin: 140px auto 80px;
   color: #3474B5;
+  margin-bottom: 80px;
 }
 
 #login {
   margin: 0 auto;
   width: 282px;
-}
 
-#login form span {
-  background-color: #3474B5;
-  border-radius: 3px 0px 0px 3px;
-  color: #fff;
-  display: block;
-  float: left;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  width: 50px;
+  p {
+    line-height: 25px;
+  }
+
+
+  form span {
+    background-color: #3474B5;
+    border-radius: 3px 0px 0px 3px;
+    color: #fff;
+    display: block;
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 50px;
+  }
 }
