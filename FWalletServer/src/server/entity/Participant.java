@@ -28,7 +28,7 @@ public class Participant implements JSONAble{
     private long participantId;
     
     @Column(name = "BALANCE")
-    private float balance;
+    private float balance;    
 
     public Group getGroup() {
         return group;
