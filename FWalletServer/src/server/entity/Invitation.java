@@ -90,7 +90,7 @@ public class Invitation implements JSONAble{
         json.put("invitationId", id);
         json.put("sender", getSender().asJSON());
         json.put("group", getGroup().asJSON());
-        json.put("invitationTime", getInvitationTime());
+        json.put("invitationTime", getInvitationTime().toString());
         return json;
     }
     

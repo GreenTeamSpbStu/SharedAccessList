@@ -8,8 +8,8 @@ import utils.NetworkUtils;
 
 public class AuthSessionDAO {
     public static AuthSession authorize(Session session, String mail, String passwd) throws IllegalAccessException{
-        passwd = NetworkUtils.toHexMd5(passwd);
         try {
+            passwd = NetworkUtils.toHexMd5(passwd);
             session.beginTransaction();
             User user = (User) session.createCriteria(User.class)
                     .add(Restrictions.eq("mail", mail))
@@ -20,9 +20,11 @@ public class AuthSessionDAO {
                     .setUserid(user.getId())
                     .setToken(createToken(mail, passwd));
             session.saveOrUpdate(auth);
-            return auth;
-        } finally {
             session.getTransaction().commit();
+            return auth;
+        } catch (Exception e){
+            session.getTransaction().rollback();
+            throw e;
         }
     }
     
@@ -31,10 +33,10 @@ public class AuthSessionDAO {
     }
      
     public static AuthSession getSessionByToken(Session session, String token) throws IllegalAccessException{
-            AuthSession auth = (AuthSession) session.createCriteria(AuthSession.class)
-                    .add(Restrictions.eq("token", token))
-                    .uniqueResult();
-            if (auth==null) throw new IllegalAccessException("Wrong token!");
-            return auth;
+        AuthSession auth = (AuthSession) session.createCriteria(AuthSession.class)
+                .add(Restrictions.eq("token", token))
+                .uniqueResult();
+        if (auth==null) throw new IllegalAccessException("Wrong token!");
+        return auth;
     }  
 }

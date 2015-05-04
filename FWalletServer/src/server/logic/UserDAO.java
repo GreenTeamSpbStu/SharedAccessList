@@ -14,9 +14,13 @@ public class UserDAO {
     }
     
     public static void register(Session session, User user){
-        session.beginTransaction();
-        session.save(user);
-        session.getTransaction().commit();
+        try{
+            session.beginTransaction();
+            session.save(user);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        }
     }
     
 }
