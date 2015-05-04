@@ -12,17 +12,17 @@ public class AuthSessionDAO {
             passwd = NetworkUtils.toHexMd5(passwd);
             session.beginTransaction();
             User user = (User) session.createCriteria(User.class)
-                    .add(Restrictions.eq("mail", mail))
-                    .add(Restrictions.eq("passwd", passwd))
-                    .uniqueResult();
+                .add(Restrictions.eq("mail", mail))
+                .add(Restrictions.eq("passwd", passwd))
+                .uniqueResult();
             if (user==null) throw new IllegalAccessException("Wrong password or login!");
             AuthSession auth = new AuthSession()
-                    .setUserid(user.getId())
-                    .setToken(createToken(mail, passwd));
+                .setUserid(user.getId())
+                .setToken(createToken(mail, passwd));
             session.saveOrUpdate(auth);
             session.getTransaction().commit();
             return auth;
-        } catch (Exception e){
+        } catch (Throwable e){
             session.getTransaction().rollback();
             throw e;
         }

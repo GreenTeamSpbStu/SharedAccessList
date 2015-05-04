@@ -18,7 +18,7 @@ public class UserDAO {
             session.beginTransaction();
             session.save(user);
             session.getTransaction().commit();
-        } catch (Exception e) {
+        } catch (Throwable e) {
             session.getTransaction().rollback();
         }
     }

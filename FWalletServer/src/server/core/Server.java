@@ -13,6 +13,7 @@ import server.api.GetGroupApi;
 import server.api.GetUserApi;
 import server.api.AcceptInvitationApi;
 import server.api.CreateInvitationApi;
+import server.api.GiveMoneyApi;
 import server.api.RegistrationApi;
 
 public class Server {
@@ -39,6 +40,7 @@ public class Server {
         addMethod(new GetGroupApi(), "/group.get");
         addMethod(new AcceptInvitationApi(), "/invitation.accept");
         addMethod(new CreateInvitationApi(), "/invitation.create");
+        addMethod(new GiveMoneyApi(), "/participant.give");
     }
 
     private void addMethod(ApiMethod apiMethod, String path){

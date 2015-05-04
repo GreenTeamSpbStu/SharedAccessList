@@ -25,7 +25,7 @@ public class InvitationDAO {
                 session.save(participant);
             }
             session.getTransaction().commit();
-        } catch (Exception e) {
+        } catch (Throwable e) {
             session.getTransaction().rollback();
         }
     }
