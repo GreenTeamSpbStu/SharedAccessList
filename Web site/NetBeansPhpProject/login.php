@@ -62,7 +62,7 @@
         </div>
 
        <div id="login" class="form">
-           <form action="login.php" method="post" accept-charset="UTF-8">
+           <form action="login.php" method="post" >
                    <p><span class="fontawesome-user"></span><input name="email" type="text" placeholder="E-mail" required id="email"></p>
                    <p><span class="fontawesome-lock"></span><input name="password" type="password" placeholder="Password" required id="password"></p>
                    <p><input type="submit" value="LOG IN"></p>
