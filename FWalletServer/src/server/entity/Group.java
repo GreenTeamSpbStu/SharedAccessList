@@ -82,7 +82,7 @@ public class Group implements JSONAble{
         jo.put("name", getName());
         jo.put("description", getDescription());
         jo.put("ownerId", getOwnerId());
-        jo.put("creationDate", getCreationDate());
+        jo.put("creationDate", getCreationDate().toString());
         
         return jo;
     }

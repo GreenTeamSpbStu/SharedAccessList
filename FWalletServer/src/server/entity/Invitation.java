@@ -36,7 +36,23 @@ public class Invitation implements JSONAble{
     @OneToOne
     @JoinColumn(name = "SENDERID", insertable = false, updatable = false)
     private User sender;
+    
+    @OneToOne
+    @JoinColumn(name = "GROUPID", insertable = false, updatable = false)
+    private Group group;
 
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public long getId() {
+        return id;
+    }
+     
     public User getSender() {
         return sender;
     }
@@ -73,8 +89,8 @@ public class Invitation implements JSONAble{
         JSONObject json = new JSONObject();
         json.put("invitationId", id);
         json.put("sender", getSender().asJSON());
-        json.put("groupId", getGroupId());
-        json.put("invitationTime", getInvitationTime());
+        json.put("group", getGroup().asJSON());
+        json.put("invitationTime", getInvitationTime().toString());
         return json;
     }
     

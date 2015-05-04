@@ -24,6 +24,10 @@ public class AuthSession implements JSONAble{
     @JoinColumn(name = "USERID")
     private User user;
 
+    public Long getUserid() {
+        return userid;
+    }
+
     public User getUser() {
         return user;
     }
@@ -44,7 +48,5 @@ public class AuthSession implements JSONAble{
         json.put("token", token);
         return json;    
     }
-    
-    
     
 }

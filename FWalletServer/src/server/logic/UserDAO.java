@@ -1,6 +1,5 @@
 package server.logic;
 
-import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import server.entity.User;
@@ -15,11 +14,12 @@ public class UserDAO {
     }
     
     public static void register(Session session, User user){
-        try {
+        try{
             session.beginTransaction();
             session.save(user);
-        } finally {
             session.getTransaction().commit();
+        } catch (Throwable e) {
+            session.getTransaction().rollback();
         }
     }
     
