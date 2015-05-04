@@ -1,22 +1,30 @@
-<!DOCTYPE html>
+
 
 <?php 
     include_once './common.php';
     include_once './sessionCommon.php';
+    include_once './profileLogic.php';
     
-    if (!isset($_GET['id']))
+    $notifications = '';
+    $groups = '';
+    
+    $groups = createGroup('Beer lovers', 'info', '-1', 13);
+    
+    
+    if (isset($_GET['id']))
     {
-        //отображаем нашу страницу
+        
+        //отображаем страницу пользователя по id
         
     }
     else
     {
-        //отображаем страницу пользователя по id
+        //отображаем нашу страницу
     }
     
 ?>
 
-
+<!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -145,12 +153,13 @@
 
         <!--сворачивается элемент, следующий за '.notifications' и '.block'-->
 
-        <div id="id-notifications"></div>
+        <div><?=$notifications?></div>
 
-        <div id="id-notifications-container" class="notifications-container"></div>
+        <!--<div id="id-notifications-container" class="notifications-container"></div>-->
 
-        <div id="id-groups">
-            <div class = "block"><span class="fontawesome-group"></span>
+        <?=$groups?>
+            
+<!--        <div class = "block"><span class="fontawesome-group"></span>
             <h4>Beeer lowersssssss</h4></div>
 
             <div class = "block-hidden">
@@ -169,7 +178,10 @@
 
 
 
-            </div>
+            </div>-->
+        
+        <div class="left-column-container">
+            <h4>Join group</h4>
         </div>
 
     </div>

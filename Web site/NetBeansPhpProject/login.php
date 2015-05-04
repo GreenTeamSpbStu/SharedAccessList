@@ -32,13 +32,14 @@
                 $token = $json -> {'token'};
                 print_r($token);
 
-                session_unlink();
                 session_destroy();
 
                 session_start();
                 $_SESSION['token'] = $token;
-
-                Redirect($domain.'/profile.php');
+                
+                $url = $domain.'/profile.php';
+                echo $url, '<br>';
+                Redirect($url);
             }
         }
     }
@@ -61,7 +62,7 @@
         </div>
 
        <div id="login" class="form">
-           <form action="login.php" method="post">
+           <form action="login.php" method="post" accept-charset="UTF-8">
                    <p><span class="fontawesome-user"></span><input name="email" type="text" placeholder="E-mail" required id="email"></p>
                    <p><span class="fontawesome-lock"></span><input name="password" type="password" placeholder="Password" required id="password"></p>
                    <p><input type="submit" value="LOG IN"></p>
@@ -73,7 +74,7 @@
                    <a href="#"><img src="images/google.png"></a>
            </p>
            <br>
-           <div id="error-message"> <?=$errorMsg?> </div>; 
+           <div id="error-message"> <?=$errorMsg?> </div> 
        </div>
     </div>
 </body>

@@ -11,5 +11,5 @@ $lifetime=600;
 session_start();
 setcookie(session_name(),session_id(),time()+$lifetime);
 
-if (!isset($_SESSION['token']))
-    Redirect($domain.'/login.php');
+//if (!isset($_SESSION['token']))
+//    Redirect($domain.'/login.php');

@@ -14,13 +14,13 @@
         $password2 = isset($_POST['password2'])? $_POST['password2'] : '';
         
         $valid = true;
-        if (!preg_match("/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i", $email))
+        if ($email=='' or !preg_match("/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i", $email))
         {
             $errorMsg = 'Invalid email format'.'<br>';
             $valid = false;
         }
 
-        if (!preg_match("/[А-Яа-яA-Za-z][А-Яа-яA-Za-z _]+/i", $name))
+        if ($name=='' or !preg_match("/[А-Яа-яA-Za-z][А-Яа-яA-Za-z _]+/i", $name))
         {
             $errorMsg .= 'Invalid name format'.'<br>';
             $valid = false;
@@ -40,8 +40,9 @@
         
         if ($valid)
         {
-            $signupUrl = $apiDomain.'/reg?mail='.$email.'&name='.$name.'&passwd='.$password;
-            $response = http_get($signupUrl, array("timeout"=>2), $info);
+            $signupUrl = $apiDomain.'/reg?mail='.$email.'&name='.urlencode($name).'&passwd='.$password; // 'http://94.188.80.116:25565/reg?mail=test6@rambler.ru&name=Dmitrii&passwd=12345';//
+            echo $signupUrl, '<br>';
+            $response = http_get($signupUrl, array("timeout"=>4), $info);
             if ($response == '')
             {
                 $errorMsg .= 'Api server not responding'.'<br>';
@@ -89,7 +90,7 @@
     <div class="form">
         <h4>Sign up</h4>
         <hr>
-        <form action="signup.php" method="post">
+        <form action="signup.php" method="post" accept-charset="UTF-8">
             <p> E-mail: <input type="text" required id="email" name="email" value= "<?= $email ?>"></p>
             <p> Password: <input type="password" required id="password1" name="password"></p>
             <p> Repeat password: <input type="password" required id="password2" name="password2"></p>
