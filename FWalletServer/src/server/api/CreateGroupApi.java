@@ -20,16 +20,20 @@ public class CreateGroupApi implements ApiMethod{
         try {
             if (!params.containsKey("token") || 
                     !params.containsKey("name") || 
-                    !params.containsKey("description") || 
-                    !params.containsKey("image")) 
+                    !params.containsKey("ownerId")) 
                 throw new IllegalArgumentException("Missing parameter!");
             
             Group g = new Group()
                     .setName(params.get("name"))
-                    .setDescription(params.get("description"))
                     .setOwnerId(Long.parseLong(params.get("ownerId")))
                     .setCreationDate(new Timestamp(System.currentTimeMillis()));
                     
+            if(params.containsKey("description")){
+                g.setDescription(params.get("description"));
+            }else{
+                g.setDescription("");
+            }
+            
             GroupDAO.createGroup(session, g);
             
             return new ApiAnswer(HttpCode.OK, "");
