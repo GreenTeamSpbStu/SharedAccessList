@@ -31,4 +31,15 @@ public class ParticipantDAO {
             throw e;
         }
     }
+    
+    public static void join(Session session, Participant p){
+        try {
+            session.getTransaction().begin();
+            session.save(p);
+            session.getTransaction().commit();
+        } catch (Throwable e){
+            session.getTransaction().rollback();
+            throw e;
+        }
+    }
 }
