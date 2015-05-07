@@ -144,20 +144,6 @@ body {
 	font-weight: bold;
 }
 
-.button_member{
-    border-radius: 13px;
-    -moz-border-radius: 13px;
-    -webkit-border-radius: 13px;
-    background-color: #3d9cff;
-    font-weight: bold;
-    margin-bottom: 1em;
-    cursor:pointer;
-    width: 130px;
-	height:30px;
-	margin: 5px;
-	float: right
-}
-
 .head_part{
 	font-size: 18pt; /* Размер шрифта в пунктах */
 	font-family: Georgia, Times, serif; /* Семейство шрифтов */
@@ -173,4 +159,17 @@ body {
 	width: 500px
 }	
 	
+.left_part_container {
+	width: 200px;
+	float:left;
+	margin:  0px auto;
+	text-align:left;
+}
+
+.right_part_container {
+	width: 100px;
+	float:right;
+	margin:  0px auto;
+	text-align:right;
+}	
 	

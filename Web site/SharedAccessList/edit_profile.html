@@ -16,36 +16,59 @@
 
         <div id="middle-column">
 			<div class = "container">
-				<div class = "part">
-					<div class = "head_part">Your name</div>
-					<div class="form">
-						<div class = "data_text">Current name: Viktor Belousov</div>
-						<form action="javascript:void(0);" method="get">
-							New name:<input type="text" required>
-						<input  id = "button_change" type="submit" value="Change">
+				<div class = "head_part">Your name</div>
+				<div class="form">
+					<div class = "left_part_container">
+						<div class = "data_text">Current name:</div>
+						<div class = "data_text">New name:</div>
 					</div>
-				</div>	
-				<div class = "part">
-					<div class = "head_part">Your email address</div>
-					<div class="form">
-						<div class = "data_text">Current adress: belousov@gmail.com </div> 
+					<div class = "right_part_container">
+						<div class = "data_text">Belousov Viktor</div>
 						<form action="javascript:void(0);" method="get">
-							New adress:<input type="text" required>
+							<input type="text" required>
 							<input  id = "button_change" type="submit" value="Change">
 						</form>
 					</div>
-				</div>	
-				<div class = "part">	
-					<div class = "head_part">Change password</div>
-					<div class="form">
+				</div>
+				
+				<div class = "head_part">Your email address</div>
+				<div class="form">
+					<div class = "left_part_container">
+						<div class = "data_text">Current adress:</div>
+						<div class = "data_text">New adress:</div>
+					</div>
+					<div class = "right_part_container">
+						<div class = "data_text">belousov@gmail.com</div>
 						<form action="javascript:void(0);" method="get">
-							Current password:<input type="password" required><br>
-							New password:<input type="password" required><br>
-							Repeat new password:<input type="password" required>
+							<input type="text" required>
 							<input  id = "button_change" type="submit" value="Change">
 						</form>
 					</div>
-				</div>	
+				</div>
+				
+				<div class = "head_part">Change password</div>
+				<div class="form" id = "big_form">
+					<div class = "left_part_container">
+						<div class = "data_text">Current password:</div>
+						<div class = "data_text">New password:</div>
+						<div class = "data_text">Repeat new password:</div>
+					</div>
+					<div class = "right_part_container">
+						<form action="javascript:void(0);" method="get">
+							<div  class = "password_margin" >
+								<input type="password" required>
+							</div>	
+							<div  class = "password_margin" >
+								<input type="password" required>
+							</div>	
+							<div  class = "password_margin" >
+								<input type="password"  required>
+							</div>
+							<input  id = "button_change" type="submit" value="Change">
+						</form>
+					</div>
+				</div>
+				
 			</div>
         </div>
 

@@ -17,7 +17,7 @@
 	text-align: justify; /* Выравнивание по ширине */
 	border-bottom: 1px solid #000000; /* Параметры линии снизу */
 	padding-bottom: 10px; /* Отступ от линии снизу до текста  */
-	margin: 10px 40px;
+	margin: 20px 40px;
 }
 
 .form input[type="text"], input[type="password"] {
@@ -26,7 +26,7 @@
     padding: 0 16px;
     width: 150px;
 	height:18px;
-	margin: 10px;
+	margin: 0px;
 	border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -52,7 +52,7 @@
     cursor:pointer;
     width: 130px;
 	height:30px;
-	margin: 15px 150px;
+	margin: 10px 0px;
 }
 
 
@@ -78,7 +78,11 @@ h4{
   font-size: 20px;
 }
 .data_text{
-	text-align: center; /* Выравнивание по ширине */
+	margin: 12px 0px;
+}
+
+.password_margin{
+	margin: 10px 0px 0px 0px;
 }
 
 .bold_text {
@@ -88,9 +92,10 @@ h4{
 .form {
   text-align: right; /* Выравнивание по ширине */
 	font-size: 20px;
+	min-height:130px;
   width: 390px;
   margin: 10px auto;
-  padding: 15px 15px 30px;
+  padding: 15px 30px;
   background-color: rgba(111, 181, 255, 0.4);
   border-width: 1px;
   border-color: #6fb5ff;
@@ -98,4 +103,21 @@ h4{
   border-radius: 8px;
 }
 
+.left_part_container {
+	width: 180px;
+	float:left;
+	margin:  10px auto;
+	text-align:right;
+}
+
+.right_part_container {
+	width: 200px;
+	float:right;
+	margin:  10px auto;
+	text-align:left;
+}
+
+#big_form{
+	height:160px;
+}
 
