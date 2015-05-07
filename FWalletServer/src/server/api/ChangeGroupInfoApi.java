@@ -23,10 +23,10 @@ public class ChangeGroupInfoApi implements ApiMethod{
         try {
             boolean isEmpty = true;
             
-            if (!params.containsKey("token") || !params.containsKey("id"))
+            if (!params.containsKey("token") || !params.containsKey("groupId"))
                 throw new IllegalArgumentException("Missing parameter!");
             
-            Group g = GroupDAO.getGroup(session, Long.parseLong(params.get("id")));
+            Group g = GroupDAO.getGroup(session, Long.parseLong(params.get("groupId")));
             
             User groupOwner = UserDAO.getUser(session, g.getOwnerId());
             User tokenHolder = AuthSessionDAO.getSessionByToken(session, params.get("token")).getUser();

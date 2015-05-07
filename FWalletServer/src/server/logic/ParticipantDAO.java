@@ -42,4 +42,21 @@ public class ParticipantDAO {
             throw e;
         }
     }
+    
+    public static void leave(Session session, long groupid, long userid){
+        try {
+            session.beginTransaction();
+            
+            Participant leaves = (Participant) session.createCriteria(Participant.class)
+                .add(Restrictions.eq("groupId", groupid))
+                .add(Restrictions.eq("participantId", userid))
+                .uniqueResult();
+            
+            session.delete(leaves);
+            session.getTransaction().commit();
+        } catch (Throwable e){
+            session.getTransaction().rollback();
+            throw e;
+        }
+    }
 }

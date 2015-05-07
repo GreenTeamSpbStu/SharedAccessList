@@ -15,6 +15,7 @@ import server.api.AcceptInvitationApi;
 import server.api.ChangeGroupInfoApi;
 import server.api.CreateInvitationApi;
 import server.api.GiveMoneyApi;
+import server.api.KickUserFromGroupApi;
 import server.api.RegistrationApi;
 
 public class Server {
@@ -43,6 +44,7 @@ public class Server {
         addMethod(new CreateInvitationApi(), "/invitation.create");
         addMethod(new GiveMoneyApi(), "/participant.give");
         addMethod(new ChangeGroupInfoApi(), "/group.changeInfo");
+        addMethod(new KickUserFromGroupApi(), "/group.kick");
     }
 
     private void addMethod(ApiMethod apiMethod, String path){
