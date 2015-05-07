@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="styles/common.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="styles/purchase_history.css" media="screen" type="text/css" />
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+
+
+</head>
+<body>
+	<div class="page-container">
+        <div class="left-column">
+		
+            <div class="block" onclick="SwitchToBlock($('#home'))">
+                <h4>Home</h4>
+            </div>
+
+            <div class="block" onclick="SwitchToBlock($('#orders'))">
+                <h4>Orders</h4>
+            </div>
+
+            <div class="block" onclick="SwitchToBlock($('#members'))">
+                <h4>Members</h4>
+            </div>
+
+            <div class="block" onclick="SwitchToBlock($('#history'))">
+                <h4>Operations history</h4>
+            </div>
+
+            <br>
+
+            <div class="block">
+                <h4>Leave this group</h4>
+            </div>
+			
+        </div>
+
+		
+		
+       <div class="middle-column">
+			 <div class="middle-column-container" >
+                <img src="images/avatar2.jpg" class="photo10px" style="float: left">
+				<p class = "name_person">Brad Pitt</p>
+				<div class = "plus">1580$</div>
+				<div class = "head_part">Purchase history</div>
+				
+					<div class="middle-column-container" id = "move_left" >
+						<div class = "left_part_container">
+							<img src="images/main_example.png" class="photo10px" style="float: left">
+							<p class = "name_person">Cookie</p>
+							<div class = "minus">80$</div>
+						</div>
+						<div class = "right_part_container">
+							<div class = "data_purchase"> 12/05/15</div>
+							<div class = "data_purchase"> 18:15</div>
+						</div>
+					</div>
+				
+					<div class="middle-column-container" id = "move_left" >
+						<div class = "left_part_container">
+							<img src="images/main_example.png" class="photo10px" style="float: left">
+							<p class = "name_person">Apple</p>
+							<div class = "minus">40$</div>
+						</div>
+						<div class = "right_part_container">
+							<div class = "data_purchase"> 11/05/15</div>
+							<div class = "data_purchase"> 08:47</div>
+						</div>
+					</div>
+					
+					<div class="middle-column-container" id = "move_left" >
+						<div class = "left_part_container">
+							<img src="images/main_example.png" class="photo10px" style="float: left">
+							<p class = "name_person">GreenTea</p>
+							<div class = "minus">10$</div>
+						</div>
+						<div class = "right_part_container">
+							<div class = "data_purchase"> 10/05/15</div>
+							<div class = "data_purchase"> 01:47</div>
+						</div>
+					</div>
+            </div>
+			
+           
+        </div>
+
+
+    </div>
+
+
+
+</body>
+</html>
