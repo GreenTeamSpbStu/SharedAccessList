@@ -102,6 +102,7 @@ public class User implements JSONAble{
     @Override
     public JSONObject asJSON() {
         JSONObject json = new JSONObject();
+        json.put("id", getId());
         json.put("name", getName());
         json.put("mail", getMail());
         json.put("avatar", getAvatar());
