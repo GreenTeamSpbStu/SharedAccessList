@@ -6,55 +6,38 @@
     <link rel="stylesheet" href="styles/purchase.css" media="screen" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="js/common-scripts.js"></script>
-    <script>
-        function purchaseCommit()
-        {
-            var name = document.getElementById('name').value;
-            var amount = document.getElementById('amount').value
-            var pricePerUnit = document.getElementById('pricePerUnit').value
-
-            var reAmount = /[1-9]+[0-9]?/;
-
-            if (!reAmount.test(amount))
-            {
-                console.log(res.responseText);
-            }
-
-//            $.ajax({
-//                type: 'get',
-//                url: domain+'/auth.api?mail='+email+'&passwd='+pass,
-//                response: 'text',
-//                async: true,
-//                tryCount : 0,
-//                retryLimit : 3,
-//                timeout: 2000,
-//                retryAfter:5000,
-//                success : function(res)
-//                {
-//                    json = JSON.parse(res);
-//                },
-//                error: function(res)
-//                {
-//                    console.log(res.responseText);
-//                    document.getElementById('error_message').innerHTML = JSON.parse(res.responseText).message;
-//                    if (this.tryCount++ < this.retryLimit) $.ajax(this);
-//                }
-//            });
-        }
-    </script>
 </head>
 <body>
     <div class="page-container">
         <div class="middle-column">
             <div class="purchase">
-                <p><h3>Purchase</h3></p>
-                <p> product name <input type="text" id="name"> </p>
-                <p> overall amount <input type="number" id="amount"></p>
-                <p> price per unit <input type="number" id="pricePerUnit"></p>
-                <p> <button onclick="purchaseCommit();">commit</button> <button style="float: right">change coefficients</button></p>
-                <br>
-                <br>
-                <p id="error-message"></p>
+                <form method="post">
+
+                    <table border="0" cellspacing="5" cellpadding="100">
+                        <colgroup>
+                            <col span="1" style="width: 120px">
+                            <col span="1">
+                        </colgroup>
+                        <caption><h3>Purchase</h3></caption>
+                    <tr>
+                        <td>Product name</td>
+                        <td align="right"><input type="text" name="name"></td>
+                    </tr>
+                    <tr>
+                        <td>Overall amount</td>
+                        <td align="right"><input type="number" name="amount" value="1"></td>
+                    </tr>
+                    <tr>
+                        <td>Price per unit</td>
+                        <td align="right"><input type="number" name="pricePerUnit"></td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><input type="submit" value="Commit" class="button"></td>
+                        <td><button class="button">Change coefficients</button></td>
+                    </tr>
+                    </table>
+                </form>
+                <!--<p id="error-message"></p>-->
             </div>
         </div>
     </div>

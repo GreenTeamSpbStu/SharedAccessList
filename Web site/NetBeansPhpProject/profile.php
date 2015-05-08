@@ -13,8 +13,18 @@ $profile = '';
 $feeds = '';
 
 
+$url = $apiDomain . '/user.get?';
 
-$url = $apiDomain . '/user.get?token=' . $token . '&groups&profile';
+if (isset($_GET['id']))
+{
+    $url.='id='.$_GET['id'];
+}
+else
+{
+    $url.='token=' . $token . '&groups&profile&invitations';
+}
+
+
 $response = http_get($url, array("timeout" => 2), $info);
 
 if ($response == '')
@@ -32,26 +42,29 @@ if ($response == '')
     } else
     {
         $json = (object)json_decode($parsed->{'body'});
-        $profile = createProfile($json->profile->avatar, $json->profile->mail, $json->profile->name);
+        if (isset($json->profile))
+            $profile = createProfile($json->profile->avatar, $json->profile->mail, $json->profile->name);
+        
+        if (isset($json->groups))
+            $groups = createGroups($json->groups);
+        
+        if (isset($json->invitaitons))
+            $notifications = createNotifications($json->invitaitons);
 //        var_dump($json->groups);
 //        var_dump($json->nofications);
     }
+    
+    if (isset($_GET['notificationId']))
+    {
+        $notificationUrl = $apiDomain.'/invitation.accept?token='.$token.'&id='.$_GET[notificationId];
+        if (isset($_GET['notificationStatus']) and $_GET['notificationStatus'] == 'reject')
+            $notificationUrl.='&reject';
+        
+        http_get($notificationUrl, array("timeout" => 2), $info);
+        Redirect('profile.php');
+    }
 }
 
-
-$groups = createGroup('Beer lovers', 'info', '-1', 13);
-
-$notifications = createNotifications(array((object)
-    array('data' => time(), 'type' => 'Invitation', 'content' => 'content')));
-
-if (isset($_GET['id']))
-{
-
-    //отображаем страницу пользователя по id
-} else
-{
-    //отображаем нашу страницу
-}
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +90,7 @@ if (isset($_GET['id']))
     </head>
     <body>
 
-<?php echo $_SESSION['token'], '<br>'; 
+<?php echo $_SESSION['token'], '<br>', $url, '<br>'; 
 // var_dump($parsed->{'body'}); echo '<br><br>';
 // var_dump($json); echo '<br><br>';
 // var_dump($json->profile); echo '<br><br>';
@@ -97,26 +110,27 @@ if (isset($_GET['id']))
 
                 <!--сворачивается элемент, следующий за '.notifications' и '.block'-->
 
-<?= $notifications ?>
+                <?= $notifications ?>
 
-                <!--<div id="id-notifications-container" class="notifications-container"></div>-->
-
-<?= $groups ?>
-
-                <div class="left-column-container">
-                    <h4>Join group</h4>
-                </div>
+                <?= $groups ?>
+                <?php 
+                    if (!isset($_GET['id']))
+                    echo '<div class="left-column-container" id="join-group">'
+                        .'<h4><span class="fontawesome-signin"></span>Join group</h4>'
+                        .'</div>'
+                        . '';
+                ?>
 
             </div>
 
             <div class="middle-column">
 
-<?= $profile ?>
+            <?= $profile ?>
 
                 <div class="middle-column-container">
                     <h3 style="padding-bottom: 2px"> Feed </h3>
 
-<?= $feeds ?>
+            <?= $feeds ?>
 
 <!--                    <p class="feeds-record">
                         "Геннадий Петрович" joined us!

@@ -2,8 +2,8 @@
 <?php 
     include_once './common.php';
     
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = isset($_POST['email'])? $_POST['email'] : '';
+    $password = isset($_POST['password'])? $_POST['password'] : '';
     $errorMsg = '';
 
     if ($email != '' and $password != '')
@@ -22,7 +22,8 @@
             {
                 if (isset($parsed->  {'body'}))
                 {
-                    $errorMsg = json_decode($parsed -> {'body'}) -> {'message'};
+                    $errorMsg .= json_decode($parsed -> {'body'}) -> {'message'};
+                    $errorMsg .= '<br>';
                 }
             }
             else
@@ -44,7 +45,7 @@
         }
     }
     
-?>
+?> 
 
 <html>
 <head lang="ru">

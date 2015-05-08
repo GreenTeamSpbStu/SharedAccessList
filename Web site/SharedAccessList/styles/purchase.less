@@ -6,19 +6,44 @@
   {
     width: 300px;
     float: left;
-    padding: 10px 15px ;
-    input{
-      float: right;
-    }
-    button:extend(.button)
+    padding: 10px 15px;
+//
+    line-height: 25px;
+
+    form
     {
+      .button
+      {
+        height: 25px;
+      }
+      table
+      {
+        td
+        {
+          padding-bottom: 3px;
+        }
+      }
+
+    }
+
+    .left
+    {
+      display: inline-block;
       float: left;
-      height: 30px;
+      line-height: 20px;
+      width: 130px;
     }
-    p
+
+    .right
     {
-      margin-bottom: 3px;
+      display: inline-block;
+      input{height: 15px}
     }
+
+
+
+
+
   }
 }
 

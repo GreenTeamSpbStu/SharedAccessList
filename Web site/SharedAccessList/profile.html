@@ -126,15 +126,25 @@
     <div class="left-column">
 
         <!--сворачивается элемент, следующий за '.notifications' и '.block'-->
+        <div class="notifications"> <span class="fontawesome-bullhorn"></span>
+            <h4> Notifications </h4>
+        </div>
 
-        <div id="id-notifications"></div>
+        <div class="notifications-container">
+            <div class="notification">
+                <p>2015-05-04 20:21:07.0</p>
+                <p><h4>Invitation</h4></p>
+                <p>You've invited to group <a href="group?id=-1">Быдлокодеры</a></p>
+                <p>by <a href="profile?id=-1">suhininalex</a></p>
+                <!--<button class="button">Accept</button>-->
+                <!--<button class="button">Deny</button>-->
 
-        <div id="id-notifications-container" class="notifications-container"></div>
+            </div>
+        </div>
 
         <div id="id-groups">
             <div class = "block"><span class="fontawesome-group"></span>
             <h4>Beeer lowersssssss</h4></div>
-
             <div class = "block-hidden">
                 <div class="left">
                     If you only want to show a single line of
@@ -148,10 +158,12 @@
                     <button onclick= 'window.location.href= "#"' class="button"> Quick order </button> <br>
 
                 </div>
-
-
-
             </div>
+
+            <div class="left-column-container" id="join-group">
+                <h4><span class="icon-signin"></span>Join group</h4>
+            </div>
+
         </div>
 
     </div>

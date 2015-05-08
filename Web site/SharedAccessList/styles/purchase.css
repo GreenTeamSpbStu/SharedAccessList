@@ -34,12 +34,11 @@ span,
 .middle-column .feeds-record,
 .photo,
 .popup .popup-content,
-.page-container .middle-column .purchase button,
 .left-column .block,
 .left-column .block:hover,
 .left-column .block-hidden,
 .left-column .notifications-container,
-.left-column .notification,
+.left-column .notifications-container .notification,
 .photo80px,
 .photo40px,
 .page-container .middle-column .purchase,
@@ -63,7 +62,7 @@ span,
 .left-column .block:hover,
 .left-column .block-hidden,
 .left-column .notifications-container,
-.left-column .notification,
+.left-column .notifications-container .notification,
 .photo80px,
 .photo40px,
 .page-container .middle-column .purchase,
@@ -94,7 +93,7 @@ span,
 .left-column .block:hover,
 .left-column .block-hidden,
 .left-column .notifications-container,
-.left-column .notification,
+.left-column .notifications-container .notification,
 .left-column .notifications,
 .left-column .notifications:hover,
 .left-column .notifications:hover,
@@ -102,7 +101,6 @@ span,
   text-align: center;
   height: 35px;
   background-color: #3d9cff;
-  cursor: pointer;
   line-height: 30px;
 }
 .left-column .block,
@@ -111,10 +109,20 @@ span,
   transition: background 0.6s ease;
   line-height: 30px;
   overflow: hidden;
+  cursor: pointer;
 }
 .left-column .block:hover,
 .left-column .notifications:hover,
 .left-column .notifications:hover:hover {
+  background-color: #b8e7ff;
+}
+.left-column #join-group {
+  transition: background 0.6s ease;
+  line-height: 30px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.left-column #join-group:hover {
   background-color: #b8e7ff;
 }
 .left-column .block-hidden {
@@ -132,11 +140,14 @@ span,
   overflow: auto;
   text-align: left;
 }
-.left-column .notification {
+.left-column .notifications-container .notification {
   height: auto;
   background-color: #f5f5f5;
-  padding: 2px;
-  text-align: center;
+  text-align: left;
+  padding: 5px 12px;
+}
+.left-column .notifications-container .notification p {
+  line-height: 20px;
 }
 .middle-column {
   float: right;
@@ -186,8 +197,7 @@ span {
   background-color: #ffffff;
   color: #2c3034;
 }
-.button,
-.page-container .middle-column .purchase button {
+.button {
   background-color: #3474b5;
   color: #eee;
   font-weight: bold;
@@ -220,15 +230,24 @@ span {
 .page-container .middle-column .purchase {
   width: 300px;
   float: left;
-  padding: 10px 15px ;
+  padding: 10px 15px;
+  line-height: 25px;
 }
-.page-container .middle-column .purchase input {
-  float: right;
+.page-container .middle-column .purchase form .button {
+  height: 25px;
 }
-.page-container .middle-column .purchase button {
+.page-container .middle-column .purchase form table td {
+  padding-bottom: 3px;
+}
+.page-container .middle-column .purchase .left {
+  display: inline-block;
   float: left;
-  height: 30px;
+  line-height: 20px;
+  width: 130px;
 }
-.page-container .middle-column .purchase p {
-  margin-bottom: 3px;
+.page-container .middle-column .purchase .right {
+  display: inline-block;
+}
+.page-container .middle-column .purchase .right input {
+  height: 15px;
 }

@@ -80,7 +80,7 @@ h2:extend(.basicHeader) {
     text-align: center;
     height: @height;
     background-color: @baseColor3;
-    cursor: pointer;
+
     line-height: @lineHeight;
 
   }
@@ -89,10 +89,23 @@ h2:extend(.basicHeader) {
     transition: background 0.6s ease;
     line-height: @lineHeight;
     overflow: hidden;
+    cursor: pointer;
     &:hover {
       background-color: @baseColor5;
     }
   }
+
+  #join-group
+  {
+    transition: background 0.6s ease;
+    line-height: @lineHeight;
+    overflow: hidden;
+    cursor: pointer;
+    &:hover {
+      background-color: @baseColor5;
+    }
+  }
+
 
   .block-hidden:extend(.left-column .left-column-container) {
     height: auto;
@@ -116,14 +129,18 @@ h2:extend(.basicHeader) {
     overflow: auto;
     text-align: left;
 
+    .notification:extend(.left-column .left-column-container){
+      height: auto;
+      background-color: @background;
+      text-align: left;
+      padding: 5px 12px;
+      p{
+        line-height: 20px;
+      }
+    }
   }
 
-  .notification:extend(.left-column .left-column-container){
-    height: auto;
-    background-color: @background;
-    padding: 2px;
-    text-align: center;
-  }
+
 }
 
 .middle-column {

@@ -1,5 +1,19 @@
 <?php
 include_once './common.php';
+include_once './sessionCommon.php';
+
+function createGroups($arr)
+{
+    if (empty($arr))
+        return '';
+    
+    $res = '';
+    foreach ($arr as $elem)
+    {
+        $res.= createGroup($elem->group->name, $elem->group->description, $elem->group->id, $elem->balance);
+    }
+    return $res;
+}
 
 function createGroup($groupName, $groupInfo, $groupId, $balance)
 {
@@ -13,7 +27,8 @@ function createGroup($groupName, $groupInfo, $groupId, $balance)
                     <button onclick= \'window.location.href= "#"\' class="button"> Group page </button> <br>
                     <button onclick= \'window.location.href= "#"\' class="button"> Quick order </button> <br>
                 </div>
-            </div>';
+            </div>
+            ';
     return $res;
 }
 
@@ -30,9 +45,17 @@ function createNotifications($arr)
     
     foreach ($arr as $elem)
     {
+        $link = 'profile.php?notificationId='.$elem->invitationId;
+        
         $res.='<div class="notification"><p>
-        '.$elem->data.' '.$elem->type.'</p>'.$elem->content.'</div>'
-         .'';
+        '.$elem->invitationTime.' '.'Invitation'.'</p>'
+        . ''
+        .'<p>You\'ve invited to group <a href="group.php?id='.$elem->group->id.'">'.$elem->group->name.'</a></p>'
+        .'<p>by <a href="profile="profile.php?id='.'-1'.'">'.$elem->sender->name.'</a></p>'
+        .'<button class="button" onclick="window.location.href=\''.$link.'\'">Accept</button> '
+        .'<button class="button" onclick="window.location.href=\''.$link.'&notificationStatus=reject'.'\'">Deny</button>'
+        .'<br>'.$link
+        .'</div>';
     }
     
     $res.='</div>';
