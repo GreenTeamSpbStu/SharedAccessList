@@ -18,7 +18,16 @@ public class GroupDAO {
         Group group = (Group) session.createCriteria(Group.class)
             .add(Restrictions.eq("id", id))
             .uniqueResult();
-        if (group==null) throw new IllegalAccessException("There are no these group!");
+        if (group==null) throw new IllegalAccessException("There is no such group!");
         return group;
+    }
+    
+    public static void updateGroupInfo(Session session, Group gr){
+        try {
+            session.beginTransaction();
+            session.update(gr);
+        } finally {
+            session.getTransaction().commit();
+        }
     }
 }

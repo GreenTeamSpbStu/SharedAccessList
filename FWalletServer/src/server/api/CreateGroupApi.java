@@ -6,8 +6,11 @@ import org.hibernate.Session;
 import server.core.ApiMethod;
 import server.core.HttpCode;
 import server.entity.Group;
+import server.entity.Participant;
 import server.io.JSONHelper;
+import server.logic.AuthSessionDAO;
 import server.logic.GroupDAO;
+import server.logic.ParticipantDAO;
 
 /**
  *
@@ -19,21 +22,32 @@ public class CreateGroupApi implements ApiMethod{
     public ApiAnswer execute(Session session, Map<String, String> params) {
         try {
             if (!params.containsKey("token") || 
-                    !params.containsKey("name") || 
-                    !params.containsKey("description") || 
-                    !params.containsKey("image")) 
+                    !params.containsKey("name"))
                 throw new IllegalArgumentException("Missing parameter!");
+            
+            long userId = AuthSessionDAO.getSessionByToken(session, params.get("token")).getUserid();
             
             Group g = new Group()
                     .setName(params.get("name"))
-                    .setDescription(params.get("description"))
-                    .setOwnerId(Long.parseLong(params.get("ownerId")))
+                    .setOwnerId(userId)
                     .setCreationDate(new Timestamp(System.currentTimeMillis()));
                     
+            if(params.containsKey("description")){
+                g.setDescription(params.get("description"));
+            }else{
+                g.setDescription("");
+            }
+            
             GroupDAO.createGroup(session, g);
             
+            Participant p = new Participant()
+                    .setBalance(0)
+                    .setGroupId(g.getId())
+                    .setParticipantId(userId);
+            ParticipantDAO.join(session, p);
+            
             return new ApiAnswer(HttpCode.OK, "");
-        }catch (NumberFormatException ex) {
+        }catch (NumberFormatException | IllegalAccessException ex) {
             return new ApiAnswer(HttpCode.ERROR, JSONHelper.toJSON(ex));
         }
     }

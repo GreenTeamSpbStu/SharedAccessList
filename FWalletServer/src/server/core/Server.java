@@ -12,8 +12,10 @@ import server.api.CreateGroupApi;
 import server.api.GetGroupApi;
 import server.api.GetUserApi;
 import server.api.AcceptInvitationApi;
+import server.api.ChangeGroupInfoApi;
 import server.api.CreateInvitationApi;
 import server.api.GiveMoneyApi;
+import server.api.KickUserFromGroupApi;
 import server.api.RegistrationApi;
 
 public class Server {
@@ -36,11 +38,13 @@ public class Server {
         addMethod(new RegistrationApi(),"/reg");
         addMethod(new AuthorizeApi(),"/auth");
         addMethod(new GetUserApi(), "/user.get");
-        addMethod(new CreateGroupApi(),"/createGroup.api");
+        addMethod(new CreateGroupApi(),"/group.create");
         addMethod(new GetGroupApi(), "/group.get");
         addMethod(new AcceptInvitationApi(), "/invitation.accept");
         addMethod(new CreateInvitationApi(), "/invitation.create");
         addMethod(new GiveMoneyApi(), "/participant.give");
+        addMethod(new ChangeGroupInfoApi(), "/group.changeInfo");
+        addMethod(new KickUserFromGroupApi(), "/group.kick");
     }
 
     private void addMethod(ApiMethod apiMethod, String path){

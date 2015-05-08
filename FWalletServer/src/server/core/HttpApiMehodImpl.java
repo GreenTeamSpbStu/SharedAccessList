@@ -35,7 +35,7 @@ public class HttpApiMehodImpl implements HttpApiMethod {
         @Override
         public void handle(HttpExchange t) throws IOException {
             
-            System.out.println(new Date() + "\t Hadling query: " + t.getRequestURI());
+            System.out.println(new Date() + "\t Handling query: " + t.getRequestURI());
 
             ApiMethod.ApiAnswer answer = new ApiMethod.ApiAnswer(
                 HttpCode.ERROR, 
@@ -47,7 +47,7 @@ public class HttpApiMehodImpl implements HttpApiMethod {
             } catch (ExceptionInInitializerError e){
                 answer = new ApiMethod.ApiAnswer(
                     HttpCode.ERROR, 
-                    JSONHelper.toJSON(new InternalError("Database is unavailible!"))
+                    JSONHelper.toJSON(new InternalError("Database is unavailable!"))
                 );
             } catch (Throwable e) {
                 e.printStackTrace();
