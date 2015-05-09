@@ -17,13 +17,14 @@ public class GetUserApi implements ApiMethod{
     @Override
     public ApiAnswer execute(Session session, Map<String, String> params) {
         try {
+            JSONObject result = new JSONObject();
             if (params.containsKey("id")) {
                 long id = Long.parseLong(params.get("id"));
-                return new ApiAnswer(HttpCode.OK, UserDAO.getUser(session, id).asJSON().toJSONString());
+                result.put("profile", UserDAO.getUser(session, id).asJSON());
+                return new ApiAnswer(HttpCode.OK, result.toJSONString());
             }
             if (!params.containsKey("token")) throw new IllegalArgumentException("Missing token parameter!");
             AuthSession auth = AuthSessionDAO.getSessionByToken(session, params.get("token"));
-            JSONObject result = new JSONObject();
             User user = auth.getUser();
             if (params.containsKey("profile")) {
                 result.put("profile", user.asJSON());
