@@ -66,10 +66,7 @@ public class HttpApiMehodImpl implements HttpApiMethod {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             return apiMethod.execute(session, query);
-        } catch (Exception e){
-            session.getTransaction().rollback();
-            throw e;
-        }finally {
+        } finally {
             session.close();
         }
         
