@@ -2,6 +2,7 @@ package server.logic;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.exception.ConstraintViolationException;
 import server.entity.AuthSession;
 import server.entity.Invitation;
 import server.entity.Participant;
@@ -25,6 +26,9 @@ public class InvitationDAO {
                 session.save(participant);
             }
             session.getTransaction().commit();
+        } catch (ConstraintViolationException e) {
+            session.getTransaction().commit();
+            throw new IllegalAccessException("User already participates this group!");
         } catch (Throwable e) {
             session.getTransaction().rollback();
         }
