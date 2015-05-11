@@ -24,7 +24,7 @@ function createGroup($groupName, $groupInfo, $groupId, $balance)
                 <div class="left">'.$groupInfo.'</div>
                 <div class="right">
                     <h4 style="color: green">'.$balance.'</h4>
-                    <button onclick= \'window.location.href= "#"\' class="button"> Group page </button> <br>
+                    <button onclick= \'window.location.href= "group.php?id='.$groupId.'"\' class="button"> Group page </button> <br>
                     <button onclick= \'window.location.href= "#"\' class="button"> Quick order </button> <br>
                 </div>
             </div>
