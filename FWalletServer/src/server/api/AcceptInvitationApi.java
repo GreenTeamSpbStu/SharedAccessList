@@ -1,8 +1,6 @@
 package server.api;
 
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.hibernate.Session;
 import org.hibernate.exception.ConstraintViolationException;
 import server.core.ApiMethod;
