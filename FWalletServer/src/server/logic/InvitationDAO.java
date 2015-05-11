@@ -32,6 +32,7 @@ public class InvitationDAO {
             session.getTransaction().commit();
         } catch (ConstraintViolationException e) {
             rejectInvitation(invitation);
+            throw new IllegalArgumentException("User already participates this group!");
         } finally {
             session.close();
         }
