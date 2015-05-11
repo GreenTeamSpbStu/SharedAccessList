@@ -2,12 +2,14 @@ package server.logic;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import server.HibernateUtil;
 import server.entity.AuthSession;
 import server.entity.User;
 import utils.NetworkUtils;
 
 public class AuthSessionDAO {
-    public static AuthSession authorize(Session session, String mail, String passwd) throws IllegalAccessException{
+    public static AuthSession authorize(String mail, String passwd) throws IllegalAccessException{
+        Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             passwd = NetworkUtils.toHexMd5(passwd);
             session.beginTransaction();
@@ -22,21 +24,25 @@ public class AuthSessionDAO {
             session.saveOrUpdate(auth);
             session.getTransaction().commit();
             return auth;
-        } catch (Throwable e){
-            session.getTransaction().rollback();
-            throw e;
+        } finally {
+            session.close();
         }
     }
     
-     private static String createToken(String name, String passwd){
+    private static String createToken(String name, String passwd){
         return NetworkUtils.toHexMd5(name+passwd+System.currentTimeMillis());
     }
      
-    public static AuthSession getSessionByToken(Session session, String token) throws IllegalAccessException{
-        AuthSession auth = (AuthSession) session.createCriteria(AuthSession.class)
-                .add(Restrictions.eq("token", token))
-                .uniqueResult();
-        if (auth==null) throw new IllegalAccessException("Wrong token!");
-        return auth;
-    }  
+    public static AuthSession getSessionByToken(String token) throws IllegalAccessException{
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            AuthSession auth = (AuthSession) session.createCriteria(AuthSession.class)
+                    .add(Restrictions.eq("token", token))
+                    .uniqueResult();
+            if (auth==null) throw new IllegalAccessException("Wrong token!");
+            return auth;
+        } finally {
+            session.close();
+        }
+    }
 }

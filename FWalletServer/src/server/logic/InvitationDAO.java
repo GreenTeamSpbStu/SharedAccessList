@@ -1,17 +1,21 @@
 package server.logic;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.exception.ConstraintViolationException;
+import server.HibernateUtil;
 import server.entity.AuthSession;
 import server.entity.Invitation;
 import server.entity.Participant;
 
 public class InvitationDAO {
-    public static void acceptInvitation(Session session, String token, long invitationID, boolean reject) throws IllegalAccessException{
+    public static void acceptInvitation(String token, long invitationID, boolean reject) throws IllegalAccessException, IllegalArgumentException{
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Invitation invitation = null;
         try {
-            AuthSession auth = AuthSessionDAO.getSessionByToken(session, token);
-            Invitation invitation = (Invitation) session.createCriteria(Invitation.class)
+            AuthSession auth = AuthSessionDAO.getSessionByToken(token);
+            invitation = (Invitation) session.createCriteria(Invitation.class)
                 .add(Restrictions.eq("id", invitationID))
                 .add(Restrictions.eq("recipientId",auth.getUserid()))
                 .uniqueResult();
@@ -27,16 +31,27 @@ public class InvitationDAO {
             }
             session.getTransaction().commit();
         } catch (ConstraintViolationException e) {
-            session.getTransaction().commit();
-            throw new IllegalAccessException("User already participates this group!");
-        } catch (Throwable e) {
-            session.getTransaction().rollback();
+            rejectInvitation(invitation);
+        } finally {
+            session.close();
         }
     }
     
-    public static void createInvitation(Session session, String token, long groupId, long userId) throws IllegalAccessException{
+    private static void rejectInvitation(Invitation invitation){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.getTransaction().begin();
+            session.delete(invitation);
+            session.getTransaction().commit();
+        } finally {
+            session.close();
+        }
+    }
+    
+    public static void createInvitation(String token, long groupId, long userId) throws IllegalAccessException{
+        Session session = HibernateUtil.getSessionFactory().openSession();
         try{
-            AuthSession auth = AuthSessionDAO.getSessionByToken(session, token);
+            AuthSession auth = AuthSessionDAO.getSessionByToken(token);
             Participant participant = (Participant) session.createCriteria(Participant.class)
                 .add(Restrictions.eq("groupId", groupId))
                 .add(Restrictions.eq("participantId", auth.getUserid()))
@@ -49,8 +64,8 @@ public class InvitationDAO {
                     .setSenderId(auth.getUserid());
             session.save(invitation);
             session.getTransaction().commit();
-        } catch (Exception e) {
-            session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 }

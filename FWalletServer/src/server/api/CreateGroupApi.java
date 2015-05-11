@@ -2,7 +2,6 @@ package server.api;
 
 import java.sql.Timestamp;
 import java.util.Map;
-import org.hibernate.Session;
 import server.core.ApiMethod;
 import server.core.HttpCode;
 import server.entity.Group;
@@ -19,13 +18,13 @@ import server.logic.ParticipantDAO;
 public class CreateGroupApi implements ApiMethod{
 
     @Override
-    public ApiAnswer execute(Session session, Map<String, String> params) {
+    public ApiAnswer execute(Map<String, String> params) {
         try {
             if (!params.containsKey("token") || 
                     !params.containsKey("name"))
                 throw new IllegalArgumentException("Missing parameter!");
             
-            long userId = AuthSessionDAO.getSessionByToken(session, params.get("token")).getUserid();
+            long userId = AuthSessionDAO.getSessionByToken(params.get("token")).getUserid();
             
             Group g = new Group()
                     .setName(params.get("name"))
@@ -38,13 +37,13 @@ public class CreateGroupApi implements ApiMethod{
                 g.setDescription("");
             }
             
-            GroupDAO.createGroup(session, g);
+            GroupDAO.createGroup(g);
             
             Participant p = new Participant()
                     .setBalance(0)
                     .setGroupId(g.getId())
                     .setParticipantId(userId);
-            ParticipantDAO.join(session, p);
+            ParticipantDAO.join(p);
             
             return new ApiAnswer(HttpCode.OK, "");
         }catch (NumberFormatException | IllegalAccessException ex) {

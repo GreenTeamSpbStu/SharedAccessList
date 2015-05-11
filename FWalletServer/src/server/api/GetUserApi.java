@@ -1,7 +1,6 @@
 package server.api;
 
 import java.util.Map;
-import org.hibernate.Session;
 import org.json.simple.JSONObject;
 import server.core.ApiMethod;
 import server.core.HttpCode;
@@ -15,16 +14,16 @@ import server.logic.UserDAO;
 public class GetUserApi implements ApiMethod{
 
     @Override
-    public ApiAnswer execute(Session session, Map<String, String> params) {
+    public ApiAnswer execute(Map<String, String> params) {
         try {
             JSONObject result = new JSONObject();
             if (params.containsKey("id")) {
                 long id = Long.parseLong(params.get("id"));
-                result.put("profile", UserDAO.getUser(session, id).asJSON());
+                result.put("profile", UserDAO.getUser(id).asJSON());
                 return new ApiAnswer(HttpCode.OK, result.toJSONString());
             }
             if (!params.containsKey("token")) throw new IllegalArgumentException("Missing token parameter!");
-            AuthSession auth = AuthSessionDAO.getSessionByToken(session, params.get("token"));
+            AuthSession auth = AuthSessionDAO.getSessionByToken(params.get("token"));
             User user = auth.getUser();
             if (params.containsKey("profile")) {
                 result.put("profile", user.asJSON());

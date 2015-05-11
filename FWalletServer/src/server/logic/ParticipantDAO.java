@@ -2,15 +2,17 @@ package server.logic;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import server.HibernateUtil;
 import server.entity.AuthSession;
 import server.entity.Participant;
 
 public class ParticipantDAO {
-    public static void giveMoney(Session session, String token, long groupId, long recipientId, float amount) throws Exception{
+    public static void giveMoney(String token, long groupId, long recipientId, float amount) throws Exception{
+        Session session = HibernateUtil.getSessionFactory().openSession();
         if (amount<0) throw new IllegalArgumentException("Amount must be positive!");
         try {
             session.getTransaction().begin();
-            AuthSession auth = AuthSessionDAO.getSessionByToken(session, token);
+            AuthSession auth = AuthSessionDAO.getSessionByToken(token);
             Participant sender = (Participant) session.createCriteria(Participant.class)
                 .add(Restrictions.eq("groupId", groupId))
                 .add(Restrictions.eq("participantId", auth.getUserid()))
@@ -26,24 +28,24 @@ public class ParticipantDAO {
             session.saveOrUpdate(sender);
             session.saveOrUpdate(recipient);
             session.getTransaction().commit();
-        } catch (Throwable e){
-            session.getTransaction().rollback();
-            throw e;
+        } finally {
+            session.close();
         }
     }
     
-    public static void join(Session session, Participant p){
+    public static void join(Participant p){
+        Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.getTransaction().begin();
             session.save(p);
             session.getTransaction().commit();
-        } catch (Throwable e){
-            session.getTransaction().rollback();
-            throw e;
+        } finally {
+            session.close();
         }
     }
     
-    public static void leave(Session session, long groupid, long userid){
+    public static void leave(long groupid, long userid){
+        Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
             
@@ -54,9 +56,8 @@ public class ParticipantDAO {
             
             session.delete(leaves);
             session.getTransaction().commit();
-        } catch (Throwable e){
-            session.getTransaction().rollback();
-            throw e;
+        } finally {
+            session.close();
         }
     }
 }

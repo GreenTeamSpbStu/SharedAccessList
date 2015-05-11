@@ -2,7 +2,6 @@ package server.api;
 
 import java.util.Map;
 import java.util.Objects;
-import org.hibernate.Session;
 import server.core.ApiMethod;
 import server.core.HttpCode;
 import server.entity.Group;
@@ -20,7 +19,7 @@ import server.logic.UserDAO;
 public class KickUserFromGroupApi implements ApiMethod {
 
     @Override
-    public ApiAnswer execute(Session session, Map<String, String> params) {
+    public ApiAnswer execute(Map<String, String> params) {
         try {
             if (!params.containsKey("token")
                     || !params.containsKey("groupId")
@@ -28,10 +27,10 @@ public class KickUserFromGroupApi implements ApiMethod {
                 throw new IllegalArgumentException("Missing parameter!");
             }
 
-            Group g = GroupDAO.getGroup(session, Long.parseLong(params.get("groupId")));
+            Group g = GroupDAO.getGroup(Long.parseLong(params.get("groupId")));
 
-            User groupOwner = UserDAO.getUser(session, g.getOwnerId());
-            User tokenHolder = AuthSessionDAO.getSessionByToken(session, params.get("token")).getUser();
+            User groupOwner = UserDAO.getUser(g.getOwnerId());
+            User tokenHolder = AuthSessionDAO.getSessionByToken(params.get("token")).getUser();
 
             if (!Objects.equals(groupOwner.getId(), tokenHolder.getId())) {
                 throw new IllegalArgumentException("Access denied. You are not administrator of " + g.getName());
@@ -41,7 +40,7 @@ public class KickUserFromGroupApi implements ApiMethod {
                 throw new IllegalArgumentException("Seriously? You cant kick yourself");
             }
             
-            ParticipantDAO.leave(session, Long.parseLong(params.get("groupId")), Long.parseLong(params.get("userId")));
+            ParticipantDAO.leave(Long.parseLong(params.get("groupId")), Long.parseLong(params.get("userId")));
             
             // cash recalculation here ///////////////////////////
 

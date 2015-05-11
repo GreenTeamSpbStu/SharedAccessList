@@ -8,7 +8,7 @@ import org.hibernate.Session;
  * @author llama
  */
 public interface ApiMethod {
-    ApiAnswer execute(Session session, Map<String,String> params);
+    ApiAnswer execute(Map<String,String> params);
     
     public static class ApiAnswer {
         public final HttpCode httpCode;

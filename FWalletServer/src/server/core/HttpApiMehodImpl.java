@@ -50,7 +50,7 @@ public class HttpApiMehodImpl implements HttpApiMethod {
                     JSONHelper.toJSON(new InternalError("Database is unavailable!"))
                 );
             } catch (Throwable e) {
-                e.printStackTrace();
+                System.out.println(e.getCause());
             }
             
             try (OutputStream out = t.getResponseBody()) {
@@ -65,7 +65,7 @@ public class HttpApiMehodImpl implements HttpApiMethod {
         Map<String,String> query = NetworkUtils.parseURIQuery(t.getRequestURI().getQuery());
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            return apiMethod.execute(session, query);
+            return apiMethod.execute(query);
         } finally {
             session.close();
         }
