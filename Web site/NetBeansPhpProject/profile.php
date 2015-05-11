@@ -113,12 +113,22 @@ if ($response == '')
                 <?= $notifications ?>
 
                 <?= $groups ?>
+                
                 <?php 
                     if (!isset($_GET['id']))
-                    echo '<div class="left-column-container" id="join-group">'
+                    {
+                        echo '<div class="left-column-container" id="join-group">'
                         .'<h4><span class="fontawesome-signin"></span>Join group</h4>'
                         .'</div>'
                         . '';
+                    }
+                    else
+                    {
+                        echo '<div class="left-column-container">'
+                        .'<h4><span class="fontawesome-home"></span>Home</h4>'
+                        .'</div>'
+                        . '';
+                    }
                 ?>
 
             </div>

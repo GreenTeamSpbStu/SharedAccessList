@@ -82,7 +82,6 @@ h2:extend(.basicHeader) {
     background-color: @baseColor3;
 
     line-height: @lineHeight;
-
   }
 
   .block:extend(.left-column .left-column-container all) {
@@ -95,18 +94,6 @@ h2:extend(.basicHeader) {
     }
   }
 
-  #join-group
-  {
-    transition: background 0.6s ease;
-    line-height: @lineHeight;
-    overflow: hidden;
-    cursor: pointer;
-    &:hover {
-      background-color: @baseColor5;
-    }
-  }
-
-
   .block-hidden:extend(.left-column .left-column-container) {
     height: auto;
     background-color: @background;
@@ -114,12 +101,9 @@ h2:extend(.basicHeader) {
 //    padding: 5px;
   }
 
-  .notifications:extend(.left-column .block all){
+  .notifications:extend(.left-column .block all)
+  {
     background-color: #f95252;
-    &:hover{
-//      background-color: #f973ad !important;
-    }
-
   }
 
   .notifications-container:extend(.left-column .left-column-container){

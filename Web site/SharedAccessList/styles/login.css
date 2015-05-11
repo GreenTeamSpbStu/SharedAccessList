@@ -44,9 +44,7 @@ span,
 .photo80px,
 .photo40px,
 .left-column .notifications,
-.left-column .notifications:hover,
-.left-column .notifications:hover,
-.left-column .notifications:hover:hover {
+.left-column .notifications:hover {
   min-height: 100%;
   height: auto;
   border: none;
@@ -67,9 +65,7 @@ span,
 .photo80px,
 .photo40px,
 .left-column .notifications,
-.left-column .notifications:hover,
-.left-column .notifications:hover,
-.left-column .notifications:hover:hover {
+.left-column .notifications:hover {
   border: solid;
   border-width: 1px;
 }
@@ -95,34 +91,21 @@ span,
 .left-column .notifications-container,
 .left-column .notifications-container .notification,
 .left-column .notifications,
-.left-column .notifications:hover,
-.left-column .notifications:hover,
-.left-column .notifications:hover:hover {
+.left-column .notifications:hover {
   text-align: center;
   height: 35px;
   background-color: #3d9cff;
   line-height: 30px;
 }
 .left-column .block,
-.left-column .notifications,
-.left-column .notifications:hover {
+.left-column .notifications {
   transition: background 0.6s ease;
   line-height: 30px;
   overflow: hidden;
   cursor: pointer;
 }
 .left-column .block:hover,
-.left-column .notifications:hover,
-.left-column .notifications:hover:hover {
-  background-color: #b8e7ff;
-}
-.left-column #join-group {
-  transition: background 0.6s ease;
-  line-height: 30px;
-  overflow: hidden;
-  cursor: pointer;
-}
-.left-column #join-group:hover {
+.left-column .notifications:hover {
   background-color: #b8e7ff;
 }
 .left-column .block-hidden {
