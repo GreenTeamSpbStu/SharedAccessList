@@ -1,5 +1,7 @@
 package server.logic;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import server.HibernateUtil;
@@ -44,18 +46,36 @@ public class ParticipantDAO {
         }
     }
     
-    public static void leave(long groupid, long userid){
+    public static void leave(long groupId, long userId){
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
             
             Participant leaves = (Participant) session.createCriteria(Participant.class)
-                .add(Restrictions.eq("groupId", groupid))
-                .add(Restrictions.eq("participantId", userid))
+                .add(Restrictions.eq("groupId", groupId))
+                .add(Restrictions.eq("participantId", userId))
                 .uniqueResult();
             
             session.delete(leaves);
             session.getTransaction().commit();
+        } finally {
+            session.close();
+        }
+    }
+    
+    public static List<Participant> getAll(long groupId){
+        List<Participant> result = new ArrayList<>();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        
+        try {
+            List all = session.createCriteria(Participant.class)
+                .add(Restrictions.eq("groupId", groupId)).list();
+            
+            for (Object i : all) {
+                result.add((Participant)i);
+            }
+            
+            return result;
         } finally {
             session.close();
         }

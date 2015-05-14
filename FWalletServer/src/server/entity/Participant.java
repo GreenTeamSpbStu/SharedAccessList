@@ -27,6 +27,10 @@ public class Participant implements JSONAble{
     @Column(name = "PARTICIPANTID")
     private long participantId;
     
+    @OneToOne
+    @JoinColumn(name = "PARTICIPANTID",insertable = false, updatable = false)
+    private User participant;
+    
     @Column(name = "BALANCE")
     private float balance;    
 
@@ -36,6 +40,10 @@ public class Participant implements JSONAble{
 
     public long getGroupId() {
         return groupId;
+    }
+    
+    public User getParticipant(){
+        return participant;
     }
 
     public long getParticipantId() {
@@ -64,8 +72,8 @@ public class Participant implements JSONAble{
     @Override
     public JSONObject asJSON() {
         JSONObject json = new JSONObject();
+        json.put("user", getParticipant().asJSON());
         json.put("balance", getBalance());
-        json.put("group", getGroup().asJSON());
         return json;
     }
 
